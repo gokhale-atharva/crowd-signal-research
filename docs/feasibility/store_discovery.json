@@ -1,0 +1,1245 @@
+{
+  "checked_at": "2026-11-07T14:20:17.614407+00:00",
+  "method": "apify-client StoreCollectionClient.list; unauthenticated, read-only",
+  "actor_runs": 0,
+  "note": "Catalog presence is not proof of output quality, finance coverage, or reliability.",
+  "searches": [
+    {
+      "source": "lihkg",
+      "query": "LIHKG",
+      "status": "catalog_only",
+      "actors": [
+        {
+          "id": "pwCnD34epqg3YfeMB",
+          "username": "claude_code_reviewer",
+          "name": "lihkg-scraper",
+          "title": "LIHKG 連登爬蟲｜關鍵字搜尋、貼文留言、香港輿情監控（免 API）",
+          "description": "免登入抓連登（LIHKG）香港論壇：全站關鍵字搜尋、分台主題列表、貼文全文與所有留言，含推／踩數與時間，輸出 JSON／CSV／Excel。配合排程即為品牌關鍵字每日監控，只抓有新動靜的主題、成本不隨歷史膨脹。香港輿情監測、社群聆聽、品牌聲量分析必備。",
+          "stats": {
+            "totalBuilds": 20,
+            "totalRuns": 1455,
+            "totalUsers": 24,
+            "totalUsers7Days": 3,
+            "totalUsers30Days": 9,
+            "totalUsers90Days": 13,
+            "lastRunStartedAt": "2026-11-07 05:12:26.792000+00:00",
+            "actorReviewCount": 0,
+            "actorReviewRating": 0,
+            "bookmarkCount": 1,
+            "publicActorRunStats30Days": {
+              "ABORTED": 0,
+              "FAILED": 6,
+              "SUCCEEDED": 554,
+              "TIMED-OUT": 0,
+              "TOTAL": 560
+            }
+          }
+        },
+        {
+          "id": "PJDFRxJdpPknN9nYn",
+          "username": "claude_code_reviewer",
+          "name": "lihkg-scraper-en",
+          "title": "LIHKG Scraper – Keyword Search, Replies & HK Social Listening",
+          "description": "Scrape LIHKG, Hong Kong's biggest forum: site-wide keyword search, board thread listings, full posts and replies with reactions and timestamps. Schedule daily runs for brand keyword monitoring — only threads with new activity. No API or login. Export JSON/CSV/Excel for HK social listening.",
+          "stats": {
+            "totalBuilds": 19,
+            "totalRuns": 535,
+            "totalUsers": 17,
+            "totalUsers7Days": 3,
+            "totalUsers30Days": 5,
+            "totalUsers90Days": 9,
+            "lastRunStartedAt": "2026-11-07 05:18:25.439000+00:00",
+            "actorReviewCount": 0,
+            "actorReviewRating": 0,
+            "bookmarkCount": 0,
+            "publicActorRunStats30Days": {
+              "ABORTED": 0,
+              "FAILED": 0,
+              "SUCCEEDED": 79,
+              "TIMED-OUT": 0,
+              "TOTAL": 79
+            }
+          }
+        }
+      ]
+    },
+    {
+      "source": "futu_moomoo",
+      "query": "Moomoo",
+      "status": "catalog_only",
+      "actors": []
+    },
+    {
+      "source": "futu",
+      "query": "Futu",
+      "status": "catalog_only",
+      "actors": [
+        {
+          "id": "DHbKu7JLMGkbnejKi",
+          "username": "scrapers_lat",
+          "name": "nfa-basic-futures-registrants-scraper",
+          "title": "NFA BASIC Futures Broker, CTA, CPO & Swap Dealer Scraper",
+          "description": "Scrape CFTC-registered futures firms and individuals from NFA BASIC: FCM, IB, CPO, CTA, swap dealer and forex dealer records with office address, phone, principals, 10% owners, disciplinary actions with fine amounts, funds and net-capital figures. Export to JSON, CSV or Excel.",
+          "stats": {
+            "totalBuilds": 3,
+            "totalRuns": 92,
+            "totalUsers": 1,
+            "totalUsers7Days": 0,
+            "totalUsers30Days": 0,
+            "totalUsers90Days": 0,
+            "lastRunStartedAt": "2026-11-06 20:20:28.014000+00:00",
+            "actorReviewCount": 0,
+            "actorReviewRating": 0,
+            "bookmarkCount": 0,
+            "publicActorRunStats30Days": {
+              "ABORTED": 0,
+              "FAILED": 0,
+              "SUCCEEDED": 29,
+              "TIMED-OUT": 0,
+              "TOTAL": 29
+            }
+          }
+        },
+        {
+          "id": "ARDgkbGRStNJLQ53d",
+          "username": "lovely_sequoia",
+          "name": "futurepedia-scraper",
+          "title": "Futurepedia Scraper: export AI tool data",
+          "description": "Build an AI-tool comparison sheet from public Futurepedia listings. Export descriptions, observed pricing, categories and vendor links to JSON/CSV. Start with one tool; verify vendor claims yourself.",
+          "stats": {
+            "totalBuilds": 23,
+            "totalRuns": 1013,
+            "totalUsers": 57,
+            "totalUsers7Days": 1,
+            "totalUsers30Days": 2,
+            "totalUsers90Days": 6,
+            "lastRunStartedAt": "2026-11-06 14:08:28.199000+00:00",
+            "actorReviewCount": 0,
+            "actorReviewRating": 0,
+            "bookmarkCount": 2,
+            "publicActorRunStats30Days": {
+              "ABORTED": 0,
+              "FAILED": 3,
+              "SUCCEEDED": 58,
+              "TIMED-OUT": 0,
+              "TOTAL": 61
+            }
+          }
+        },
+        {
+          "id": "z73HLAYJ5k33aGbd3",
+          "username": "solidcode",
+          "name": "futurepedia-io-scraper",
+          "title": "Futurepedia AI Tools Scraper",
+          "description": "[💰 $4.00 / 1K] Extract AI tools from Futurepedia — name, description, pricing model, editorial score, user rating, review count, categories, features, pros & cons, sub-ratings, and links. Search by keyword, browse categories, or paste tool URLs.",
+          "stats": {
+            "totalBuilds": 11,
+            "totalRuns": 240,
+            "totalUsers": 6,
+            "totalUsers7Days": 0,
+            "totalUsers30Days": 0,
+            "totalUsers90Days": 2,
+            "lastRunStartedAt": "2026-11-06 12:02:31.713000+00:00",
+            "actorReviewCount": 0,
+            "actorReviewRating": 0,
+            "bookmarkCount": 0,
+            "publicActorRunStats30Days": {
+              "ABORTED": 0,
+              "FAILED": 0,
+              "SUCCEEDED": 29,
+              "TIMED-OUT": 0,
+              "TOTAL": 29
+            }
+          }
+        },
+        {
+          "id": "4d1ses24xc6fbMhFV",
+          "username": "easyapi",
+          "name": "binance-futures-leaderboard-scraper",
+          "title": "Binance Futures Leaderboard Scraper 📊",
+          "description": "Scrape Binance Futures Leaderboard data including traders' ROI, PNL, followers count, and social media links. Get insights from top cryptocurrency traders' performance metrics and trading statistics.",
+          "stats": {
+            "totalBuilds": 29,
+            "totalRuns": 685,
+            "totalUsers": 51,
+            "totalUsers7Days": 0,
+            "totalUsers30Days": 0,
+            "totalUsers90Days": 3,
+            "lastRunStartedAt": "2026-11-06 14:06:27.771000+00:00",
+            "publicActorRunStats30Days": {
+              "ABORTED": 0,
+              "FAILED": 0,
+              "SUCCEEDED": 52,
+              "TIMED-OUT": 0,
+              "TOTAL": 52
+            },
+            "actorReviewCount": 0,
+            "actorReviewRating": 0,
+            "bookmarkCount": 2
+          }
+        },
+        {
+          "id": "VKWHGSwd9E9Atn2jz",
+          "username": "powerai",
+          "name": "facebook-page-future-events-scraper",
+          "title": "Facebook Page Future Events Scraper",
+          "description": "List upcoming events for a Facebook Page with hosts, places, links, and cover media—paginated up to your cap.",
+          "stats": {
+            "totalBuilds": 2,
+            "totalRuns": 262,
+            "totalUsers": 37,
+            "totalUsers7Days": 1,
+            "totalUsers30Days": 25,
+            "totalUsers90Days": 26,
+            "lastRunStartedAt": "2026-11-07 02:46:29.405000+00:00",
+            "actorReviewCount": 1,
+            "actorReviewRating": 5,
+            "bookmarkCount": 2,
+            "publicActorRunStats30Days": {
+              "ABORTED": 0,
+              "FAILED": 0,
+              "SUCCEEDED": 29,
+              "TIMED-OUT": 0,
+              "TOTAL": 29
+            }
+          }
+        },
+        {
+          "id": "qhcz8G1BXBHcOUWgM",
+          "username": "nexgendata",
+          "name": "energy-commodity-mcp",
+          "title": "Energy & Commodity MCP — Futures, FX & Rates for AI Agents",
+          "description": "MCP server exposing commodity futures, FX, Treasury yields, CFTC positioning, top coins and vessel tracking as agent tools. Connect Claude, Cursor, n8n.",
+          "stats": {
+            "totalBuilds": 89,
+            "totalRuns": 187,
+            "totalUsers": 33,
+            "totalUsers7Days": 0,
+            "totalUsers30Days": 1,
+            "totalUsers90Days": 2,
+            "actorReviewCount": 0,
+            "actorReviewRating": 0,
+            "bookmarkCount": 0,
+            "lastRunStartedAt": "2026-11-06 23:17:12.052000+00:00",
+            "publicActorRunStats30Days": {
+              "ABORTED": 0,
+              "FAILED": 0,
+              "SUCCEEDED": 4,
+              "TIMED-OUT": 0,
+              "TOTAL": 4
+            }
+          }
+        },
+        {
+          "id": "gafqhU1Ook56OOVYc",
+          "username": "scrapemint",
+          "name": "commodity-futures-settlements",
+          "title": "Commodity Futures Prices: Gold, Oil, Grains and Rates",
+          "description": "Official daily futures settlement prices, keyless. Every contract month with open, high, low, settle, change, volume and open interest, or a one row summary per product with the front month and whether the curve is in contango or backwardation. Metals, energy, grains, index, rates and FX.",
+          "stats": {
+            "totalBuilds": 5,
+            "totalRuns": 170,
+            "totalUsers": 19,
+            "totalUsers7Days": 0,
+            "totalUsers30Days": 2,
+            "totalUsers90Days": 8,
+            "lastRunStartedAt": "2026-11-06 10:58:31.704000+00:00",
+            "actorReviewCount": 1,
+            "actorReviewRating": 5,
+            "bookmarkCount": 0,
+            "publicActorRunStats30Days": {
+              "ABORTED": 0,
+              "FAILED": 0,
+              "SUCCEEDED": 33,
+              "TIMED-OUT": 0,
+              "TOTAL": 33
+            }
+          }
+        }
+      ]
+    },
+    {
+      "source": "aastocks",
+      "query": "AAStocks",
+      "status": "catalog_only",
+      "actors": [
+        {
+          "id": "jsWS8vicwFDUmEeq2",
+          "username": "bovi",
+          "name": "aastocks-scraper",
+          "title": "AASTOCKS Financial News Scraper",
+          "description": "Collect public AASTOCKS financial-news listings. Returns each article headline, source, public URL, feed, language, and article identifier. No login is required.",
+          "stats": {
+            "totalBuilds": 1,
+            "totalRuns": 30,
+            "totalUsers": 2,
+            "totalUsers7Days": 1,
+            "totalUsers30Days": 1,
+            "totalUsers90Days": 1,
+            "lastRunStartedAt": "2026-11-06 14:10:33.371000+00:00",
+            "actorReviewCount": 0,
+            "actorReviewRating": 0,
+            "bookmarkCount": 0,
+            "publicActorRunStats30Days": {
+              "ABORTED": 0,
+              "FAILED": 0,
+              "SUCCEEDED": 27,
+              "TIMED-OUT": 0,
+              "TOTAL": 27
+            }
+          }
+        },
+        {
+          "id": "EafNVKEsvbdfQsY4Z",
+          "username": "alwaysprimedev",
+          "name": "yahoo-finance-scraper",
+          "title": "Yahoo Finance Scraper — Stocks, ETFs, Crypto, Indices",
+          "description": "Pull real-time quotes, fundamentals, financials, analyst targets, dividends, company officers, and historical OHLCV for any Yahoo Finance ticker. Works for stocks, ETFs, mutual funds, crypto, FX, and indices. Output as JSON, CSV, or Excel.",
+          "stats": {
+            "totalBuilds": 2,
+            "totalRuns": 4369,
+            "totalUsers": 17,
+            "totalUsers7Days": 2,
+            "totalUsers30Days": 5,
+            "totalUsers90Days": 7,
+            "lastRunStartedAt": "2026-11-06 18:28:28.351000+00:00",
+            "actorReviewCount": 1,
+            "actorReviewRating": 5,
+            "bookmarkCount": 0,
+            "publicActorRunStats30Days": {
+              "ABORTED": 0,
+              "FAILED": 4,
+              "SUCCEEDED": 31,
+              "TIMED-OUT": 0,
+              "TOTAL": 35
+            }
+          }
+        },
+        {
+          "id": "T85ZAEUsJPkRYbauU",
+          "username": "akash9078",
+          "name": "indian-stocks-financial-data-scraper",
+          "title": "Indian Stocks Financial Data scraper",
+          "description": "Use this Apify scraper to pull comprehensive Indian stock ratios - P/E, ROE, ROCE, SALES, and more - delivered as a ready‑to‑use API feed.",
+          "stats": {
+            "totalBuilds": 38,
+            "totalRuns": 15505,
+            "totalUsers": 162,
+            "totalUsers7Days": 3,
+            "totalUsers30Days": 5,
+            "totalUsers90Days": 10,
+            "lastRunStartedAt": "2026-11-07 01:31:54.463000+00:00",
+            "publicActorRunStats30Days": {
+              "ABORTED": 0,
+              "FAILED": 0,
+              "SUCCEEDED": 1430,
+              "TIMED-OUT": 0,
+              "TOTAL": 1430
+            },
+            "actorReviewCount": 2,
+            "actorReviewRating": 5,
+            "bookmarkCount": 4
+          }
+        },
+        {
+          "id": "5ggHrrMNtBQgaG0eU",
+          "username": "s_actors",
+          "name": "sams-club-stock-checker",
+          "title": "Sam's Club Stock Checker: In-Club Stock, Prices & Restocks",
+          "description": "Check Sam's Club stock at any club: in stock, low stock or sold out, club and online price, online stock, order limit. Search by keyword, link or product ID; clubs by ZIP, city, state or number. Scheduled runs return restock and Pokemon drop alerts.",
+          "stats": {
+            "totalBuilds": 9,
+            "totalRuns": 298,
+            "totalUsers": 66,
+            "totalUsers7Days": 2,
+            "totalUsers30Days": 4,
+            "totalUsers90Days": 4,
+            "lastRunStartedAt": "2026-11-07 08:39:33.712000+00:00",
+            "actorReviewCount": 0,
+            "actorReviewRating": 0,
+            "bookmarkCount": 1,
+            "publicActorRunStats30Days": {
+              "ABORTED": 6,
+              "FAILED": 63,
+              "SUCCEEDED": 209,
+              "TIMED-OUT": 1,
+              "TOTAL": 279
+            }
+          }
+        },
+        {
+          "id": "fRXt3kYVNn6LYwCKn",
+          "username": "nexgendata",
+          "name": "yahoo-finance-scraper",
+          "title": "Yahoo Finance Scraper — Stocks & Market Data",
+          "description": "Bulk-pull Yahoo Finance quote snapshots for US and many international tickers: price, day range, 52-week range, volume, exchange, currency, plus market cap, P/E, EPS, dividend yield, sector and industry when Yahoo returns them. One row per ticker. Not statements, history or analyst ratings.",
+          "stats": {
+            "totalBuilds": 40,
+            "totalRuns": 546,
+            "totalUsers": 51,
+            "totalUsers7Days": 2,
+            "totalUsers30Days": 5,
+            "totalUsers90Days": 13,
+            "lastRunStartedAt": "2026-11-06 13:57:02.890000+00:00",
+            "actorReviewCount": 0,
+            "actorReviewRating": 0,
+            "bookmarkCount": 0,
+            "publicActorRunStats30Days": {
+              "ABORTED": 0,
+              "FAILED": 0,
+              "SUCCEEDED": 45,
+              "TIMED-OUT": 0,
+              "TOTAL": 45
+            }
+          }
+        },
+        {
+          "id": "f7A34I1TZb9yudXr0",
+          "username": "khadinakbar",
+          "name": "stock-price-tracker",
+          "title": "Stock Price Tracker — Real-Time Quotes (Stocks, Crypto, Forex)",
+          "description": "Fetch live price quotes for stocks, ETFs, indices, crypto, forex, mutual funds and futures from Yahoo Finance, with price, change, day range, volume, market cap and 52-week range per ticker. Up to 500 symbols per run; works with Apify MCP and the API.",
+          "stats": {
+            "totalBuilds": 9,
+            "totalRuns": 2733,
+            "totalUsers": 36,
+            "totalUsers7Days": 3,
+            "totalUsers30Days": 4,
+            "totalUsers90Days": 10,
+            "lastRunStartedAt": "2026-11-07 09:13:03.483000+00:00",
+            "actorReviewCount": 0,
+            "actorReviewRating": 0,
+            "bookmarkCount": 0,
+            "publicActorRunStats30Days": {
+              "ABORTED": 1,
+              "FAILED": 92,
+              "SUCCEEDED": 673,
+              "TIMED-OUT": 5,
+              "TOTAL": 771
+            }
+          }
+        },
+        {
+          "id": "OsDpP44sLlEWi88CH",
+          "username": "nexgendata",
+          "name": "finance-mcp-server",
+          "title": "Finance MCP Server — Stocks, Screener & Crypto for AI Agents",
+          "description": "MCP server exposing live stock quotes, a stock screener, crypto prices and FX rates as agent tools. Connect Claude, Cursor, or the OpenAI Agents SDK.",
+          "stats": {
+            "totalBuilds": 39,
+            "totalRuns": 1072,
+            "totalUsers": 27,
+            "totalUsers7Days": 1,
+            "totalUsers30Days": 3,
+            "totalUsers90Days": 7,
+            "actorReviewCount": 0,
+            "actorReviewRating": 0,
+            "bookmarkCount": 0,
+            "lastRunStartedAt": "2026-11-06 02:52:30.506000+00:00",
+            "publicActorRunStats30Days": {
+              "ABORTED": 0,
+              "FAILED": 0,
+              "SUCCEEDED": 34,
+              "TIMED-OUT": 0,
+              "TOTAL": 34
+            }
+          }
+        }
+      ]
+    },
+    {
+      "source": "etnet",
+      "query": "ETNet",
+      "status": "catalog_only",
+      "actors": [
+        {
+          "id": "K9ZIXtrBfvD9mELjb",
+          "username": "benthepythondev",
+          "name": "nasa-eonet-events-scraper",
+          "title": "NASA EONET Events Scraper - Natural Events",
+          "description": "Collect NASA EONET natural events with categories, status, geometry dates, coordinates, sources and event links.",
+          "stats": {
+            "totalBuilds": 2,
+            "totalRuns": 111,
+            "totalUsers": 2,
+            "totalUsers7Days": 1,
+            "totalUsers30Days": 1,
+            "totalUsers90Days": 1,
+            "lastRunStartedAt": "2026-11-06 19:44:30.641000+00:00",
+            "actorReviewCount": 0,
+            "actorReviewRating": 0,
+            "bookmarkCount": 0,
+            "publicActorRunStats30Days": {
+              "ABORTED": 0,
+              "FAILED": 0,
+              "SUCCEEDED": 29,
+              "TIMED-OUT": 0,
+              "TOTAL": 29
+            }
+          }
+        },
+        {
+          "id": "deTnt5fDZ0zvVPPmF",
+          "username": "fortuitous_pirate",
+          "name": "nasa-eonet-scraper",
+          "title": "NASA Eonet Scraper — No Login, $10/1k",
+          "description": "Nasa Eonet Scraper. No login or cookies. MCP-ready for AI agents. $10 per 1,000 records.",
+          "stats": {
+            "totalBuilds": 1,
+            "totalRuns": 126,
+            "totalUsers": 2,
+            "totalUsers7Days": 0,
+            "totalUsers30Days": 0,
+            "totalUsers90Days": 0,
+            "lastRunStartedAt": "2026-11-06 12:38:28.342000+00:00",
+            "actorReviewCount": 0,
+            "actorReviewRating": 0,
+            "bookmarkCount": 0,
+            "publicActorRunStats30Days": {
+              "ABORTED": 0,
+              "FAILED": 0,
+              "SUCCEEDED": 28,
+              "TIMED-OUT": 0,
+              "TOTAL": 28
+            }
+          }
+        },
+        {
+          "id": "COkpBZHi9UiIqJbO9",
+          "username": "parseforge",
+          "name": "eonet-natural-events-scraper",
+          "title": "NASA EONET Natural Events Scraper",
+          "description": "Scrapes NASA EONET natural event records and catalogue dimensions. Returns each event as a flat row with title, category, status, geometry, magnitude, dates, sources, and links.",
+          "stats": {
+            "totalBuilds": 14,
+            "totalRuns": 190,
+            "totalUsers": 2,
+            "totalUsers7Days": 0,
+            "totalUsers30Days": 0,
+            "totalUsers90Days": 0,
+            "lastRunStartedAt": "2026-11-07 04:24:26.993000+00:00",
+            "actorReviewCount": 0,
+            "actorReviewRating": 0,
+            "bookmarkCount": 0,
+            "publicActorRunStats30Days": {
+              "ABORTED": 0,
+              "FAILED": 0,
+              "SUCCEEDED": 29,
+              "TIMED-OUT": 0,
+              "TOTAL": 29
+            }
+          }
+        },
+        {
+          "id": "omtuz6pNeMqX1i6wU",
+          "username": "naimurhasanrwd",
+          "name": "nasa-eonet-scraper",
+          "title": "NASA EONET Scraper: Wildfires, Storms & Volcanoes",
+          "description": "Track natural events worldwide via NASA's public EONET API: wildfires, severe storms, volcanoes and icebergs, with their latest position. No login, no proxy, no browser.",
+          "stats": {
+            "totalBuilds": 2,
+            "totalRuns": 46,
+            "totalUsers": 2,
+            "totalUsers7Days": 1,
+            "totalUsers30Days": 1,
+            "totalUsers90Days": 1,
+            "lastRunStartedAt": "2026-11-07 06:20:29.153000+00:00",
+            "actorReviewCount": 0,
+            "actorReviewRating": 0,
+            "bookmarkCount": 0,
+            "publicActorRunStats30Days": {
+              "ABORTED": 0,
+              "FAILED": 0,
+              "SUCCEEDED": 29,
+              "TIMED-OUT": 0,
+              "TOTAL": 29
+            }
+          }
+        },
+        {
+          "id": "7c7URv94gDhyKdldo",
+          "username": "nexgensignal",
+          "name": "natural-hazard-event-records",
+          "title": "Natural Hazard Event Records — NASA EONET",
+          "description": "Recent natural hazards from NASA EONET — storms, wildfires, floods, volcanoes — by date window, area box and newest first: category, status, dates, latest position and magnitude, source. Flood polygons count in area searches. Public-domain; not for safety-of-life use.",
+          "stats": {
+            "totalBuilds": 12,
+            "totalRuns": 102,
+            "totalUsers": 2,
+            "totalUsers7Days": 1,
+            "totalUsers30Days": 1,
+            "totalUsers90Days": 1,
+            "lastRunStartedAt": "2026-11-06 13:50:33.354000+00:00",
+            "actorReviewCount": 0,
+            "actorReviewRating": 0,
+            "bookmarkCount": 0,
+            "publicActorRunStats30Days": {
+              "ABORTED": 0,
+              "FAILED": 0,
+              "SUCCEEDED": 29,
+              "TIMED-OUT": 0,
+              "TOTAL": 29
+            }
+          }
+        },
+        {
+          "id": "RTfUevztka2q6hyS5",
+          "username": "yadroo",
+          "name": "nasa-eonet-events",
+          "title": "NASA EONET Natural Disasters: Wildfires, Storms, Volcanoes",
+          "description": "Natural events from NASA's keyless EONET tracker as rows: wildfires, severe storms, volcanoes, floods, icebergs, dust. One row per event with category, open/closed status, dates, latest coordinates, magnitude and sources, or one row per track position. Filter by category, region, box, size.",
+          "stats": {
+            "totalBuilds": 9,
+            "totalRuns": 441,
+            "totalUsers": 2,
+            "totalUsers7Days": 1,
+            "totalUsers30Days": 1,
+            "totalUsers90Days": 1,
+            "lastRunStartedAt": "2026-11-06 19:32:30.823000+00:00",
+            "actorReviewCount": 0,
+            "actorReviewRating": 0,
+            "bookmarkCount": 0,
+            "publicActorRunStats30Days": {
+              "ABORTED": 0,
+              "FAILED": 0,
+              "SUCCEEDED": 29,
+              "TIMED-OUT": 0,
+              "TOTAL": 29
+            }
+          }
+        },
+        {
+          "id": "oha2bcSA3ZcWYU2Lu",
+          "username": "codeclouds",
+          "name": "dk-elnet-kapacitetskort",
+          "title": "Danish Grid Capacity Map (Energinets Kapacitetskort)",
+          "description": "Available grid capacity per transformer station in Denmark from Energinet's official Kapacitetskort: consumption and production MW, 132/150 kV and 60/10 kV, nearest station to a coordinate, status, change signals, free country-wide summary. From $0.01/station (PPE).",
+          "stats": {
+            "totalBuilds": 3,
+            "totalRuns": 39,
+            "totalUsers": 2,
+            "totalUsers7Days": 1,
+            "totalUsers30Days": 1,
+            "totalUsers90Days": 1,
+            "lastRunStartedAt": "2026-11-06 19:14:27.235000+00:00",
+            "actorReviewCount": 0,
+            "actorReviewRating": 0,
+            "bookmarkCount": 0,
+            "publicActorRunStats30Days": {
+              "ABORTED": 0,
+              "FAILED": 0,
+              "SUCCEEDED": 29,
+              "TIMED-OUT": 0,
+              "TOTAL": 29
+            }
+          }
+        },
+        {
+          "id": "4xOKMTZwbDu0IjAby",
+          "username": "fiery_dream",
+          "name": "disaster-intel",
+          "title": "Disaster Intel",
+          "description": "Enterprise-grade disaster monitoring and emergency intelligence agent.\n\nFeatures\nReal-time Earthquake Monitoring: USGS data with magnitude, depth, tsunami alerts\nSevere Weather Alerts: NWS warnings for tornadoes, hurricanes, floods\nWildfire Tracking: NASA EONET satellite-detected fire events\nandmore",
+          "stats": {
+            "totalBuilds": 5,
+            "totalRuns": 340,
+            "totalUsers": 12,
+            "totalUsers7Days": 0,
+            "totalUsers30Days": 0,
+            "totalUsers90Days": 0,
+            "lastRunStartedAt": "2026-11-07 00:48:33.414000+00:00",
+            "actorReviewCount": 0,
+            "actorReviewRating": 0,
+            "bookmarkCount": 0,
+            "publicActorRunStats30Days": {
+              "ABORTED": 0,
+              "FAILED": 0,
+              "SUCCEEDED": 29,
+              "TIMED-OUT": 0,
+              "TOTAL": 29
+            }
+          }
+        }
+      ]
+    },
+    {
+      "source": "naver_board",
+      "query": "Naver Finance",
+      "status": "catalog_only",
+      "actors": [
+        {
+          "id": "hfcdSLPz4pVMWKqyo",
+          "username": "parseforge",
+          "name": "naver-finance-scraper",
+          "title": "Naver Finance Scraper",
+          "description": "Scrape Korean stock data from Naver Finance: KOSPI and KOSDAQ prices, PER, PBR, ROE, analyst price targets, foreign and institutional flows. Export CSV, JSON, Excel, XML.",
+          "stats": {
+            "totalBuilds": 6,
+            "totalRuns": 72,
+            "totalUsers": 1,
+            "totalUsers7Days": 0,
+            "totalUsers30Days": 0,
+            "totalUsers90Days": 0,
+            "lastRunStartedAt": "2026-11-06 14:00:30.411000+00:00",
+            "actorReviewCount": 0,
+            "actorReviewRating": 0,
+            "bookmarkCount": 0,
+            "publicActorRunStats30Days": {
+              "ABORTED": 0,
+              "FAILED": 0,
+              "SUCCEEDED": 28,
+              "TIMED-OUT": 0,
+              "TOTAL": 28
+            }
+          }
+        },
+        {
+          "id": "fOzr1Krr5KqS139By",
+          "username": "huggable_quote",
+          "name": "krx-stock-scraper",
+          "title": "KRX Stock Scraper — Korean Market Data for Global Investors",
+          "description": "Scrape Korean stock market data (KOSPI & KOSDAQ) with English field names. 11 data modes: market overview, stock detail, top movers, foreign investor flow, fundamentals, index data, stock list, financial statements (DART), major shareholders (DART), disclosures (DART), and news (Naver Finance).",
+          "stats": {
+            "totalBuilds": 16,
+            "totalRuns": 388,
+            "totalUsers": 23,
+            "totalUsers7Days": 1,
+            "totalUsers30Days": 2,
+            "totalUsers90Days": 4,
+            "lastRunStartedAt": "2026-11-07 06:02:27.237000+00:00",
+            "actorReviewCount": 0,
+            "actorReviewRating": 0,
+            "bookmarkCount": 0,
+            "publicActorRunStats30Days": {
+              "ABORTED": 2,
+              "FAILED": 0,
+              "SUCCEEDED": 36,
+              "TIMED-OUT": 0,
+              "TOTAL": 38
+            }
+          }
+        },
+        {
+          "id": "fl8LONTpfxXfJMlNe",
+          "username": "nexgendata",
+          "name": "kospi-stock-screener",
+          "title": "KOSPI Korea Stock Screener — 한국 주식 Data API",
+          "description": "Screen KOSPI stocks by market cap, P/E, dividend yield and more — clean JSON, no data-vendor contract. South Korea fundamentals for analysts and AI agents.",
+          "stats": {
+            "totalBuilds": 22,
+            "totalRuns": 233,
+            "totalUsers": 3,
+            "totalUsers7Days": 0,
+            "totalUsers30Days": 0,
+            "totalUsers90Days": 1,
+            "lastRunStartedAt": "2026-11-06 13:30:30.282000+00:00",
+            "actorReviewCount": 0,
+            "actorReviewRating": 0,
+            "bookmarkCount": 0,
+            "publicActorRunStats30Days": {
+              "ABORTED": 0,
+              "FAILED": 1,
+              "SUCCEEDED": 27,
+              "TIMED-OUT": 0,
+              "TOTAL": 28
+            }
+          }
+        },
+        {
+          "id": "F8mD18jsatY9pdvTd",
+          "username": "pro100chok",
+          "name": "naver-all-in-one-scraper",
+          "title": "Naver Scraper API — Map, Shopping, Blog, News & Real Estate",
+          "description": "All-in-one Naver scraper: Naver Map places with reviews, menus and busy hours, Naver Shopping products with sellers and reviews, Blog, Cafe, News with comments, Knowledge iN, SERP, real estate, webtoons, stocks and DataLab trends. Keywords or any Naver URL. No login or API key.",
+          "stats": {
+            "totalBuilds": 10,
+            "totalRuns": 175,
+            "totalUsers": 9,
+            "totalUsers7Days": 4,
+            "totalUsers30Days": 8,
+            "totalUsers90Days": 8,
+            "lastRunStartedAt": "2026-11-06 03:23:39.846000+00:00",
+            "actorReviewCount": 0,
+            "actorReviewRating": 0,
+            "bookmarkCount": 0,
+            "publicActorRunStats30Days": {
+              "ABORTED": 0,
+              "FAILED": 0,
+              "SUCCEEDED": 116,
+              "TIMED-OUT": 0,
+              "TOTAL": 116
+            }
+          }
+        },
+        {
+          "id": "JR9iN0YMYQXCfKan9",
+          "username": "nimbryxo-studio",
+          "name": "naver-blog-post-search-and-full-content-extractor",
+          "title": "Naver Blog Post Search & Full Content Extractor",
+          "description": "Search Naver Blog by keyword, fetch recent posts from a specific blog, or get full post content and tags, with author, blog name, publish date and URLs.",
+          "stats": {
+            "totalBuilds": 2,
+            "totalRuns": 14,
+            "totalUsers": 2,
+            "totalUsers7Days": 1,
+            "totalUsers30Days": 1,
+            "totalUsers90Days": 1,
+            "lastRunStartedAt": "2026-11-06 15:26:30.510000+00:00",
+            "actorReviewCount": 0,
+            "actorReviewRating": 0,
+            "bookmarkCount": 0,
+            "publicActorRunStats30Days": {
+              "ABORTED": 0,
+              "FAILED": 0,
+              "SUCCEEDED": 10,
+              "TIMED-OUT": 0,
+              "TOTAL": 10
+            }
+          }
+        },
+        {
+          "id": "hyxt1fNb0gfVQMYlz",
+          "username": "sian.agency",
+          "name": "yahoo-finance-scraper",
+          "title": "Yahoo Finance API & Scraper — Stock Quotes, Financials",
+          "description": "Scrape Yahoo Finance into clean datasets — live stock, ETF, index, currency and crypto quotes, plus company profiles, analyst targets, financials and price history. Overview mode batches hundreds of tickers; Detail mode adds sector, employees, revenue and more. Failed lookups never charged.",
+          "stats": {
+            "totalBuilds": 11,
+            "totalRuns": 182,
+            "totalUsers": 15,
+            "totalUsers7Days": 2,
+            "totalUsers30Days": 5,
+            "totalUsers90Days": 12,
+            "lastRunStartedAt": "2026-11-07 05:12:26.309000+00:00",
+            "actorReviewCount": 0,
+            "actorReviewRating": 0,
+            "bookmarkCount": 1,
+            "publicActorRunStats30Days": {
+              "ABORTED": 0,
+              "FAILED": 1,
+              "SUCCEEDED": 41,
+              "TIMED-OUT": 0,
+              "TOTAL": 42
+            }
+          }
+        }
+      ]
+    },
+    {
+      "source": "naver_discussion",
+      "query": "Naver stock discussion",
+      "status": "catalog_only",
+      "actors": []
+    },
+    {
+      "source": "daum",
+      "query": "Daum Finance",
+      "status": "catalog_only",
+      "actors": [
+        {
+          "id": "3yH4Q70xqOh6FeJHy",
+          "username": "fascinating_lentil",
+          "name": "groww-stocks-mutual-funds-scraper",
+          "title": "Groww Stocks & Mutual Funds Scraper",
+          "description": "Scrape Groww stock and mutual fund data including prices, NAV, returns, ratings, AUM, fundamentals, market cap, and investment details.",
+          "stats": {
+            "totalBuilds": 14,
+            "totalRuns": 276,
+            "totalUsers": 19,
+            "totalUsers7Days": 1,
+            "totalUsers30Days": 3,
+            "totalUsers90Days": 5,
+            "lastRunStartedAt": "2026-11-07 01:30:02.709000+00:00",
+            "actorReviewCount": 0,
+            "actorReviewRating": 0,
+            "bookmarkCount": 0,
+            "publicActorRunStats30Days": {
+              "ABORTED": 0,
+              "FAILED": 0,
+              "SUCCEEDED": 59,
+              "TIMED-OUT": 0,
+              "TOTAL": 59
+            }
+          }
+        },
+        {
+          "id": "GpyokEKIUFT6yVfdI",
+          "username": "sheshinmcfly",
+          "name": "finviz-stock-screener",
+          "title": "FinViz Stock Screener",
+          "description": "Screen US stocks and ETFs from FinViz with 68+ fields each, plus why-it-moves notes, latest news and full financial statements. Also earnings, dividend and economic calendars, sector and industry performance, and futures, forex and crypto returns. No login needed.",
+          "stats": {
+            "totalBuilds": 70,
+            "totalRuns": 1239,
+            "totalUsers": 181,
+            "totalUsers7Days": 9,
+            "totalUsers30Days": 27,
+            "totalUsers90Days": 60,
+            "lastRunStartedAt": "2026-11-07 01:24:26.932000+00:00",
+            "actorReviewCount": 0,
+            "actorReviewRating": 0,
+            "bookmarkCount": 2,
+            "publicActorRunStats30Days": {
+              "ABORTED": 0,
+              "FAILED": 0,
+              "SUCCEEDED": 155,
+              "TIMED-OUT": 1,
+              "TOTAL": 156
+            }
+          }
+        },
+        {
+          "id": "dmQ5LCrrZDqHqWeMD",
+          "username": "licitadata",
+          "name": "spain-tender-analyzer",
+          "title": "Spain Tender Analyzer: AI analysis of PLACSP pliegos",
+          "description": "Open Spanish public tenders (PLACSP) with AI-extracted requirements from the tender documents: solvency, classification, weighted award criteria, guarantees and a fit score for your company. Licitaciones con análisis de pliegos por IA.",
+          "stats": {
+            "totalBuilds": 11,
+            "totalRuns": 47,
+            "totalUsers": 2,
+            "totalUsers7Days": 1,
+            "totalUsers30Days": 1,
+            "totalUsers90Days": 1,
+            "lastRunStartedAt": "2026-11-07 08:00:43.605000+00:00",
+            "actorReviewCount": 0,
+            "actorReviewRating": 0,
+            "bookmarkCount": 0,
+            "publicActorRunStats30Days": {
+              "ABORTED": 0,
+              "FAILED": 0,
+              "SUCCEEDED": 10,
+              "TIMED-OUT": 5,
+              "TOTAL": 15
+            }
+          }
+        },
+        {
+          "id": "Qkx4xboxAjk0lAU9n",
+          "username": "yugenox",
+          "name": "stockanalysis-scraper",
+          "title": "Stock Data Scraper — Stats, Financials, History & IPOs",
+          "description": "Scrape stock data from StockAnalysis.com, no login: 100+ key statistics, quote overview, company profile, income statement, balance sheet, cash flow and ratios (annual or quarterly), daily price history, dividends, plus earnings and IPO calendars. US, Canadian and global tickers and ETFs.",
+          "stats": {
+            "totalBuilds": 2,
+            "totalRuns": 16,
+            "totalUsers": 2,
+            "totalUsers7Days": 1,
+            "totalUsers30Days": 1,
+            "totalUsers90Days": 1,
+            "lastRunStartedAt": "2026-11-06 14:26:31.425000+00:00",
+            "actorReviewCount": 0,
+            "actorReviewRating": 0,
+            "bookmarkCount": 0,
+            "publicActorRunStats30Days": {
+              "ABORTED": 0,
+              "FAILED": 0,
+              "SUCCEEDED": 5,
+              "TIMED-OUT": 0,
+              "TOTAL": 5
+            }
+          }
+        },
+        {
+          "id": "YPKdFNe73MkrhoegJ",
+          "username": "giovannibiancia",
+          "name": "cfp-scraper",
+          "title": "CFP Leads Scraper USA (Emails, Phones, Financial Planners)",
+          "description": "Scrape 71,000+ CFP® professionals across all 50 U.S. states. Extract phone, website, LinkedIn, min AUM, planning services, specializations, CRD, and FINRA/SEC links. Built for B2B lead generation, fintech prospecting, and financial services outreach",
+          "stats": {
+            "totalBuilds": 32,
+            "totalRuns": 348,
+            "totalUsers": 18,
+            "totalUsers7Days": 0,
+            "totalUsers30Days": 0,
+            "totalUsers90Days": 3,
+            "lastRunStartedAt": "2026-11-06 18:12:30.455000+00:00",
+            "actorReviewCount": 0,
+            "actorReviewRating": 0,
+            "bookmarkCount": 0,
+            "publicActorRunStats30Days": {
+              "ABORTED": 0,
+              "FAILED": 0,
+              "SUCCEEDED": 27,
+              "TIMED-OUT": 1,
+              "TOTAL": 28
+            }
+          }
+        },
+        {
+          "id": "6KFW1PevzklMWcw0R",
+          "username": "scrapesage",
+          "name": "brokercheck-scraper",
+          "title": "BrokerCheck Scraper - Financial Advisors, Brokers & Firms",
+          "description": "Scrape FINRA BrokerCheck & SEC adviser records: brokers, advisers and firms by name, CRD or firm roster. Work history, licenses, branch address, disclosures; firm AUM, phone, website, owners. Filters, monitoring, firm emails. Independent tool, not affiliated with FINRA.",
+          "stats": {
+            "totalBuilds": 33,
+            "totalRuns": 313,
+            "totalUsers": 1,
+            "totalUsers7Days": 0,
+            "totalUsers30Days": 0,
+            "totalUsers90Days": 1,
+            "lastRunStartedAt": "2026-11-06 18:22:34.671000+00:00",
+            "actorReviewCount": 0,
+            "actorReviewRating": 0,
+            "bookmarkCount": 0,
+            "publicActorRunStats30Days": {
+              "ABORTED": 0,
+              "FAILED": 0,
+              "SUCCEEDED": 29,
+              "TIMED-OUT": 0,
+              "TOTAL": 29
+            }
+          }
+        },
+        {
+          "id": "bb2eJsavDLvqz9zb4",
+          "username": "pratikdani",
+          "name": "pitchbook-investor-scraper",
+          "title": "Pitchbook Investor Scraper",
+          "description": "Scrapes detailed company information from PitchBook company profile pages including social media presence, financial details, competitors, and FAQs",
+          "stats": {
+            "totalBuilds": 4,
+            "totalRuns": 443,
+            "totalUsers": 26,
+            "totalUsers7Days": 0,
+            "totalUsers30Days": 3,
+            "totalUsers90Days": 8,
+            "lastRunStartedAt": "2026-11-07 05:24:27.317000+00:00",
+            "actorReviewCount": 0,
+            "actorReviewRating": 0,
+            "bookmarkCount": 1,
+            "publicActorRunStats30Days": {
+              "ABORTED": 0,
+              "FAILED": 0,
+              "SUCCEEDED": 29,
+              "TIMED-OUT": 0,
+              "TOTAL": 29
+            }
+          }
+        }
+      ]
+    },
+    {
+      "source": "telegram",
+      "query": "Telegram channel",
+      "status": "catalog_only",
+      "actors": [
+        {
+          "id": "TpLqaxMYSJzwVnXoj",
+          "username": "truefetch",
+          "name": "telegram-channel-message",
+          "title": "Telegram Channel Message",
+          "description": "Telegram channel scraper for dependable post-history exports, returning 55 structured fields plus optional stored media. Capture text, senders, dates, views, replies, forwards, reactions, topics, service events, links, hashtags, and media from any public username.",
+          "stats": {
+            "totalBuilds": 593,
+            "totalRuns": 48082,
+            "totalUsers": 1067,
+            "totalUsers7Days": 46,
+            "totalUsers30Days": 97,
+            "totalUsers90Days": 257,
+            "lastRunStartedAt": "2026-11-07 09:52:08.854000+00:00",
+            "publicActorRunStats30Days": {
+              "ABORTED": 3,
+              "FAILED": 47,
+              "SUCCEEDED": 11131,
+              "TIMED-OUT": 4,
+              "TOTAL": 11185
+            },
+            "actorReviewCount": 4,
+            "actorReviewRating": 3.105799246863033,
+            "bookmarkCount": 23
+          }
+        },
+        {
+          "id": "yTdKLeOd84hNFJo7b",
+          "username": "khadinakbar",
+          "name": "telegram-channel-scraper",
+          "title": "Telegram Channels Scraper: Messages, Contacts & Leads",
+          "description": "Scrape public Telegram channel messages with every email and link in each post pulled out for you, plus views, reactions and media. Schedule it to collect only new messages, with no account or phone number.",
+          "stats": {
+            "totalBuilds": 37,
+            "totalRuns": 23322,
+            "totalUsers": 493,
+            "totalUsers7Days": 14,
+            "totalUsers30Days": 53,
+            "totalUsers90Days": 184,
+            "lastRunStartedAt": "2026-11-07 09:00:25.819000+00:00",
+            "actorReviewCount": 0,
+            "actorReviewRating": 0,
+            "bookmarkCount": 2,
+            "publicActorRunStats30Days": {
+              "ABORTED": 2,
+              "FAILED": 155,
+              "SUCCEEDED": 6518,
+              "TIMED-OUT": 2,
+              "TOTAL": 6677
+            }
+          }
+        },
+        {
+          "id": "WkJfCFWeYHMI4eDgN",
+          "username": "twizzler",
+          "name": "telegram-channel-scraper",
+          "title": "Telegram Channel Scraper",
+          "description": "Scrapes posts from public Telegram channels via their t.me/s web preview. No account or API keys needed.",
+          "stats": {
+            "totalBuilds": 3,
+            "totalRuns": 7435,
+            "totalUsers": 2,
+            "totalUsers7Days": 1,
+            "totalUsers30Days": 2,
+            "totalUsers90Days": 2,
+            "lastRunStartedAt": "2026-11-07 10:20:32.581000+00:00",
+            "actorReviewCount": 1,
+            "actorReviewRating": 5,
+            "bookmarkCount": 0,
+            "publicActorRunStats30Days": {
+              "ABORTED": 1,
+              "FAILED": 0,
+              "SUCCEEDED": 7303,
+              "TIMED-OUT": 19,
+              "TOTAL": 7323
+            }
+          }
+        },
+        {
+          "id": "wxRoaBWQSXNzpVH1D",
+          "username": "automation-lab",
+          "name": "telegram-scraper",
+          "title": "Telegram Scraper: Channels, Messages, Comments & Profiles",
+          "description": "Telegram scraper for public channels and profiles: export messages, comments, views, reactions, media URLs, links and exact subscriber counts. Filter by keyword, date or media type. No API key or login. $1 or less per 1,000 messages.",
+          "stats": {
+            "totalBuilds": 36,
+            "totalRuns": 20679,
+            "totalUsers": 1223,
+            "totalUsers7Days": 103,
+            "totalUsers30Days": 210,
+            "totalUsers90Days": 370,
+            "lastRunStartedAt": "2026-11-07 10:00:50.158000+00:00",
+            "actorReviewCount": 2,
+            "actorReviewRating": 5.000000000000001,
+            "bookmarkCount": 2,
+            "publicActorRunStats30Days": {
+              "ABORTED": 6,
+              "FAILED": 40,
+              "SUCCEEDED": 6022,
+              "TIMED-OUT": 6,
+              "TOTAL": 6074
+            }
+          }
+        },
+        {
+          "id": "VOs4dukccq1v7g53p",
+          "username": "webfinity",
+          "name": "telegram-channel-content-media-scraper",
+          "title": "Telegram Channel Scraper: Posts + Media + Metadata",
+          "description": "See how any public Telegram channel really performs. Get every post with views, ER, reactions, forwards, comments and its photos and videos (links or downloads), plus a free report per channel: average reach, engagement rate, posts per day, top post. Up to 25 channels, no API key or phone needed.",
+          "stats": {
+            "totalBuilds": 146,
+            "totalRuns": 23628,
+            "totalUsers": 229,
+            "totalUsers7Days": 8,
+            "totalUsers30Days": 13,
+            "totalUsers90Days": 18,
+            "lastRunStartedAt": "2026-11-07 06:00:08.907000+00:00",
+            "publicActorRunStats30Days": {
+              "ABORTED": 1,
+              "FAILED": 0,
+              "SUCCEEDED": 3920,
+              "TIMED-OUT": 4,
+              "TOTAL": 3925
+            },
+            "actorReviewCount": 1,
+            "actorReviewRating": 5,
+            "bookmarkCount": 6
+          }
+        },
+        {
+          "id": "f9ah2tzQwzhF8OyfK",
+          "username": "webfinity",
+          "name": "telegram-channel-content-media-scraper-v2",
+          "title": "Telegram Channel Content & Media Scraper",
+          "description": "Download photos, videos and posts from any public Telegram channel. Pick only photos, videos, audio or files, get size, resolution and duration for each file, plus post text, views and reactions. Up to 25 channels, no API key or phone needed. Free media downloads, pay only per post.",
+          "stats": {
+            "totalBuilds": 67,
+            "totalRuns": 29974,
+            "totalUsers": 1227,
+            "totalUsers7Days": 29,
+            "totalUsers30Days": 64,
+            "totalUsers90Days": 141,
+            "lastRunStartedAt": "2026-11-07 08:51:31.099000+00:00",
+            "publicActorRunStats30Days": {
+              "ABORTED": 10,
+              "FAILED": 4,
+              "SUCCEEDED": 1931,
+              "TIMED-OUT": 39,
+              "TOTAL": 1984
+            },
+            "actorReviewCount": 8,
+            "actorReviewRating": 5,
+            "bookmarkCount": 27
+          }
+        },
+        {
+          "id": "3zeli0207d7KpNzKR",
+          "username": "george.the.developer",
+          "name": "telegram-channel-scraper",
+          "title": "Telegram Channel Scraper and Telegram Keyword Search",
+          "description": "Telegram channel scraper for public channels. Extract Telegram messages, media links, view counts and channel metadata from public web previews. Telegram keyword search returns only messages that contain your keywords. Filter by date and export JSON or CSV. No Telegram account or API key needed.",
+          "stats": {
+            "totalBuilds": 23,
+            "totalRuns": 13405,
+            "totalUsers": 206,
+            "totalUsers7Days": 5,
+            "totalUsers30Days": 12,
+            "totalUsers90Days": 25,
+            "lastRunStartedAt": "2026-11-07 10:00:23.907000+00:00",
+            "actorReviewCount": 0,
+            "actorReviewRating": 0,
+            "bookmarkCount": 2,
+            "publicActorRunStats30Days": {
+              "ABORTED": 6,
+              "FAILED": 2,
+              "SUCCEEDED": 1000,
+              "TIMED-OUT": 0,
+              "TOTAL": 1008
+            }
+          }
+        },
+        {
+          "id": "vGW3TbnEoTl65PmB0",
+          "username": "tugelbay",
+          "name": "telegram-posts-scraper",
+          "title": "Telegram Channel Scraper — No Bot Token, No Phone Login",
+          "description": "Telegram scraper for public channel posts via t.me/s/, with no bot token, phone login, or API credentials. Extract text, views, dates, media URLs, and links. Guide: https://konabayev.com/tools/telegram-posts-scraper/?utm_source=apify_info&utm_medium=referral&utm_campaign=telegram-posts-scraper",
+          "stats": {
+            "totalBuilds": 51,
+            "totalRuns": 9649,
+            "totalUsers": 165,
+            "totalUsers7Days": 16,
+            "totalUsers30Days": 34,
+            "totalUsers90Days": 59,
+            "lastRunStartedAt": "2026-11-07 09:08:30.356000+00:00",
+            "actorReviewCount": 0,
+            "actorReviewRating": 0,
+            "bookmarkCount": 0,
+            "publicActorRunStats30Days": {
+              "ABORTED": 9,
+              "FAILED": 3,
+              "SUCCEEDED": 6280,
+              "TIMED-OUT": 0,
+              "TOTAL": 6292
+            }
+          }
+        }
+      ]
+    },
+    {
+      "source": "blind",
+      "query": "Blind Korea",
+      "status": "catalog_only",
+      "actors": []
+    }
+  ]
+}

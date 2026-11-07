@@ -1,0 +1,8 @@
+{
+  "channels": ["REPLACE_WITH_REVIEWED_PUBLIC_FINANCE_CHANNEL"],
+  "resultsType": "messages",
+  "maxMessages": 20,
+  "searchQuery": "騰訊",
+  "oldestMessageDate": "10 days",
+  "downloadMedia": false
+}

@@ -1,0 +1,10 @@
+{
+  "provenance": "synthetic_fixture",
+  "description": "Handwritten parser fixtures, not scraped posts or market evidence. Never used for statistical claims.",
+  "posts": [
+    {"ticker":"0700.HK","timestamp":"2026-11-06T15:59:00+08:00","text":"SYNTHETIC FIXTURE: 騰訊看好，但沒有持倉。","source":"lihkg","url":"https://example.invalid/fixture/hk-before-close","likes":null,"reposts":null,"views":null,"author_followers":null,"language":"zh-Hant","provenance":"synthetic_fixture"},
+    {"ticker":"0700.HK","timestamp":"2026-11-06T16:01:00+08:00","text":"SYNTHETIC FIXTURE: Tencent research example after close.","source":"telegram","url":"https://example.invalid/fixture/hk-after-close","likes":0,"reposts":null,"views":12,"author_followers":null,"language":"en","provenance":"synthetic_fixture"},
+    {"ticker":"005930.KS","timestamp":"2026-11-06T15:29:00+09:00","text":"SYNTHETIC FIXTURE: 삼성전자 전망은 중립입니다.","source":"naver_board","url":"https://example.invalid/fixture/kr-before-close","likes":null,"reposts":null,"views":null,"author_followers":null,"language":"ko","provenance":"synthetic_fixture"},
+    {"ticker":"005930.KS","timestamp":"2026-11-06T15:31:00+09:00","text":"SYNTHETIC FIXTURE: Samsung example after market close.","source":"telegram","url":"https://example.invalid/fixture/kr-after-close","likes":null,"reposts":null,"views":0,"author_followers":null,"language":"en","provenance":"synthetic_fixture"}
+  ]
+}

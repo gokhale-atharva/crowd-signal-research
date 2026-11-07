@@ -1,0 +1,9 @@
+{
+  "mode": "search",
+  "keywords": ["騰訊"],
+  "order": "desc_create_time",
+  "dateFrom": "10d",
+  "maxItems": 20,
+  "aiLabels": false,
+  "onlyNew": false
+}

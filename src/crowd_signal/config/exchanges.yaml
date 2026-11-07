@@ -1,0 +1,50 @@
+exchanges:
+  HKEX:
+    name: Hong Kong
+    timezone: Asia/Hong_Kong
+    currency: HKD
+    market_open: '09:30'
+    market_close: '16:00'
+    lunch_break: ['12:00', '13:00']
+    calendar: XHKG
+    proposed_sources: [lihkg, telegram]
+    tickers:
+      - ticker: 0700.HK
+        asset_name: Tencent
+        aliases: ['0700', '$0700', Tencent, 騰訊, 腾讯, 騰訊控股]
+      - ticker: 9988.HK
+        asset_name: Alibaba
+        aliases: ['9988', '$9988', Alibaba, 阿里巴巴, 阿里]
+      - ticker: 3690.HK
+        asset_name: Meituan
+        aliases: ['3690', '$3690', Meituan, 美團, 美团]
+      - ticker: 1810.HK
+        asset_name: Xiaomi
+        aliases: ['1810', '$1810', Xiaomi, 小米, 小米集團]
+      - ticker: 0005.HK
+        asset_name: HSBC
+        aliases: ['0005', '$0005', HSBC, 匯豐, 汇丰, 匯控]
+  KRX:
+    name: South Korea
+    timezone: Asia/Seoul
+    currency: KRW
+    market_open: '09:00'
+    market_close: '15:30'
+    calendar: XKRX
+    proposed_sources: [naver_board, telegram]
+    tickers:
+      - ticker: 005930.KS
+        asset_name: Samsung Electronics
+        aliases: ['005930', '$005930', Samsung Electronics, 삼성전자, 삼성]
+      - ticker: 000660.KS
+        asset_name: SK Hynix
+        aliases: ['000660', '$000660', SK Hynix, SK하이닉스, 하이닉스]
+      - ticker: 035420.KS
+        asset_name: NAVER
+        aliases: ['035420', '$035420', NAVER, 네이버]
+      - ticker: 035720.KS
+        asset_name: Kakao
+        aliases: ['035720', '$035720', Kakao, 카카오]
+      - ticker: 373220.KS
+        asset_name: LG Energy Solution
+        aliases: ['373220', '$373220', LG Energy Solution, LG에너지솔루션, 엘지에너지솔루션]

@@ -1,0 +1,736 @@
+{
+  "checked_at": "2026-11-07T14:22:36.046419+00:00",
+  "method": "apify-client public metadata/default build; no actor runs",
+  "candidates": [
+    {
+      "actor_id": "claude_code_reviewer/lihkg-scraper-en",
+      "observed_posts": 0,
+      "run_performed": false,
+      "metadata": {
+        "id": "PJDFRxJdpPknN9nYn",
+        "name": "lihkg-scraper-en",
+        "username": "claude_code_reviewer",
+        "title": "LIHKG Scraper – Keyword Search, Replies & HK Social Listening",
+        "description": "Scrape LIHKG, Hong Kong's biggest forum: site-wide keyword search, board thread listings, full posts and replies with reactions and timestamps. Schedule daily runs for brand keyword monitoring — only threads with new activity. No API or login. Export JSON/CSV/Excel for HK social listening.",
+        "pricingInfos": [
+          {
+            "pricingModel": "PAY_PER_EVENT",
+            "pricingPerEvent": {
+              "actorChargeEvents": {
+                "apify-actor-start": {
+                  "eventTitle": "Actor Start",
+                  "eventDescription": "Charged when the Actor starts running. Number of events charged depends on Actor memory (one event per GB, minimum one event).",
+                  "isOneTimeEvent": true,
+                  "eventPriceUsd": 0.005
+                },
+                "search-listing": {
+                  "eventTitle": "Thread",
+                  "eventDescription": "Charged per LIHKG thread listed — title, author, reply count, likes/dislikes.",
+                  "isOneTimeEvent": false,
+                  "eventPriceUsd": 0.002,
+                  "isPrimaryEvent": true
+                },
+                "product-detail": {
+                  "eventTitle": "Thread content",
+                  "eventDescription": "Charged per LIHKG thread fetched — main post content, author, category.",
+                  "isOneTimeEvent": false,
+                  "eventPriceUsd": 0.008
+                },
+                "review-item": {
+                  "eventTitle": "Reply",
+                  "eventDescription": "Charged per LIHKG reply — floor, author, content, time.",
+                  "isOneTimeEvent": false,
+                  "eventPriceUsd": 0.003
+                }
+              }
+            },
+            "createdAt": "2026-07-05 20:26:37.058000+00:00",
+            "startedAt": "2026-07-05 20:26:37.058000+00:00",
+            "apifyMarginPercentage": 0.2
+          },
+          {
+            "pricingModel": "PAY_PER_EVENT",
+            "pricingPerEvent": {
+              "actorChargeEvents": {
+                "apify-actor-start": {
+                  "eventTitle": "Actor Start",
+                  "eventDescription": "Charged when the Actor starts running. Number of events charged depends on Actor memory (one event per GB, minimum one event).",
+                  "isOneTimeEvent": true,
+                  "eventPriceUsd": 0.005
+                },
+                "search-listing": {
+                  "eventTitle": "Thread",
+                  "eventDescription": "Charged per LIHKG thread listed — title, author, reply count, likes/dislikes.",
+                  "isOneTimeEvent": false,
+                  "eventPriceUsd": 0.002,
+                  "isPrimaryEvent": true
+                },
+                "product-detail": {
+                  "eventTitle": "Thread content",
+                  "eventDescription": "Charged per LIHKG thread fetched — main post content, author, category.",
+                  "isOneTimeEvent": false,
+                  "eventPriceUsd": 0.008
+                },
+                "review-item": {
+                  "eventTitle": "Reply",
+                  "eventDescription": "Charged per LIHKG reply — floor, author, content, time.",
+                  "isOneTimeEvent": false,
+                  "eventPriceUsd": 0.003
+                },
+                "ai-label": {
+                  "eventTitle": "AI sentiment label",
+                  "eventDescription": "Charged per successfully labelled row when AI sentiment labels are on — relevance, sentiment score and label, intent and confidence. Rows whose labelling fails are not charged.",
+                  "isOneTimeEvent": false,
+                  "eventPriceUsd": 0.002
+                }
+              }
+            },
+            "startedAt": "2026-10-27 08:58:48.703000+00:00",
+            "createdAt": "2026-10-12 08:58:48.920000+00:00",
+            "apifyMarginPercentage": 0.2,
+            "notifiedAboutFutureChangeAt": "2026-10-12 08:59:09.209000+00:00",
+            "notifiedAboutChangeAt": "2026-10-27 09:00:43.176000+00:00"
+          }
+        ],
+        "defaultRunOptions": {
+          "build": "latest",
+          "timeoutSecs": 3600,
+          "memoryMbytes": 1024
+        },
+        "modifiedAt": "2026-11-02 04:54:09.141000+00:00"
+      },
+      "build_id": "uvaFPHU5cU8QdaXif",
+      "build_number": "1.0.19",
+      "build_fields": [
+        "id",
+        "actId",
+        "userId",
+        "startedAt",
+        "finishedAt",
+        "status",
+        "meta",
+        "stats",
+        "options",
+        "exitCode",
+        "inputSchema",
+        "readme",
+        "actorDefinition",
+        "buildNumber",
+        "imageDigest",
+        "actVersion",
+        "usage"
+      ],
+      "actor_definition_fields": [
+        "$schema",
+        "actorSpecification",
+        "name",
+        "title",
+        "description",
+        "version",
+        "buildTag",
+        "memoryMbytes",
+        "meta",
+        "dockerfile",
+        "environmentVariables",
+        "output",
+        "storages",
+        "readme",
+        "input"
+      ],
+      "input_schema": {
+        "title": "LIHKG Scraper",
+        "type": "object",
+        "schemaVersion": 1,
+        "properties": {
+          "mode": {
+            "title": "🎯 Mode",
+            "type": "string",
+            "description": "What do you want to scrape? Pick a mode and fill in the matching fields below.",
+            "editor": "select",
+            "enum": [
+              "thread-list",
+              "thread",
+              "search"
+            ],
+            "enumTitles": [
+              "📋 Category listing — latest threads from a category",
+              "💬 Full thread — thread content and all replies",
+              "🔎 Keyword search — search thread titles site-wide (brands, products, developers)"
+            ],
+            "default": "thread-list",
+            "prefill": "thread-list",
+            "sectionCaption": "🎯 Mode"
+          },
+          "catIds": {
+            "title": "📋 Category IDs",
+            "type": "array",
+            "default": [],
+            "description": "LIHKG category IDs (numeric), e.g. 1 (Chat), 2 (Sports), 5 (Current Affairs). Used by listing mode. Enter all to expand to every one of the 37 postable categories (aggregate boards such as Hot / Latest / Custom are excluded automatically); maxItems is a per-category cap, not a total.",
+            "editor": "stringList",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true,
+            "maxItems": 50,
+            "prefill": [
+              "1"
+            ],
+            "sectionCaption": "📋 Listing mode"
+          },
+          "threadIds": {
+            "title": "💬 Thread IDs",
+            "type": "array",
+            "default": [],
+            "description": "LIHKG thread IDs (numeric), e.g. 1234567. Used by thread mode.",
+            "editor": "stringList",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true,
+            "maxItems": 100,
+            "sectionCaption": "💬 Thread mode"
+          },
+          "threadUrls": {
+            "title": "💬 Thread URLs",
+            "type": "array",
+            "default": [],
+            "description": "Full LIHKG thread URLs, e.g. https://lihkg.com/thread/1234567/page/1. The thread ID is extracted automatically.",
+            "editor": "stringList",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true,
+            "maxItems": 100
+          },
+          "bulkInput": {
+            "title": "📋 Bulk paste",
+            "type": "string",
+            "default": "",
+            "description": "**One item per line** (press Enter for a new line, no quotes or commas). Treated as category IDs in listing mode, thread IDs/URLs in thread mode, or keywords in search mode, and merged into the matching field above at runtime. Fastest way is to copy a whole column from Google Sheets / Excel.",
+            "editor": "textarea",
+            "sectionCaption": "📋 Bulk input"
+          },
+          "maxItems": {
+            "title": "📊 Max items",
+            "type": "integer",
+            "description": "Listing mode: max threads per category. Thread mode: max threads to scrape (replies are all fetched by default; set maxReplies to cap replies per thread, by floor). Search mode: max results per keyword. Maximum 2000.",
+            "default": 50,
+            "minimum": 1,
+            "maximum": 2000,
+            "sectionCaption": "⚙️ General"
+          },
+          "maxReplies": {
+            "title": "🧵 Max replies per thread (optional)",
+            "type": "integer",
+            "description": "Thread mode only. Maximum number of replies to collect per thread. Every reply is billed as one review-item and a long thread can have thousands of replies, so set this to cap your cost per thread. Takes the first N reply floors of each thread (by floor number; deleted floors can make it slightly fewer than N). Leave empty for no limit (default: the whole thread). Unrelated to Max items, which limits the number of threads.",
+            "minimum": 1
+          },
+          "keywords": {
+            "title": "🔍 Keywords",
+            "type": "array",
+            "default": [],
+            "description": "Search mode: the keywords to search for (brand names, product names, property developers); each keyword runs its own search. Listing mode: only keep threads whose title contains at least one keyword (filter; leave empty for no filtering). Bulk-pasted lines are merged in here in search mode.",
+            "editor": "stringList",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true,
+            "maxItems": 50
+          },
+          "order": {
+            "title": "🔃 Sort order",
+            "type": "string",
+            "description": "Search mode only. Latest replies first suits monitoring (with dateFrom it also stops paging early); newest threads first shows freshly opened threads; relevance first suits research.",
+            "editor": "select",
+            "enum": [
+              "desc_reply_time",
+              "desc_create_time",
+              "score"
+            ],
+            "enumTitles": [
+              "🕒 Latest replies first (monitoring)",
+              "🆕 Newest threads first",
+              "🎯 Relevance first (research)"
+            ],
+            "default": "desc_reply_time"
+          },
+          "dateFrom": {
+            "title": "📅 Only threads active since (optional)",
+            "type": "string",
+            "description": "Formats: relative 3d (last 3 days), 12h (last 12 hours), 2w (last 2 weeks), or an absolute date MM/DD/YY. Leave empty for no filtering. When set, paging also stops early, which keeps scheduled monitoring cheap.",
+            "editor": "textfield"
+          },
+          "aiLabels": {
+            "title": "🤖 AI sentiment labels (+$0.002 per row)",
+            "type": "boolean",
+            "description": "When on, every row gets extra AI-judged fields: whether it concerns your tracked topic (ai_relevance), a sentiment score and negative/neutral/positive label (ai_sentiment, ai_sentiment_label), the intent (ai_intent: complaint / praise / question / other) and a confidence score for each. Each successfully labelled row is billed $0.002 (the ai-label event); rows whose labelling fails are not billed. Text is sent to TypeSafe (US) for processing. Free plan: the first 20 rows per run are labelled. Off by default.",
+            "default": false,
+            "sectionCaption": "🤖 AI sentiment labels"
+          },
+          "aiTopic": {
+            "title": "🎯 Brand or topic to track (for relevance)",
+            "type": "string",
+            "description": "Optional. The AI judges whether each post is about this brand or topic (ai_relevance). When empty: search mode uses the row's search keyword; category-listing and thread modes skip the relevance question and ai_relevance is null, while the other labels are still produced. Only used when AI sentiment labels are on.",
+            "editor": "textfield"
+          },
+          "onlyNew": {
+            "title": "Only new items (monitoring mode)",
+            "type": "boolean",
+            "description": "When on, only items NOT returned by earlier runs with the same state key are returned; already-seen items are skipped and not charged. List/search modes identify items by thread ID, thread mode by reply ID (the thread's main post is output only for a new thread or together with a new reply). The first run behaves like a normal run and seeds the memory. Off by default; behaviour is then exactly as before.",
+            "default": false,
+            "editor": "checkbox",
+            "sectionCaption": "🔁 Only new items"
+          },
+          "stateKey": {
+            "title": "State key (optional)",
+            "type": "string",
+            "description": "Name for the remembered state. Leave empty to derive it from the mode and filters, so the same scheduled input continues where it left off; set it to keep separate memories for different schedules or integrations (most API callers reuse inputs). Letters, digits, underscore and hyphen only, 1-100 characters. Only used when \"Only new items\" is on.",
+            "editor": "textfield"
+          },
+          "proxyConfiguration": {
+            "title": "🌐 Proxy (Apify datacenter proxy on by default)",
+            "type": "object",
+            "description": "Apify datacenter proxy is on by default. Without a proxy your run shares the platform's egress IPs with every other run, so LIHKG rate-limits you for traffic you never sent (429s, missing reply pages). Responses are small JSON, so proxy bandwidth cost is negligible. Turn it off only for local testing or your own proxyUrls.",
+            "editor": "proxy",
+            "default": {
+              "useApifyProxy": true
+            },
+            "sectionCaption": "🌐 Advanced"
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "actor_id": "scrapesage/telegram-scraper",
+      "observed_posts": 0,
+      "run_performed": false,
+      "metadata": {
+        "id": "axXdAcxHUxQ68ngTk",
+        "name": "telegram-scraper",
+        "username": "scrapesage",
+        "title": "Telegram Scraper - Channels, Messages, Media & Search",
+        "description": "Scrape public Telegram channels: full message history, media, reactions, polls, forwards, replies, link previews, channel stats, and in-channel keyword search. HTTP-only, no login or phone number required. Independent tool, not affiliated with Telegram.",
+        "pricingInfos": [
+          {
+            "minimalMaxTotalChargeUsd": null,
+            "pricingModel": "PAY_PER_EVENT",
+            "isPriceChangeNotificationSuppressed": false,
+            "pricingPerEvent": {
+              "actorChargeEvents": {
+                "apify-actor-start": {
+                  "eventTitle": "Actor Start",
+                  "eventDescription": "Charged when the Actor starts running. Number of events charged depends on Actor memory (one event per GB, minimum one event).",
+                  "isOneTimeEvent": true,
+                  "eventPriceUsd": 5e-05
+                },
+                "message": {
+                  "eventTitle": "Message scraped",
+                  "eventDescription": "Charged per Telegram message returned to the dataset (messages mode), including text, media, URLs, reactions, polls, forwards, replies, and link previews.",
+                  "isOneTimeEvent": false,
+                  "eventPriceUsd": 0.002,
+                  "isPrimaryEvent": true
+                },
+                "channel-info": {
+                  "eventTitle": "Channel info scraped",
+                  "eventDescription": "Charged per channel when running in Channel info mode — title, description, avatar, subscriber count, and content stats.",
+                  "isOneTimeEvent": false,
+                  "eventPriceUsd": 0.003
+                },
+                "media": {
+                  "eventTitle": "Media downloaded",
+                  "eventDescription": "Charged per media file (photo/video/voice/document) downloaded to the key-value store. Only fires when \"Download media files\" is enabled.",
+                  "isOneTimeEvent": false,
+                  "eventPriceUsd": 0.001
+                }
+              }
+            },
+            "startedAt": "2026-06-10 05:53:03.711000+00:00",
+            "createdAt": "2026-06-10 05:53:03.401000+00:00",
+            "apifyMarginPercentage": 0.2
+          },
+          {
+            "pricingModel": "PAY_PER_EVENT",
+            "pricingPerEvent": {
+              "actorChargeEvents": {
+                "message": {
+                  "eventTitle": "Message scraped",
+                  "eventDescription": "Charged per Telegram message returned to the dataset (messages mode), including text, media, URLs, reactions, polls, forwards, replies, and link previews.",
+                  "eventPriceUsd": 0.002,
+                  "isPrimaryEvent": true
+                },
+                "channel-info": {
+                  "eventTitle": "Channel info scraped",
+                  "eventDescription": "Charged per channel when running in Channel info mode — title, description, avatar, subscriber count, and content stats.",
+                  "eventPriceUsd": 0.003
+                },
+                "media": {
+                  "eventTitle": "Media downloaded",
+                  "eventDescription": "Charged per media file (photo/video/voice/document) downloaded to the key-value store. Only fires when \"Download media files\" is enabled.",
+                  "eventPriceUsd": 0.001
+                }
+              }
+            },
+            "createdAt": "2026-07-26 22:14:01.999000+00:00",
+            "startedAt": "2026-07-26 22:14:01.999000+00:00",
+            "apifyMarginPercentage": 0.2,
+            "notifiedAboutChangeAt": "2026-07-26 22:35:32.487000+00:00"
+          },
+          {
+            "pricingModel": "PAY_PER_EVENT",
+            "pricingPerEvent": {
+              "actorChargeEvents": {
+                "message": {
+                  "eventTitle": "Message scraped",
+                  "eventDescription": "Charged per Telegram message returned to the dataset (messages mode), including text, media, URLs, reactions, polls, forwards, replies, and link previews.",
+                  "eventTieredPricingUsd": {
+                    "FREE": {
+                      "tieredEventPriceUsd": 0.002
+                    },
+                    "BRONZE": {
+                      "tieredEventPriceUsd": 0.0017
+                    },
+                    "SILVER": {
+                      "tieredEventPriceUsd": 0.0014
+                    },
+                    "GOLD": {
+                      "tieredEventPriceUsd": 0.0011
+                    },
+                    "PLATINUM": {
+                      "tieredEventPriceUsd": 0.00076
+                    },
+                    "DIAMOND": {
+                      "tieredEventPriceUsd": 0.0005
+                    }
+                  },
+                  "isPrimaryEvent": true
+                },
+                "channel-info": {
+                  "eventTitle": "Channel info scraped",
+                  "eventDescription": "Charged per channel when running in Channel info mode — title, description, avatar, subscriber count, and content stats.",
+                  "eventTieredPricingUsd": {
+                    "FREE": {
+                      "tieredEventPriceUsd": 0.003
+                    },
+                    "BRONZE": {
+                      "tieredEventPriceUsd": 0.00256
+                    },
+                    "SILVER": {
+                      "tieredEventPriceUsd": 0.0021
+                    },
+                    "GOLD": {
+                      "tieredEventPriceUsd": 0.00166
+                    },
+                    "PLATINUM": {
+                      "tieredEventPriceUsd": 0.00114
+                    },
+                    "DIAMOND": {
+                      "tieredEventPriceUsd": 0.00075
+                    }
+                  }
+                },
+                "media": {
+                  "eventTitle": "Media downloaded",
+                  "eventDescription": "Charged per media file (photo/video/voice/document) downloaded to the key-value store. Only fires when \"Download media files\" is enabled.",
+                  "eventTieredPricingUsd": {
+                    "FREE": {
+                      "tieredEventPriceUsd": 0.001
+                    },
+                    "BRONZE": {
+                      "tieredEventPriceUsd": 0.00085
+                    },
+                    "SILVER": {
+                      "tieredEventPriceUsd": 0.0007
+                    },
+                    "GOLD": {
+                      "tieredEventPriceUsd": 0.00055
+                    },
+                    "PLATINUM": {
+                      "tieredEventPriceUsd": 0.00038
+                    },
+                    "DIAMOND": {
+                      "tieredEventPriceUsd": 0.00025
+                    }
+                  }
+                }
+              }
+            },
+            "createdAt": "2026-08-13 00:19:51.923000+00:00",
+            "apifyMarginPercentage": 0.2,
+            "reasonForChange": "introducing tiered pricing — FREE tier unchanged, higher plan tiers discounted",
+            "startedAt": "2026-08-13 00:19:51.923000+00:00",
+            "notifiedAboutChangeAt": "2026-08-19 08:06:12.128000+00:00"
+          }
+        ],
+        "defaultRunOptions": {
+          "build": "latest",
+          "timeoutSecs": 3600,
+          "memoryMbytes": 1024
+        },
+        "modifiedAt": "2026-10-31 02:59:49.540000+00:00"
+      },
+      "build_id": "RF4a1KneMwlzPaCiv",
+      "build_number": "1.0.17",
+      "build_fields": [
+        "id",
+        "actId",
+        "userId",
+        "startedAt",
+        "finishedAt",
+        "status",
+        "meta",
+        "stats",
+        "options",
+        "exitCode",
+        "inputSchema",
+        "readme",
+        "actorDefinition",
+        "buildNumber",
+        "imageDigest",
+        "actVersion",
+        "usage"
+      ],
+      "actor_definition_fields": [
+        "actorSpecification",
+        "name",
+        "title",
+        "description",
+        "version",
+        "meta",
+        "input",
+        "output",
+        "dockerfile",
+        "storages",
+        "readme"
+      ],
+      "input_schema": {
+        "title": "Telegram Scraper",
+        "type": "object",
+        "schemaVersion": 1,
+        "properties": {
+          "channels": {
+            "title": "Channels / usernames",
+            "type": "array",
+            "description": "Public Telegram channels to scrape. Accepts @username, plain username, or t.me/username URL (also t.me/s/username). Private/invite-only channels are not supported.",
+            "editor": "stringList",
+            "prefill": [
+              "telegram",
+              "durov"
+            ],
+            "example": [
+              "@telegram",
+              "https://t.me/durov"
+            ]
+          },
+          "resultsType": {
+            "title": "What to scrape",
+            "type": "string",
+            "description": "Scrape messages from each channel, or only the channel's metadata/stats.",
+            "editor": "select",
+            "default": "messages",
+            "enum": [
+              "messages",
+              "channelInfo"
+            ],
+            "enumTitles": [
+              "Messages",
+              "Channel info only"
+            ]
+          },
+          "maxMessages": {
+            "title": "Max messages per channel",
+            "type": "integer",
+            "description": "Maximum number of messages to scrape from each channel. Ignored when 'What to scrape' is 'Channel info only'.",
+            "editor": "number",
+            "default": 100,
+            "minimum": 1
+          },
+          "searchQuery": {
+            "title": "Keyword search (within channel)",
+            "type": "string",
+            "description": "Optional. When set, only messages matching this keyword are returned for each channel (uses Telegram's native in-channel search). Leave empty to scrape the full timeline.",
+            "editor": "textfield"
+          },
+          "oldestMessageDate": {
+            "title": "Only messages newer than",
+            "type": "string",
+            "description": "Optional. Stop scraping a channel once messages older than this date are reached. Accepts ISO date (e.g. 2026-01-01) or relative values like '7 days', '3 months'.",
+            "editor": "textfield"
+          },
+          "newestMessageDate": {
+            "title": "Only messages older than",
+            "type": "string",
+            "description": "Optional. Skip messages newer than this date. Accepts ISO date or relative values like '1 day'.",
+            "editor": "textfield"
+          },
+          "downloadMedia": {
+            "title": "Download media files",
+            "type": "boolean",
+            "description": "Download photos/videos/documents attached to messages into the run's key-value store and add a reference to each record. Media URLs are always included regardless of this setting.",
+            "editor": "checkbox",
+            "default": false
+          },
+          "proxyConfiguration": {
+            "title": "Proxy configuration",
+            "type": "object",
+            "description": "Proxy settings. Telegram's public web preview is lenient, but a proxy improves reliability at scale. Apify Proxy (datacenter) recommended.",
+            "editor": "proxy",
+            "default": {
+              "useApifyProxy": true
+            }
+          },
+          "urlsFromFile": {
+            "title": "Import channels from a file",
+            "type": "string",
+            "editor": "textarea",
+            "description": "Paste a list of channel URLs (one per line), OR one link to a .txt/.csv file, Google Sheet or Google Drive file containing them. Lets you import many channels at once instead of typing each into the field above. Google Sheet/Drive share links are handled automatically.",
+            "prefill": ""
+          }
+        },
+        "required": [
+          "channels"
+        ]
+      }
+    },
+    {
+      "actor_id": "bovi/aastocks-scraper",
+      "observed_posts": 0,
+      "run_performed": false,
+      "metadata": {
+        "id": "jsWS8vicwFDUmEeq2",
+        "name": "aastocks-scraper",
+        "username": "bovi",
+        "title": "AASTOCKS Financial News Scraper",
+        "description": "Collect public AASTOCKS financial-news listings. Returns each article headline, source, public URL, feed, language, and article identifier. No login is required.",
+        "pricingInfos": [
+          {
+            "pricingModel": "PAY_PER_EVENT",
+            "pricingPerEvent": {
+              "actorChargeEvents": {
+                "apify-actor-start": {
+                  "eventTitle": "Actor Start",
+                  "eventDescription": "Charged when the Actor starts running. Number of events charged depends on Actor memory (one event per GB, minimum one event).",
+                  "eventPriceUsd": 5e-05
+                },
+                "apify-default-dataset-item": {
+                  "eventTitle": "AASTOCKS Financial News Scraper",
+                  "eventDescription": "One scraped result with all fields.",
+                  "eventPriceUsd": 0.0035,
+                  "isPrimaryEvent": true
+                }
+              }
+            },
+            "createdAt": "2026-10-11 07:16:08.050000+00:00",
+            "startedAt": "2026-10-11 07:16:07.286000+00:00",
+            "apifyMarginPercentage": 0.2
+          }
+        ],
+        "defaultRunOptions": {
+          "build": "latest",
+          "timeoutSecs": 3600,
+          "memoryMbytes": 4096
+        },
+        "modifiedAt": "2026-10-12 00:41:51.636000+00:00"
+      },
+      "build_id": "x2O5ztpo43QLVGxg3",
+      "build_number": "1.0.1",
+      "build_fields": [
+        "id",
+        "actId",
+        "userId",
+        "startedAt",
+        "finishedAt",
+        "status",
+        "meta",
+        "stats",
+        "options",
+        "exitCode",
+        "inputSchema",
+        "readme",
+        "actorDefinition",
+        "buildNumber",
+        "imageDigest",
+        "actVersion",
+        "usage"
+      ],
+      "actor_definition_fields": [
+        "actorSpecification",
+        "name",
+        "title",
+        "description",
+        "version",
+        "buildTag",
+        "dockerfile",
+        "input",
+        "categories",
+        "seoTitle",
+        "seoDescription",
+        "defaultMemoryMbytes",
+        "output",
+        "storages",
+        "readme"
+      ],
+      "input_schema": {
+        "title": "AASTOCKS Financial News Scraper input",
+        "type": "object",
+        "schemaVersion": 1,
+        "properties": {
+          "feed": {
+            "title": "News feed",
+            "type": "string",
+            "description": "Public AASTOCKS financial-news list to collect.",
+            "editor": "select",
+            "enum": [
+              "latest-news",
+              "top-news",
+              "popular-news",
+              "recommend-news",
+              "research-report",
+              "result-announcement"
+            ],
+            "default": "latest-news"
+          },
+          "language": {
+            "title": "Language",
+            "type": "string",
+            "description": "Language route used on AASTOCKS.",
+            "editor": "select",
+            "enum": [
+              "en",
+              "tc",
+              "sc"
+            ],
+            "default": "tc"
+          },
+          "maxResults": {
+            "title": "Maximum results",
+            "type": "integer",
+            "description": "Maximum number of article records to return.",
+            "default": 50,
+            "minimum": 1,
+            "editor": "number"
+          },
+          "proxyConfiguration": {
+            "title": "Proxy configuration",
+            "type": "object",
+            "description": "Optional Apify proxy settings. Leave disabled to connect directly.",
+            "editor": "proxy",
+            "default": {
+              "useApifyProxy": true,
+              "apifyProxyGroups": [
+                "RESIDENTIAL"
+              ]
+            },
+            "prefill": {
+              "useApifyProxy": true,
+              "apifyProxyGroups": [
+                "RESIDENTIAL"
+              ]
+            }
+          }
+        },
+        "required": []
+      }
+    }
+  ]
+}
