@@ -17,4 +17,3 @@ test:
 
 report:
 	crowd-signal report
-
