@@ -22,7 +22,9 @@ class AssetConfig(BaseModel):
 class ExchangeConfig(BaseModel):
     model_config = ConfigDict(extra="forbid")
     name: str
+    local_name: str | None = None
     timezone: str
+    timezone_label: str | None = None
     currency: str
     market_open: time
     market_close: time

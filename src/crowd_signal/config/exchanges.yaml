@@ -1,7 +1,9 @@
 exchanges:
   HKEX:
     name: Hong Kong
+    local_name: 香港
     timezone: Asia/Hong_Kong
+    timezone_label: HKT
     currency: HKD
     market_open: '09:30'
     market_close: '16:00'
@@ -26,7 +28,9 @@ exchanges:
         aliases: ['0005', '$0005', HSBC, 匯豐, 汇丰, 匯控]
   KRX:
     name: South Korea
+    local_name: 대한민국
     timezone: Asia/Seoul
+    timezone_label: KST
     currency: KRW
     market_open: '09:00'
     market_close: '15:30'

@@ -54,8 +54,8 @@ environment to use the shorter commands below. `uv pip install -e ".[dev]"` also
 
 Open `reports/index.html` by double-click. There are no CDN assets, font downloads,
 API calls, or separate frontend build steps. The preview supports exchange
-switching, multilingual search, sorting, asset aliases, a methodology dialog,
-and exporting the visible configured watchlist to CSV.
+switching, multilingual search, sorting, a persistent company inspector, search-term
+copying, research-note disclosures, and CSV export for a universe or selected company.
 
 ```powershell
 crowd-signal doctor

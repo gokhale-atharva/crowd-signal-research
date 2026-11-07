@@ -1,63 +1,77 @@
-# Crowd Signal report design system
+# Crowd Signal · Research desk
 
-Established before implementation on 2026-11-07, following the user's frontend preferences.
+Revised 2026-11-07 after the user rejected the first preview's generic dashboard treatment.
 
 ## Direction
 
-An analytical research workspace with a deliberate product-page introduction.
-Use a quiet dark sidebar, one strong cobalt hero, restrained panels, aligned
-numeric columns, and acid lime for the primary action and a small number of highlights.
-Data and availability states take priority over decorative charts. Never draw a
-fictional price chart or invent performance statistics to fill an empty state.
+A compact exchange research desk. Show the five configured assets, evidence availability,
+and the selected company's search coverage in the first view. Use publication hierarchy:
+a masthead, exchange name, numbered sections, hairlines, aligned data and marginal notes.
+Remove the marketing slogan, glowing diagram, repeated metric cards, monogram avatars
+and dashboard sidebar. The exchange name is the title.
 
-UI/UX Pro Max was consulted with `financial research analytics dashboard` and
-`stock market dashboard`. Its dark-mode guidance and analytics typography direction
-fit; its enterprise marketing structure and Hebrew-specific font suggestion did not.
-Those off-target suggestions were not adopted. The following is the reviewed,
-project-specific synthesis, with the user's palette taking precedence.
+Keep the user's midnight / cobalt / acid-lime palette. Midnight is the canvas,
+cobalt identifies the selected-asset inspector, and lime marks active controls.
+Lime never implies live-data availability. All absent data remains explicitly unavailable.
 
-## Tokens
+## Skill and component research
 
-| Token | Implementation value | Use |
-| --- | --- | --- |
-| Background | `#0A0C10` | Midnight workspace |
-| Surface | `#11141B` | Tables and cards |
-| Raised | `#171B24` | Hover / secondary surface |
-| Border | `#2C3342` | Quiet separation |
-| Text | `#F3F5FA` | Primary text |
-| Muted text | `#A1ABBD` | Supporting text |
-| Cobalt | `#355DFF` | Brand family; hero uses darker tonal background `#14275D` |
-| Pale cobalt | `#B9C8FF` | Readable interactive text on dark backgrounds |
-| Acid lime | `#D6F769` | Primary CTA and selective highlights |
-| Negative | `#FF94A2` | Future bearish / negative states, with text labels |
-| Focus | `#E0FF91` | Keyboard outline |
+UI/UX Pro Max queries for this revision:
 
-These hex values are implementation choices, not codes transcribed from the reels.
-Use Inter when available, Segoe UI / Arial as system fallbacks. Use Cascadia Code /
-Consolas for tabular numbers. No remote fonts or assets: exported HTML works offline.
-Spacing follows a 4/8px rhythm; desktop content gutters 44px, tablet 24px, mobile 16px.
-Panels use 12–16px radii. The main desktop sidebar is 228px. Cards collapse to a 2×2
-grid and content panels stack on narrow screens. The data table scrolls within its
-own labeled region, with no page-wide overflow.
+- `financial research terminal --design-system`: Swiss Modernism 2.0 and institutional
+  research typography. Adopt its modular/asymmetric grid. Discard its portfolio conversion pattern.
+- `Swiss editorial typography --domain style`: Editorial Grid / Magazine and Minimalism
+  & Swiss Style. Adopt rules, deliberate whitespace and clear type hierarchy.
+- `financial editorial serif --domain typography`: Financial Trust and editorial serif/mono
+  pairings. Use Georgia for the exchange title, Bahnschrift / Segoe UI for interface text,
+  and Consolas for IDs and numbers. These system fonts preserve offline portability.
+
+Inspected [Financial Markets Table](https://21st.dev/@isaiahbjork/components/financial-markets-table)
+and [Project Data Table](https://21st.dev/@ravikatiyar162/components/project-data-table).
+Both use React/Tailwind and list Framer Motion; the financial component also lists
+next-themes. Component source requires an account and no verified license was exposed.
+No component source is integrated. All report markup/CSS/JS is original. The reel itself
+could not be fetched in this session; the user's previously reviewed workflow notes apply.
+
+## Tokens and composition
+
+| Role | Value |
+| --- | --- |
+| Midnight canvas | `#10120F` |
+| Secondary surface | `#171A16` |
+| Primary ink | `#EAEDE4` |
+| Supporting ink | `#A6AC9F` |
+| Hairline | `#3B4137` |
+| Cobalt inspector | `#2548E8` |
+| Acid-lime accent | `#D6F769` |
+| Negative status | `#FF9C9C` |
+
+Values are implementation choices, not transcribed reel hex codes. Georgia exchange
+names use 64px desktop / 46px phone. UI text uses 14–16px with 12px supporting labels.
+Numbers and ticker IDs use tabular monospace. No shadows, gradients, blur or pill badges.
+Borders are square. Whitespace follows an 8px rhythm with a 4px sub-step.
+
+The desktop table and asset inspector occupy an asymmetric 8/4-column composition.
+Below 1000px the inspector follows the table. At phone widths only the table's labeled
+region scrolls horizontally; the page itself stays within the viewport. Masthead and
+exchange controls wrap. Session time, currency and lookback are configuration metadata,
+not performance metrics. The complete watchlist starts near the top of the page.
 
 ## Interaction and motion
 
-Exchange selection uses native buttons with `aria-pressed`. Search has a real label,
-sorting uses a native select, details move focus to a heading and restore it on close,
-and methodology uses native dialog semantics and Escape dismissal. State text
-accompanies color. A skip link and visible keyboard focus are required.
+Native exchange buttons expose selection. Asset buttons update a persistent inspector.
+Search accepts ticker/name/local aliases; sorting uses a native select. The inspector
+supports copying the configured search terms and exporting the selected asset.
+Source and method sections use real anchor links. Method details use native disclosure.
 
-Use 180ms color/hover transitions and a one-time 500ms opacity/10px entrance.
-Honor `prefers-reduced-motion`. No continuous animation or invented live indicator.
-Motion is unnecessary for these simple effects; retaining a self-contained Python
-report avoids a frontend build/runtime dependency.
+Use CSS transitions for selection feedback and a short opacity/6px reveal for the
+changed inspector. These effects do not need JavaScript animation, so Motion is not
+installed. Use the motion package when complex JavaScript animation is introduced.
+Honor reduced motion, visible focus, semantic labels and keyboard operation.
 
-## 21st.dev inspection
+## Content
 
-Reviewed the [dashboard catalog](https://21st.dev/community/components/s/dashboard)
-and [Hamid's spotlight-table](https://21st.dev/@hamidonsol/components/spotlight-table)
-as references for navigation, search and table hierarchy. The component page exposes
-a React import but does not expose a complete dependency/license declaration in
-the fetched page. No component source was copied or installed. The implementation
-is original HTML/CSS with minimal browser JavaScript, generated by Python/Jinja.
-Any future component integration requires a separate source/dependency/license review.
+No invented price series or sentiment. Unavailable numbers remain em dashes. Explain
+availability once beside the table. Surface the distinction between a listed actor,
+a verified social source and an actual model result. Keep implementation commands
+in documentation rather than the primary research flow.
