@@ -7,7 +7,8 @@ Never invent observations, actor runs, prices, validation results or live predic
 Never commit credentials, public-post author handles, or raw live data.
 Use timezone-aware UTC instants, exchange sessions, and strictly causal features.
 Use expanding-window validation and compare against a random walk; disclose uncertainty.
-Follow the full task brief in docs/task_brief.md, with milestone checkpoints.
+Follow the full task brief in docs/task_brief.md. The user's later instruction is
+to finish all implementable milestones continuously, without stopping at checkpoints.
 
 ## Frontend preferences
 
@@ -21,7 +22,7 @@ Use CSS for simple transitions. Use Motion if complex JS animation becomes neces
 
 ## Current checkpoint
 
-Milestone 1 and public Step 0 discovery. Paid source tests require APIFY_TOKEN.
+Complete the pipeline and update the existing hosted report. Paid source tests require APIFY_TOKEN.
 Do not mark a source verified until a capped run returns usable timestamped posts.
 Do not substitute an actor returning stock prices for a social discussion source.
-No full analytics, model or live-prediction result exists at this checkpoint.
+Label synthetic demonstration data visibly and never describe it as observed market evidence.

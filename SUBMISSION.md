@@ -1,17 +1,22 @@
 # Submission status
 
-This is a milestone 1 checkpoint, not the final assessment submission.
+Implemented: config-driven HKEX/KRX collection adapters, Exa news, real public market data,
+multilingual extraction/fallback, causal features, levels,14 model/baseline comparisons,
+walk-forward uncertainty, full offline replay, immutable forecasting/evaluation, and portable UI.
 
-- GitHub repository: **pending — local repository only**
-- Apify actors used in real runs: **none — credentials not configured**
-- Candidates: `claude_code_reviewer/lihkg-scraper-en`, `scrapesage/telegram-scraper`
-- HKEX two-source acceptance: pending
-- KRX two-source acceptance: pending
-- Genuine live forward forecast and subsequent evaluation: pending
-- API tokens: **provide privately through the agreed submission channel; never commit**
-  - Apify token: `[PRIVATE — NOT IN REPOSITORY]`
-  - Exa API key: `[PRIVATE — NOT IN REPOSITORY]`
-  - Optional LLM key: `[PRIVATE — NOT IN REPOSITORY]`
+- Hosted report: https://crowd-signal-research-desk.chandrashekhargokh96.chatgpt.site
+- GitHub repository: pending authentication; complete local Git repository supplied.
+- Actual authenticated Apify actor runs: none (API key not supplied).
+- Candidate IDs: `claude_code_reviewer/lihkg-scraper-en`, `scrapesage/telegram-scraper`.
+- Custom private Naver actor: `actors/naver_board`, not deployed; ID assigned by Apify on deployment.
+- Two-source live acceptance per exchange: pending actual capped runs and verified channels.
+- Genuine price-only forward forecasts: target2026-11-09; see `predictions/` for issue records.
+- Genuine forward outcomes: pending target close; do not substitute backtest or fixture outcomes.
 
-Run instructions, limitations and actual source-test status are in README.md and
-docs/source_decisions.md. No fabricated results should be presented as completed work.
+Tokens are placeholders only; provide actual values privately, never in Git:
+
+- Apify: `[PRIVATE — NOT IN REPOSITORY]`
+- Exa: `[PRIVATE — NOT IN REPOSITORY]`
+- Optional LLM: `[PRIVATE — NOT IN REPOSITORY]`
+
+See README for actual results, reproduction, costs and limitations. No submission email was sent.

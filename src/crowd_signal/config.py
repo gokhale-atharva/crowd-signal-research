@@ -31,6 +31,8 @@ class ExchangeConfig(BaseModel):
     lunch_break: list[time] | None = None
     calendar: str
     proposed_sources: list[str] = Field(min_length=2)
+    actor_ids: dict[str, str] = Field(default_factory=dict)
+    telegram_channels: list[str] = Field(default_factory=list)
     tickers: list[AssetConfig] = Field(min_length=5, max_length=5)
 
     @field_validator("timezone")
@@ -75,6 +77,11 @@ class Settings(BaseSettings):
         "0.10"
     )
     apify_timeout_seconds: Annotated[int, Field(ge=10, le=300)] = 120
+    apify_workflow_budget_usd: Annotated[Decimal, Field(gt=0, le=Decimal("5"))] = Decimal("2")
+    news_history_days: Annotated[int, Field(ge=60, le=90)] = 90
+    llm_batch_size: Annotated[int, Field(ge=1, le=30)] = 12
+    sentiment_half_life_days: Annotated[float, Field(gt=0, le=30)] = 3
+    bootstrap_samples: Annotated[int, Field(ge=100, le=5000)] = 400
 
     @field_validator("apify_token", "exa_api_key", "llm_api_key", mode="before")
     @classmethod

@@ -9,7 +9,7 @@ replay:
 	crowd-signal replay
 
 live:
-	crowd-signal run-all --exchange HKEX
+	crowd-signal run-all --exchange ALL
 
 test:
 	$(PYTHON) -m pytest
@@ -17,3 +17,4 @@ test:
 
 report:
 	crowd-signal report
+

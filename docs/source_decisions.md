@@ -93,3 +93,23 @@ search with publication date filters and contents. Milestone 2 will issue Englis
 and local-language queries for 10 days of current news and 60–90 days of history,
 deduplicate URLs, and preserve publication plus retrieval times. No Exa request
 was made at this checkpoint. Exa pricing is separate from Apify credit.
+
+## Implementation update — 2026-11-07
+
+Both exchange adapters and the full downstream pipeline now exist. Source verification remains
+pending because no keys were supplied. The included private `actors/naver_board` source can be
+deployed with `crowd-signal deploy-actor`; this is not a claim that its endpoints or robots rules
+have passed a live test. A disallowed endpoint fails explicitly; use another permitted source.
+Set the returned actor ID and reviewed Telegram channels in the exchange YAML before collection.
+LIHKG listing-only results trigger a bounded first-thread hydration. Every source/ticker must
+produce usable timestamped body text before collection passes. Actor inputs and run IDs are cached.
+
+The probe permits a private actor with unknown billing only after verifying account ownership;
+its256MB/timeout bounds constrain compute, but event-charge limits do not cap compute/build bills.
+The default collector reserves at most$2 requested event charges per exchange. No measured cost
+per100 usable posts is available until a real run. See README for the current cost model.
+
+Exa's10/90-day English/local queries are implemented, preserving retrieval times. Current retrieval
+is not backdated for model features. Captured replay bundles let reviewers rerun privately offline.
+Real public price-only runs completed for all ten configured assets through2026-11-06; these do
+not satisfy the two-social-source acceptance gate. The report states this distinction visibly.

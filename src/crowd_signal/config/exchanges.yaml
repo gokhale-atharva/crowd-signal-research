@@ -10,6 +10,10 @@ exchanges:
     lunch_break: ['12:00', '13:00']
     calendar: XHKG
     proposed_sources: [lihkg, telegram]
+    actor_ids:
+      lihkg: claude_code_reviewer/lihkg-scraper-en
+      telegram: scrapesage/telegram-scraper
+    telegram_channels: []
     tickers:
       - ticker: 0700.HK
         asset_name: Tencent
@@ -36,6 +40,10 @@ exchanges:
     market_close: '15:30'
     calendar: XKRX
     proposed_sources: [naver_board, telegram]
+    actor_ids:
+      naver_board: ''
+      telegram: scrapesage/telegram-scraper
+    telegram_channels: []
     tickers:
       - ticker: 005930.KS
         asset_name: Samsung Electronics

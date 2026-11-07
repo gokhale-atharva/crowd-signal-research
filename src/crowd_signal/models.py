@@ -73,6 +73,7 @@ class Post(Timestamped):
     author_followers: NonNegativeInt | None = None
     author_hash: str | None = None
     language: str | None = None
+    observed_at: AwareDatetime | None = None
     provenance: Literal["live", "synthetic_fixture"] = "live"
 
     @property
@@ -125,6 +126,12 @@ class TickerSignal(Contract):
     sentiment_momentum: Annotated[float, Field(ge=-2, le=2)] | None = None
     disagreement: Annotated[float, Field(ge=0, le=1)] | None = None
     scorer: str
+    bull_bear_ratio: float | None = None
+    explicit_authors: NonNegativeInt = 0
+    unidentified_position_posts: NonNegativeInt = 0
+    source_counts: dict[str, int] = Field(default_factory=dict)
+    latest_news: list[dict] = Field(default_factory=list)
+    evidence_mode: Literal["live", "synthetic_fixture"] = "live"
 
 
 class Prediction(Contract):
@@ -140,9 +147,14 @@ class Prediction(Contract):
     model_trained_through: date
     mode: Literal["live", "backtest", "synthetic_fixture"]
     confidence_note: str
+    lower_price: PositivePrice | None = None
+    upper_price: PositivePrice | None = None
 
     @model_validator(mode="after")
     def causal_contract(self) -> "Prediction":
+        if self.lower_price is not None and self.upper_price is not None:
+            if self.lower_price > self.upper_price:
+                raise ValueError("Forecast price band must be ordered")
         if self.features_available_at > self.issued_at:
             raise ValueError("Features cannot be available after prediction issuance")
         if self.issued_at >= self.target_open:

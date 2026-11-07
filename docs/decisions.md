@@ -33,3 +33,21 @@
 - Local git checkpoints are appropriate; no GitHub remote or public deployment has
   been created. A before-open forecast commit will require actual model output and
   a suitable future session, not a retrospective synthetic file.
+
+## Completion pass — 2026-11-07
+
+- Continue beyond milestone boundaries under the user's explicit instruction to finish the work.
+- Implement both exchanges through one code path. Preserve source feasibility as a real acceptance
+  gate: a missing key, untested actor or empty source is not a verified live feed.
+- Provide a complete generated fixture bundle for network-free end-to-end review, with permanent
+  simulated provenance. Keep real public-price backtests in a different report mode.
+- Do not backdate newly retrieved news/engagement into historical training windows. Long historical
+  social/news features require contemporaneous snapshots. Use predetermined Ridge price-only
+  forecasts when no such historical observations exist.
+- Replace the earlier editorial preview with a data-driven observatory using the user's palette,
+  Motion state transitions, Plotly OHLC and rankings. Preserve reduced-motion/keyboard behavior.
+- GitHub connector is connected but exposes no repository-creation operation; local gh is not
+  authenticated. Preserve the full local Git checkout and Sites source instead of claiming a
+  GitHub deliverable exists. Do not upload into an unrelated existing repository.
+- The next genuine forward session is2026-11-09. Issue audited price-only forecasts now and leave
+  outcomes pending until the actual close. Do not start a fake evaluation or scheduled claim.

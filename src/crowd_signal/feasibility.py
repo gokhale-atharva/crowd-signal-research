@@ -140,10 +140,21 @@ def probe(actor_id: str, input_file: Path, settings: Settings, output: Path) -> 
     if not metadata:
         raise ValueError("Actor was not found or is inaccessible")
     pricing = metadata.get("pricingInfos") or []
-    if not pricing or pricing[-1].get("pricingModel") not in {
-        "PAY_PER_EVENT",
-        "PRICE_PER_DATASET_ITEM",
-    }:
+    owned_compute_actor = False
+    if not pricing and not metadata.get("isPublic", True):
+        try:
+            owner_id = metadata.get("userId")
+            owned_compute_actor = bool(owner_id) and owner_id == client.user("me").get().get("id")
+        except Exception:
+            owned_compute_actor = False
+    if not owned_compute_actor and (
+        not pricing
+        or pricing[-1].get("pricingModel")
+        not in {
+            "PAY_PER_EVENT",
+            "PRICE_PER_DATASET_ITEM",
+        }
+    ):
         raise ValueError(
             "Probe requires inspectable pay-per-event or pay-per-result pricing; review other billing manually"
         )
@@ -155,6 +166,7 @@ def probe(actor_id: str, input_file: Path, settings: Settings, output: Path) -> 
             timeout_secs=settings.apify_timeout_seconds,
             wait_secs=settings.apify_timeout_seconds + 15,
             restart_on_error=False,
+            memory_mbytes=256 if owned_compute_actor else None,
         )
     except Exception as exc:
         raise ValueError(
@@ -173,6 +185,7 @@ def probe(actor_id: str, input_file: Path, settings: Settings, output: Path) -> 
         "usage_total_usd": run.get("usageTotalUsd"),
         "charged_event_counts": run.get("chargedEventCounts"),
         "pricing": pricing,
+        "owned_compute_actor": owned_compute_actor,
         "note": "Catalog field lists and run samples require manual semantic review before source selection.",
     }
     # Persist run ID before a dataset fetch so errors never conceal a billable run.

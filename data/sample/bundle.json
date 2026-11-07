@@ -1,0 +1,17 @@
+{
+  "schema_version": 2,
+  "provenance": "synthetic_fixture",
+  "as_of": "2026-11-06T08:05:00+00:00",
+  "description": "Deterministic simulated prices, posts and news. For software demonstration only; no claim about real trading performance.",
+  "files": {
+    "bars": "bars.csv",
+    "posts": "social.jsonl",
+    "news": "news.jsonl",
+    "sessions": "sessions.json"
+  },
+  "exchanges": [
+    "HKEX",
+    "KRX"
+  ],
+  "seed": 4217
+}

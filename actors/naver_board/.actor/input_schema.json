@@ -1,0 +1,13 @@
+{
+  "title": "Naver board input",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "ticker": {"type":"string","title":"Six-digit ticker","editor":"textfield","pattern":"^[0-9]{6}$"},
+    "keywords": {"type":"array","title":"Search aliases (board context supplies ticker relevance)","editor":"stringList","items":{"type":"string"}},
+    "dateFrom": {"type":"string","title":"UTC lower timestamp","editor":"textfield"},
+    "maxItems": {"type":"integer","title":"Maximum posts","default":20,"minimum":1,"maximum":20,"editor":"number"},
+    "maxPages": {"type":"integer","title":"Maximum list pages","default":3,"minimum":1,"maximum":5,"editor":"number"}
+  },
+  "required": ["ticker","dateFrom"]
+}

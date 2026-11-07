@@ -67,3 +67,35 @@ def test_probe_sets_both_limits_caches_run_and_fields_without_retry(tmp_path, mo
     assert manifest["returned_fields"] == ["date", "text"]
     assert (tmp_path / "raw/manifest.json").is_file()
     assert (tmp_path / "raw/items.json").is_file()
+
+
+@pytest.mark.parametrize(
+    "metadata,profile,allowed",
+    [
+        ({"isPublic": False, "userId": "owner"}, {"id": "owner"}, True),
+        ({"isPublic": False, "userId": "someone-else"}, {"id": "owner"}, False),
+        ({"isPublic": False}, {}, False),
+        ({"isPublic": True, "userId": "owner"}, {"id": "owner"}, False),
+    ],
+)
+def test_compute_actor_requires_verified_private_ownership(
+    tmp_path, monkeypatch, metadata, profile, allowed
+):
+    actor = create_autospec(type(ApifyClient().actor("test/actor")), instance=True)
+    actor.get.return_value = metadata
+    actor.call.return_value = {"id": "owned-run", "status": "SUCCEEDED"}
+    client = Mock()
+    client.actor.return_value = actor
+    client.user.return_value.get.return_value = profile
+    monkeypatch.setattr("crowd_signal.feasibility.ApifyClient", Mock(return_value=client))
+    input_file = tmp_path / "input.json"
+    input_file.write_text('{"maxItems":20,"keywords":["one"]}')
+    settings = Settings(_env_file=None, apify_token="fake")
+    if allowed:
+        manifest = probe("test/actor", input_file, settings, tmp_path / "raw")
+        assert manifest["owned_compute_actor"] is True
+        assert actor.call.call_args.kwargs["memory_mbytes"] == 256
+    else:
+        with pytest.raises(ValueError, match="pricing"):
+            probe("test/actor", input_file, settings, tmp_path / "raw")
+        actor.call.assert_not_called()

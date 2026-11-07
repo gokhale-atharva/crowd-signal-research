@@ -38,7 +38,7 @@ def test_replay_rejects_unmarked_fixture(tmp_path, settings):
         Pipeline(load_config(), settings).replay(sample, tmp_path / "report")
 
 
-def test_cli_commands_and_pending_stages_exit_honestly():
+def test_cli_commands_and_pending_stages_exit_honestly(tmp_path, monkeypatch):
     runner = CliRunner()
     result = runner.invoke(app, ["--help"])
     assert result.exit_code == 0
@@ -55,6 +55,39 @@ def test_cli_commands_and_pending_stages_exit_honestly():
         assert name in result.stdout
     result = runner.invoke(app, ["collect"])
     assert result.exit_code == 2 and "Missing APIFY_TOKEN" in result.stdout
+    monkeypatch.chdir(tmp_path)
     result = runner.invoke(app, ["train"])
-    assert result.exit_code == 2 and "milestone 4" in result.stdout
+    assert result.exit_code == 2 and "No dataset" in result.stdout
     assert runner.invoke(app, ["doctor"]).exit_code == 0
+
+
+def test_full_bundle_runs_offline(tmp_path, monkeypatch, settings):
+    import crowd_signal.pipeline as module
+    from crowd_signal.agents.model import NextSessionModel
+    from crowd_signal.storage import read_json
+
+    def deny(*args, **kwargs):
+        raise AssertionError("Full replay attempted network access")
+
+    monkeypatch.setattr(socket.socket, "connect", deny)
+    monkeypatch.setattr(
+        module,
+        "NextSessionModel",
+        lambda *args, **kw: NextSessionModel(bootstrap_samples=100, test_sessions=3),
+    )
+    count, report = Pipeline(load_config(), settings, root=tmp_path).replay(
+        ROOT / "data/sample/bundle.json", tmp_path / "reports"
+    )
+    assert count == 336 and report.exists()
+    for exchange in ("HKEX", "KRX"):
+        directory = tmp_path / "data/processed" / exchange / "synthetic_fixture"
+        run = read_json(directory / "run.json")
+        assert all(run["stages"].values())
+        forecasts = read_json(directory / "forecasts.json")
+        assert len(forecasts) == 5
+        metrics = read_json(directory / "metrics.json")
+        assert metrics["random_walk"]["n_sessions"] == 3
+    html = report.read_text(encoding="utf-8")
+    assert "SIMULATED LAB" in html and "synthetic_fixture" in html
+    assert "Conversation ranking" in html and "candlestick" in html
+    assert not (tmp_path / "predictions").exists()
