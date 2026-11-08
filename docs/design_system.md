@@ -16,8 +16,7 @@ are embedded under their retained MIT licences; the page remains a portable HTML
 The3D view is illustrative: exact chart axes are in OHLC. Continuous camera movement has
 an explicit pause, keyboard/button orbit controls, reset, reduced-motion behavior, pixel-ratio
 and frame caps, geometry disposal, and offscreen/hidden-tab suspension. Missing WebGL shows
-an OHLC recovery action. Mobile retains native page scrolling and a horizontally scrollable
-company selector. No decorative effect changes the prices or implies a streaming feed.
+an OHLC recovery action. Mobile retains native page scrolling and a compact company dropdown. No decorative effect changes the prices or implies a streaming feed.
 
 UI/UX Pro Max's broad query returned an irrelevant enterprise gateway pattern; it was
 rejected. A focused style query verified Data-Dense Dashboard guidance. Impeccable context

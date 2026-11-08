@@ -18,5 +18,5 @@ price surface uses actual selected-period closes; blue background bars show samp
 3D perspective is illustrative; OHLC preserves exact axes and candles.
 
 There is an explicit pause control, left/right/reset controls, keyboard arrows and a WebGL
-fallback to OHLC. Mobile keeps native page scrolling and a labelled horizontal company rail.
+fallback to OHLC. Mobile keeps native page scrolling and a compact company dropdown.
 Read docs/design_references.md for inspected references, licensing and constraints.

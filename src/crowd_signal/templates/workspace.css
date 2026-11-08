@@ -15,3 +15,5 @@ body,body.lab{background:#08090e;font-family:'Segoe UI',sans-serif}.shell{max-wi
 /* The authored scene stays readable within a laptop viewport. */
 .intro{display:block;position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
 @media(min-width:901px){.spatial-stage,.chart{height:clamp(270px,calc(100dvh - 445px),430px)}}
+.mobile-company{display:none}
+@media(max-width:650px){.asset-deck{display:none}.asset-heading h2,.asset-heading small{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}.mobile-company{display:block;background:#1b2439;color:#edf1fb;border:1px solid #43516d;border-radius:5px;padding:7px 5px;font-size:12px;min-height:35px;max-width:min(170px,42vw)}.workspace{margin-top:3px}.spatial-stage{height:clamp(235px,calc(100dvh - 320px),330px)}.chart-controls{padding-top:7px}.panel-head{padding-top:13px}.chart-panel .asset-icon{height:28px;width:28px;font-size:11px}.asset-heading{gap:7px}}
