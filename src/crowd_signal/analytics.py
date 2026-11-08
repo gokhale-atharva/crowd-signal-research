@@ -2,6 +2,7 @@
 
 import math
 from datetime import UTC, datetime, timedelta
+from zoneinfo import ZoneInfo
 
 import numpy as np
 import pandas as pd
@@ -26,6 +27,41 @@ def available_at(record: Post | NewsItem) -> datetime:
     observed = record.retrieved_at if isinstance(record, NewsItem) else record.observed_at
     # Unknown retrieval/engagement snapshots are not usable for historical model features.
     return max(record.timestamp, observed) if observed else datetime.max.replace(tzinfo=UTC)
+
+
+def discussion_timeline(
+    posts: list[Post], scores: list[Extraction], as_of: datetime, timezone: str,
+) -> dict[str, list[dict]]:
+    """Descriptive publication-day view of a capture, separate from model features.
+
+    Weights use the capture's engagement snapshot. These retrospective chart points
+    do not claim the observations were known on their publication dates.
+    """
+    zone = ZoneInfo(timezone)
+    start = as_of - timedelta(days=10)
+    buckets = {}
+    for post, score in zip(posts, scores, strict=True):
+        if (score.is_spam or not start <= post.timestamp <= as_of
+                or post.observed_at is None or post.observed_at > as_of):
+            continue
+        key = (post.ticker, post.timestamp.astimezone(zone).date().isoformat())
+        buckets.setdefault(key, []).append((post, score))
+    result = {}
+    day, last = start.astimezone(zone).date(), as_of.astimezone(zone).date()
+    days = []
+    while day <= last:
+        days.append(day.isoformat())
+        day += timedelta(days=1)
+    for ticker in sorted({post.ticker for post in posts}):
+        rows = []
+        for day in days:
+            pairs = buckets.get((ticker, day), [])
+            weights = [engagement_weight(post, as_of) for post, _ in pairs]
+            rows.append({"session": day, "posts": len(pairs),
+                         "sentiment": float(np.average([score.sentiment for _, score in pairs], weights=weights))
+                         if pairs else None})
+        result[ticker] = rows
+    return result
 
 
 def summarize(records: list[tuple[Post, Extraction]], as_of: datetime, half_life: float) -> dict:
@@ -128,6 +164,9 @@ def ticker_signals(
         ]
         support, resistance = find_levels(history, mentions)
         score = stats["sentiment"]
+        direction = None if not stats["mentions"] else (
+            Direction.BULLISH if score > 0.15 else Direction.BEARISH if score < -0.15 else Direction.NEUTRAL
+        )
         result.append(
             TickerSignal(
                 ticker=asset.ticker,
@@ -135,13 +174,9 @@ def ticker_signals(
                 as_of=as_of,
                 current_price=float(history.close.iloc[-1]),
                 mentions=stats["mentions"],
-                sentiment=score,
-                direction=Direction.BULLISH
-                if score > 0.15
-                else Direction.BEARISH
-                if score < -0.15
-                else Direction.NEUTRAL,
-                position=stats["position"],
+                sentiment=score if stats["mentions"] else None,
+                direction=direction,
+                position=stats["position"] if stats["mentions"] else None,
                 long_authors=stats["long_authors"],
                 short_authors=stats["short_authors"],
                 support_levels=support,

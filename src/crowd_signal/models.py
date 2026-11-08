@@ -115,9 +115,9 @@ class TickerSignal(Contract):
     as_of: AwareDatetime
     current_price: PositivePrice
     mentions: NonNegativeInt
-    sentiment: Score
-    direction: Direction
-    position: Position
+    sentiment: Score | None
+    direction: Direction | None
+    position: Position | None
     long_authors: NonNegativeInt = 0
     short_authors: NonNegativeInt = 0
     support_levels: list[PriceLevel] = Field(default_factory=list, max_length=2)

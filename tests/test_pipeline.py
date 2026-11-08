@@ -88,6 +88,8 @@ def test_full_bundle_runs_offline(tmp_path, monkeypatch, settings):
         metrics = read_json(directory / "metrics.json")
         assert metrics["random_walk"]["n_sessions"] == 3
     html = report.read_text(encoding="utf-8")
+    html = (report.parent / "hkex.html").read_text(encoding="utf-8")
     assert "SIMULATED LAB" in html and "synthetic_fixture" in html
     assert "Conversation ranking" in html and "candlestick" in html
     assert not (tmp_path / "predictions").exists()
+

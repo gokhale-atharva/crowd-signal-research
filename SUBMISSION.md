@@ -20,3 +20,8 @@ Tokens are placeholders only; provide actual values privately, never in Git:
 - Optional LLM: `[PRIVATE — NOT IN REPOSITORY]`
 
 See README for actual results, reproduction, costs and limitations. No submission email was sent.
+
+Revision2026-11-08: sentiment recovery, a source-status page, retained observations and setup/
+stage guards are implemented. Full suite59 passed. Live sources remain uncertified without
+credentials. GitHub repository creation is awaiting explicit approval after automatic review
+rejected the proposed private repository action. See docs/pending_tasks.md for exact blockers.

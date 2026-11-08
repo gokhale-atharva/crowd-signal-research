@@ -215,3 +215,21 @@ historically available observations. Evaluate the recorded forward forecasts aft
 GitHub CLI authentication is absent on this workstation; the local repository and Sites source
 are retained, but a new GitHub repository cannot be created through the installed
 GitHub connector, which has no repository-creation action. No keys or submission email have been sent.
+
+## Sentiment capture views
+
+The Sentiment tab keeps saved prices visible when no social observations exist. Use its
+**Try simulated sentiment** button for a working, clearly labelled example. **Data sources**
+shows which captures exist and how to connect the local pipeline. The website does not accept
+provider keys or launch collection. A missing score is null, while an observed neutral score is zero.
+
+A newly retrieved set of recent posts can be displayed retrospectively by publication day using
+captured engagement. That chart is labelled and is never fed backwards into historical model
+features. Repeat live collections preserve first-seen text, engagement and availability times;
+those retained observations allow causal history to accumulate. Incomplete collection/analysis/
+training invalidates stale downstream output so it cannot be exported as a completed report.
+
+Before live work run `crowd-signal doctor --strict` or `crowd-signal doctor --json`. Run-all checks
+all selected exchanges before the first paid job and lists missing keys, actors and channels.
+See [remaining tasks](docs/pending_tasks.md) for credentials, source certification, GitHub approval
+and the target-session outcome that cannot be completed with the current external state.

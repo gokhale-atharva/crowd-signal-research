@@ -11,10 +11,11 @@ from crowd_signal.agents.model import NextSessionModel
 from crowd_signal.agents.news import ExaNewsAgent
 from crowd_signal.agents.report import ReportAgent
 from crowd_signal.agents.sentiment import SentimentAgent
-from crowd_signal.analytics import build_features, ticker_signals
+from crowd_signal.analytics import build_features, discussion_timeline, ticker_signals
 from crowd_signal.config import ProjectConfig, Settings
 from crowd_signal.forward import evaluate_forecast, write_forecast
-from crowd_signal.models import NewsItem, Post
+from crowd_signal.history import retain_first_observations
+from crowd_signal.models import Extraction, NewsItem, Post
 from crowd_signal.processing import clean_posts
 from crowd_signal.replay_bundle import export_bundle
 from crowd_signal.storage import event, read_json, records, write_frame, write_json
@@ -60,6 +61,11 @@ class Pipeline:
         if set(bars.ticker) != {asset.ticker for asset in configured.tickers}:
             raise ValueError("Dataset must contain exactly the configured five assets")
         destination = self.directory(exchange, mode)
+        write_json(destination / "run.json", {
+            "exchange": exchange.upper(), "mode": mode, "as_of": as_of.isoformat(),
+            "coverage": coverage, "stages": {"collection": False, "analysis": False, "training": False},
+            "bar_count": len(bars), "post_count": len(posts), "news_count": len(news),
+        })
         write_frame(destination / "bars.parquet", bars)
         write_frame(destination / "posts.parquet", [post.model_dump(mode="json") for post in posts])
         write_frame(destination / "news.parquet", [item.model_dump(mode="json") for item in news])
@@ -142,13 +148,24 @@ class Pipeline:
             }
             for index, row in schedule.iterrows()
         ]
+        captured_at = datetime.now(UTC)
+        previous = self.directory(exchange, "live")
+        if (previous / "run.json").exists():
+            old_posts = [Post.model_validate(row) for row in records(pd.read_parquet(previous / "posts.parquet"))]
+            old_news = [NewsItem.model_validate(row) for row in records(pd.read_parquet(previous / "news.parquet"))]
+            posts = retain_first_observations(old_posts, posts, captured_at)
+            news = retain_first_observations(old_news, news, captured_at)
         return self.save_dataset(
-            exchange, "live", bars, posts, news, calendar, datetime.now(UTC), coverage
+            exchange, "live", bars, posts, news, calendar, captured_at, coverage
         )
 
     def analyse(self, exchange: str, mode: str | None = None, offline: bool = False) -> Path:
         directory = self.directory(exchange, mode)
         run = read_json(directory / "run.json")
+        if not run["stages"]["collection"]:
+            raise ValueError("Collection is incomplete; finish collection before analysis")
+        run["stages"].update(analysis=False, training=False)
+        write_json(directory / "run.json", run)
         bars = pd.read_parquet(directory / "bars.parquet")
         posts = [
             Post.model_validate(row)
@@ -204,8 +221,11 @@ class Pipeline:
 
     def train(self, exchange: str, mode: str | None = None) -> Path:
         directory = self.directory(exchange, mode)
-        if not (directory / "features.parquet").exists():
+        run = read_json(directory / "run.json")
+        if not run["stages"].get("analysis") or not (directory / "features.parquet").exists():
             raise ValueError("Run analyse before train")
+        run["stages"]["training"] = False
+        write_json(directory / "run.json", run)
         result = NextSessionModel(self.settings.bootstrap_samples).train(
             pd.read_parquet(directory / "features.parquet")
         )
@@ -229,6 +249,8 @@ class Pipeline:
     def predict(self, exchange: str, mode: str | None = None, commit: bool = True) -> Path:
         directory = self.directory(exchange, mode)
         run = read_json(directory / "run.json")
+        if not all(run["stages"].values()):
+            raise ValueError("Complete collection, analysis and training before issuing a forecast")
         return write_forecast(
             self.root,
             exchange.upper(),
@@ -267,17 +289,25 @@ class Pipeline:
         for exchange in self.config.exchanges:
             for mode in MODES:
                 directory = self.directory(exchange, mode)
-                if (directory / "forecasts.json").exists():
+                if (directory / "forecasts.json").exists() and all(
+                    read_json(directory / "run.json")["stages"].values()
+                ):
                     datasets[exchange][mode] = self.report_packet(exchange, mode)
         return ReportAgent().render(self.config, output, datasets)
 
     def report_packet(self, exchange: str, mode: str) -> dict:
         directory = self.directory(exchange, mode)
         run = read_json(directory / "run.json")
+        if not all(run["stages"].values()):
+            raise ValueError("Dataset has incomplete stages; stale results cannot be reported")
         bars = pd.read_parquet(directory / "bars.parquet")
         features = pd.read_parquet(directory / "features.parquet")
         backtest = pd.read_parquet(directory / "backtest.parquet")
         signals = read_json(directory / "signals.json")
+        cleaned = [Post.model_validate(row) for row in records(pd.read_parquet(directory / "clean_posts.parquet"))]
+        scores = [Extraction.model_validate(row) for row in records(pd.read_parquet(directory / "social_scores.parquet"))]
+        discussion = discussion_timeline(cleaned, scores, datetime.fromisoformat(run["as_of"]),
+                                         self.config.exchange(exchange).timezone)
         for signal in signals:
             if signal["mentions"] == 0:
                 signal.update(sentiment=None, direction=None, position=None)
@@ -297,6 +327,7 @@ class Pipeline:
             series[ticker] = {
                 "bars": history.to_dict("records"),
                 "daily": daily.to_dict("records"),
+                "discussion": discussion.get(ticker, []),
                 "backtest": backtest[
                     (backtest.ticker == ticker)
                     & backtest.model.isin([run["forecast_model"], "random_walk"])

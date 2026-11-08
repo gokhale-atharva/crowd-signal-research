@@ -33,7 +33,7 @@ class ReportAgent:
         initial = next(iter(exchanges))
         template = env.from_string(read("report.html"))
         application_js = env.from_string(read("research.js.j2")).render(
-            spatial_js=read("spatial.js"), routes_js=read("routes.js")
+            spatial_js=read("spatial.js"), routes_js=read("routes.js"), evidence_js=read("evidence.js")
         )
         common = dict(
             exchanges=exchanges,
@@ -45,6 +45,7 @@ class ReportAgent:
             three_js=read("vendor/three-0.160.1.min.js"),
             plotly_js=get_plotlyjs(),
             application_js=application_js,
+            sources_markup=read("sources.html"),
         )
         output.mkdir(parents=True, exist_ok=True)
         assets = output / "assets"
@@ -53,6 +54,7 @@ class ReportAgent:
             "config.js": "window.CROWD_CONFIG=" + json.dumps(exchanges, ensure_ascii=False) + ";",
             "data.js": "window.CROWD_DATA=" + json.dumps(datasets, ensure_ascii=False, allow_nan=False) + ";",
             "research.js": application_js,
+            "connection-guide.txt": read("connection-guide.txt"),
             "research.css": common["base_css"] + common["workspace_css"] + common["pages_css"],
             "motion.js": common["motion_js"],
             "three.js": common["three_js"],
@@ -70,6 +72,7 @@ class ReportAgent:
             )
 
         pages = {
+            "sources": ("The data behind the view.", "Capture status, source coverage and the steps to connect real discussion."),
             "markets": ("Pick a market. Find your angle.", "Hong Kong and South Korea. Open a company for prices, forecasts and source evidence."),
             "community": ("What is behind the move?", "Crowd positions, source coverage and news. Choose a company to look closer."),
             "validation": ("Does the model earn its place?", "Compare forecast errors with a simple baseline. Inspect the uncertainty."),

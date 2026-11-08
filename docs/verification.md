@@ -45,3 +45,19 @@ and prior price data were not altered by this visual revision. Three.js/Motion n
   workspace-local temporary directory. Both generated application scripts pass Node syntax checks.
 - Proof: docs/img/landing-desktop.png, landing-mobile.png and model-page.png.
 - Existing price data and immutable forecasts were preserved. No source credentials were added.
+
+## Sentiment availability and completion audit — 8 November 2026
+
+The full suite passed: **59 tests**, one upstream Apify deprecation warning. Node syntax checks
+pass for generated research.js. Tests cover no observations versus an observed neutral score,
+retrospective chart points versus causal features, repeat capture retention, failed-write stage
+invalidation, preflight before any paid job, and all18 portable pages plus companion assets.
+Browser checks exercised Kakao real-price sentiment fallback, one-click labelled simulated
+sentiment, source coverage counts, exchange/mode/context navigation and owner setup. Console
+had no application errors. Phone390px checks showed no document overflow; the source table
+retains its own keyboard/touch scroll. Existing 3D and ordinary chart routes remain available.
+Screenshots: sentiment-lab.png, source-status-desktop.png and source-status-mobile.png.
+
+No Apify/Exa credentials exist locally or in the hosted environment. No social capture or live
+source certification was performed. Prediction files were preserved. See pending_tasks.md for
+external dependencies, including GitHub approval and the future target-session close.

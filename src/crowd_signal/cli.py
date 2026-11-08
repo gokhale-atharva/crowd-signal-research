@@ -12,6 +12,7 @@ from rich.table import Table
 from crowd_signal.config import Settings, load_config
 from crowd_signal.feasibility import discover, probe
 from crowd_signal.pipeline import MODES, Pipeline
+from crowd_signal.readiness import live_setup_checks, require_live_setup
 
 app = typer.Typer(no_args_is_help=True, help="Crowd Signal · reproducible exchange research")
 console = Console()
@@ -43,9 +44,20 @@ def perform(stage: str, exchange: str, mode: str | None = None):
 
 
 @app.command()
-def doctor(config: Annotated[Path | None, typer.Option(help="Override exchange YAML")] = None):
+def doctor(
+    config: Annotated[Path | None, typer.Option(help="Override exchange YAML")] = None,
+    as_json: Annotated[bool, typer.Option("--json", help="Print redacted setup checks as JSON")] = False,
+    strict: Annotated[bool, typer.Option(help="Exit 2 when live setup has blockers")] = False,
+):
     """Validate configuration and show credential presence without exposing values."""
     p = pipeline(config)
+    checks = live_setup_checks(p.config, p.settings, list(p.config.exchanges))
+    if as_json:
+        console.print_json(json.dumps({"ready_for_live_collection": all(row["ready"] for row in checks),
+                                       "verification": "Configuration check only; inspect captured run manifests for source acceptance", "checks": checks}))
+        if strict and not all(row["ready"] for row in checks):
+            raise typer.Exit(2)
+        return
     table = Table(title="Crowd Signal · readiness")
     table.add_column("Check")
     table.add_column("State")
@@ -67,7 +79,12 @@ def doctor(config: Annotated[Path | None, typer.Option(help="Override exchange Y
     table.add_row(
         "Keyless workflows", "replay (simulated) / run-all --mode price_only (real public prices)"
     )
+    for row in checks:
+        if not row["ready"]:
+            table.add_row(row["check"], row["action"])
     console.print(table)
+    if strict and not all(row["ready"] for row in checks):
+        raise typer.Exit(2)
 
 
 @app.command()
@@ -171,6 +188,8 @@ def run_all(
             )
         p = pipeline()
         names = list(p.config.exchanges) if exchange.upper() == "ALL" else [exchange.upper()]
+        if mode == "live":
+            require_live_setup(p.config, p.settings, names)
         for name in names:
             p.collect(name) if mode == "live" else p.market(name)
             p.analyse(name, mode)

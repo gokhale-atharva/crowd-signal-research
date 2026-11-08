@@ -34,3 +34,11 @@ Research pages share a visible page bar and active state. Header navigation chan
 company cards and the phone selector open company pages. A company's return link retains
 its exchange/mode. The methodology page avoids downloading datasets, Plotly and Three.js.
 Shared assets cache across the remaining pages. All links also work in the exported folder.
+
+## Source-availability revision
+
+The chart's unavailable state includes an explicit recovery action and a source-status link,
+following the UI/UX Pro Max Empty States / Error Recovery guidance. It keeps the saved-price
+line visible; it does not fill a missing sentiment series. The existing dark/cobalt/lime design,
+Motion feedback and separate-page architecture remain. Source status uses text as well as
+colour, and its wide table is keyboard/touch scrollable on phones.

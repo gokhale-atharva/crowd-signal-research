@@ -9,7 +9,7 @@ from crowd_signal.config import load_config
 def test_portable_site_has_working_page_links_and_companion_assets(tmp_path):
     ReportAgent().preview(load_config(), tmp_path)
     pages = list(tmp_path.glob('*.html'))
-    assert len(pages) == 17  # Landing, four areas, ten companies, two legacy exports.
+    assert len(pages) == 18  # Landing, five areas, ten companies, two legacy exports.
     for page in pages:
         soup = BeautifulSoup(page.read_text(encoding='utf-8'), 'html.parser')
         assert len(soup.find_all('h1')) == 1
@@ -26,3 +26,4 @@ def test_portable_site_has_working_page_links_and_companion_assets(tmp_path):
         assert not legacy.select('script[src]')
     methodology = BeautifulSoup((tmp_path / 'methodology.html').read_text(encoding='utf-8'), 'html.parser')
     assert not methodology.select('script[src="assets/data.js"],script[src="assets/plotly.js"],script[src="assets/three.js"]')
+

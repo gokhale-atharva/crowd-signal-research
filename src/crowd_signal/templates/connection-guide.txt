@@ -1,0 +1,40 @@
+Crowd Signal: connecting real sentiment
+
+The public website is a saved report. It cannot start Python collection or accept API keys.
+Do not put provider keys into frontend JavaScript or upload .env to the public site.
+
+1. Open the source project and copy .env.example to .env.
+   Set APIFY_TOKEN and EXA_API_KEY. LLM_API_KEY is optional; a multilingual lexicon is included.
+2. Configure reviewed public investor Telegram channels in the exchange YAML.
+   HKEX uses LIHKG plus Telegram. KRX uses the included Naver discussion-board actor plus Telegram.
+   Deploy Naver with: crowd-signal deploy-actor
+   Put the returned actor ID under KRX.actor_ids.naver_board.
+3. Check everything without launching paid work:
+   crowd-signal doctor --strict
+   crowd-signal doctor --json
+4. Run capped probes and inspect actual post text, timestamps, relevance and charges.
+   Candidate actor IDs: claude_code_reviewer/lihkg-scraper-en and scrapesage/telegram-scraper.
+   A candidate ID, channel profile or Store listing does not verify a source.
+   Run-all preflights both exchanges before starting the first collection job.
+5. Run:
+   crowd-signal run-all --exchange ALL --mode live
+   crowd-signal report
+   Re-publish the generated output to update the hosted site.
+
+Limits: 20 items and at most $0.10 requested event charge per actor launch; default $2 requested
+workflow event charges per exchange. Compute, proxy, build and other account charges may be
+additional. Exa and LLM billing are separate. Paid actor launches are not automatically retried.
+Inspect cached partial runs before retrying.
+
+Sentiment charts have two distinct bases. At-session history only uses observations available
+before each close. A newly captured set of recent posts can also be charted retrospectively by
+publication day, using captured engagement. That descriptive view is not backtest evidence.
+Missing observations remain unavailable; a real neutral score requires actual posts.
+
+The issued price-only forward predictions target 9 November 2026. Do not overwrite them.
+Evaluate only after the relevant target session has closed and an actual close is available:
+   crowd-signal evaluate --exchange HKEX
+   crowd-signal evaluate --exchange KRX
+
+GitHub publication still needs an authenticated GitHub account. Never include .env, author
+handles or raw captures in the repository. Offline bundles are supported for private replay.

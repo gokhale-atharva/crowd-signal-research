@@ -113,3 +113,14 @@ Exa's10/90-day English/local queries are implemented, preserving retrieval times
 is not backdated for model features. Captured replay bundles let reviewers rerun privately offline.
 Real public price-only runs completed for all ten configured assets through2026-11-06; these do
 not satisfy the two-social-source acceptance gate. The report states this distinction visibly.
+
+## Channel review — 8 November 2026
+
+Public discovery was reviewed without treating it as an authenticated source run. The
+[StockIntelligence profile](https://t.me/s/StockIntelligence) mainly exposes automated quote/ranking
+messages; that alone does not establish retail opinion and was not activated as a sentiment
+source. Its linked discussion group needs an actual permitted, reproducible collection test.
+The [Corevalue profile](https://t.me/s/corevalue) describes a Korean research/disclosure channel;
+it is a discovery candidate only, with asset coverage, original opinion versus reposts, recent
+history and actor compatibility still unverified. Neither profile was copied into a live dataset
+or counted toward the required two-source acceptance. Raw post collection remains through Apify.
