@@ -1,7 +1,6 @@
 # Crowd Signal
 
-A Python research pipeline for five Hong Kong and five Korean stocks, with an interactive,
-self-contained market observatory. It collects social data through Apify, news through Exa,
+A Python research pipeline for five Hong Kong and five Korean stocks, with a multi-page research site and an animated 3D landing page. It collects social data through Apify, news through Exa,
 and public daily OHLCV through yfinance; extracts multilingual sentiment and explicit author
 positions; computes price levels; and tests next-session models through time.
 
@@ -15,7 +14,7 @@ no Apify, Exa or LLM keys were supplied, Telegram channels still need verificati
 included private Naver actor needs deployment and a capped acceptance run. The report makes
 this visible. Simulated lab is a separate mode: its prices, posts and news are generated fixtures.
 
-![Market observatory](docs/img/preview-overview.png)
+![Landing page](docs/img/landing-desktop.png)
 
 ## Architecture
 
@@ -56,10 +55,16 @@ construction, all model variants, uncertainty and reports **without network or k
 It takes roughly a minute depending on hardware. The small `posts.json` fixture remains a
 separate parser smoke input. Generated fixture data is never issued as a real forecast.
 
-Open `reports/index.html` by double-click. All Plotly, Motion, Three.js, data, CSS and JavaScript are
-embedded; there are no CDN assets or frontend build requirements. Exchange and mode switches,
-company selection, search, sorting, interactive3D price terrain with orbit/pause, OHLC/levels, sentiment overlay, backtest, ranking charts,
-model comparisons and JSON snapshot export work locally and on the hosted site.
+Open `reports/index.html` by double-click, or use the hosted link. The landing page has a
+Motion entrance and an interactive Three.js stack with separate/reassemble, reset, keyboard
+rotation and pause controls. Its primary workspace link opens a new tab.
+
+Research has its own pages: `markets.html`, ten `company-*.html` pages, `community.html`,
+`validation.html` and `methodology.html`. Company cards and table entries open company pages.
+Page links preserve the exchange and evidence mode. The landing and legacy `hkex.html` /
+`krx.html` exports embed their runtimes; the other pages share files in `reports/assets`.
+Keep the exported folder together for offline navigation. Nothing depends on a CDN.
+
 The hosted site is a saved research report, not a server that executes Python or refreshes prices.
 
 A real keyless workflow downloads current public prices and runs both exchanges:

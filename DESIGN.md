@@ -20,3 +20,17 @@ price surface uses actual selected-period closes; blue background bars show samp
 There is an explicit pause control, left/right/reset controls, keyboard arrows and a WebGL
 fallback to OHLC. Mobile keeps native page scrolling and a compact company dropdown.
 Read docs/design_references.md for inspected references, licensing and constraints.
+
+
+The landing page uses the same palette in a different composition: large two-line typography
+opposite a material 3D stack. Price, crowd and model layers link to dedicated pages. A deliberate
+entrance reveals the headline and scene; an explicit control separates/reassembles the stack.
+Reset, pointer/keyboard rotation, pause, reduced-motion and static fallback keep it usable.
+Landing copy: “Price is only the first layer.” Cards ask visitors to follow price, check sources
+or inspect the model record. A real saved-price sparkline and actual validation errors make
+those destinations concrete. Ten company links provide direct entry.
+
+Research pages share a visible page bar and active state. Header navigation changes URLs;
+company cards and the phone selector open company pages. A company's return link retains
+its exchange/mode. The methodology page avoids downloading datasets, Plotly and Three.js.
+Shared assets cache across the remaining pages. All links also work in the exported folder.

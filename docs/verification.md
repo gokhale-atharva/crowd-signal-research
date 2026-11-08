@@ -27,3 +27,21 @@ Desktop1440, laptop1024, tablet768 and phone375px widths fit without horizontal 
 No JavaScript errors were observed. Reduced-motion handling and non-WebGL fallback are
 implemented; the OS motion preference was not changed during testing. The backend forecasts
 and prior price data were not altered by this visual revision. Three.js/Motion notices are retained.
+
+## Multi-page landing revision — 8 November 2026
+
+- Added a dedicated landing page with original Three.js research layers and Motion entrance,
+  separate/reassemble, reset, keyboard rotation and pause controls. Static links remain available.
+- Added markets, ten company pages, crowd/news, model validation and methodology, using real
+  file URLs. Main CTA opens a new tab; ordinary navigation keeps the research context.
+- Rewrote headline, destination cards, page headings and notices in short product-specific copy.
+- Checked the local render at1280×800,900×900 and390×844; no document overflow at the checked
+  widths. Reviewed 3D separation, pause/reset, keyboard, browser back, company navigation,
+  exchange switching, crowd selection, synthetic labels, OHLC and14-model results.
+- Browser console had no application errors in the reviewed pages. The vendored classic
+  Three.js build reports its known upstream deprecation warning.
+- Python checks: portable link/asset/heading test and existing offline provenance replay test,
+  **2 passed**. Initial test setup could not use the sandbox's system temp; rerun used a fresh
+  workspace-local temporary directory. Both generated application scripts pass Node syntax checks.
+- Proof: docs/img/landing-desktop.png, landing-mobile.png and model-page.png.
+- Existing price data and immutable forecasts were preserved. No source credentials were added.
