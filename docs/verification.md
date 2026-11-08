@@ -17,3 +17,13 @@
   were checked against installed apify-client2.5.1; billable launches are mocked in tests.
 - GitHub repository creation remains unavailable: local gh has no authentication and the connected
   GitHub tool set has no repository-creation operation. No unrelated repository was modified.
+
+## Spatial UI verification —2026-11-08
+
+The report-generation smoke test passed with the new embedded resources; Ruff and JavaScript
+syntax checks passed. Browser checks confirmed a real WebGL canvas, correct stock/exchange
+and real/simulated mode changes, OHLC fallback, motion pause, rotation/reset and scene rebuilds.
+Desktop1440, laptop1024, tablet768 and phone375px widths fit without horizontal page overflow.
+No JavaScript errors were observed. Reduced-motion handling and non-WebGL fallback are
+implemented; the OS motion preference was not changed during testing. The backend forecasts
+and prior price data were not altered by this visual revision. Three.js/Motion notices are retained.

@@ -24,3 +24,33 @@ midnight / electric cobalt / acid-lime palette, keyboard controls and reduced mo
 Distinguish real price-only observations from the simulated social/news lab. A data
 mode label and collection timestamp must remain visible. No animation may suggest
 that a static captured snapshot is updating live.
+
+## Motion and3D revision —2026-11-08
+
+The user explicitly selected a pronounced3D and animation direction. Read the repository's
+[interactive Saturn V prompt](https://github.com/yihui-dev/awesome-opus5-5-videos/blob/main/prompts/aichrislee-938609.md)
+for orbit, reset, object selection and label principles. Combined this with the previously
+read UI Motion Loop and Widget Animation references. No rocket/video assets or prompt
+instructions were executed; this application implements original geometry from its prices.
+
+Additional inspected sources:
+
+- [Vengeance UI perspective carousel source](https://github.com/Ashutoshx7/VengeanceUI/blob/main/src/components/ui/perspective-carousel.tsx)
+  and upstream LICENSE (MIT). Its perspective, spring-state and keyboard patterns informed
+  the company selector. React/framer-motion/lucide source was not copied into this Python report.
+- [Skiper UI quick start](https://www.skiper-ui.com/docs/quick-start) and its public
+  [skiper40 registry item](https://www.skiper-ui.com/r/skiper40.json). Inspected its link
+  feedback and declared framer-motion dependency; free-version attribution and Pro access
+  conditions were reviewed. No premium source was downloaded or component copied.
+- [Animmaster Lib](https://animmasterlib.dev): reviewed its WebGL,3D, mouse and transition
+  catalogue. It offers paid components; no paid source was accessed or licence assumed.
+- [Impeccable](https://github.com/pbakaus/impeccable), Apache-2.0, inspected at
+  `924bbd194d02e5e15a227e75b5901fb0d7a4ecad`; context and animation/craft guidance read.
+- [Taste Skill](https://github.com/Leonxlnx/taste-skill), MIT, inspected at
+  `f6b76575f949707b4e3c37cd86cb44b0b98643e8`; authored motion and runtime guidance read.
+
+Installed Impeccable and Taste Skill in the user's personal Codex skills directory. Created
+and validated `frontend-motion-craft`, with verified source references, and updated the user's
+global AGENTS.md to reuse the workflow. These are persistent local files, not model training.
+The exact 'squeeze motion skills' repository could not be uniquely verified and was not installed.
+The current user brief and environment tool rules take precedence over upstream skill defaults.

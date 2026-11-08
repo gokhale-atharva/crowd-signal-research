@@ -38,7 +38,7 @@ crowd-signal = "crowd_signal.cli:app"
 where = ["src"]
 
 [tool.setuptools.package-data]
-crowd_signal = ["templates/*.html", "templates/vendor/*", "config/*.yaml"]
+crowd_signal = ["templates/*.html", "templates/*.js", "templates/*.css", "templates/vendor/*", "config/*.yaml"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

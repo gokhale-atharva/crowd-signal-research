@@ -28,6 +28,10 @@ class ReportAgent:
             .joinpath("templates/vendor/motion-14.10.1.js")
             .read_text(encoding="utf-8")
         )
+        template_root = files("crowd_signal").joinpath("templates")
+        three_js = template_root.joinpath("vendor/three-0.160.1.min.js").read_text(encoding="utf-8")
+        spatial_js = template_root.joinpath("spatial.js").read_text(encoding="utf-8")
+        workspace_css = template_root.joinpath("workspace.css").read_text(encoding="utf-8")
         output.mkdir(parents=True, exist_ok=True)
         for key in ("index", *[name.lower() for name in config.exchanges]):
             initial = "HKEX" if key == "index" else key.upper()
@@ -38,6 +42,9 @@ class ReportAgent:
                     datasets=datasets,
                     plotly_js=plotly_js,
                     motion_js=motion_js,
+                    three_js=three_js,
+                    spatial_js=spatial_js,
+                    workspace_css=workspace_css,
                 ),
                 encoding="utf-8",
             )

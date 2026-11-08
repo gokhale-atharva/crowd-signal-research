@@ -56,9 +56,9 @@ construction, all model variants, uncertainty and reports **without network or k
 It takes roughly a minute depending on hardware. The small `posts.json` fixture remains a
 separate parser smoke input. Generated fixture data is never issued as a real forecast.
 
-Open `reports/index.html` by double-click. All Plotly, Motion, data, CSS and JavaScript are
+Open `reports/index.html` by double-click. All Plotly, Motion, Three.js, data, CSS and JavaScript are
 embedded; there are no CDN assets or frontend build requirements. Exchange and mode switches,
-company selection, search, sorting, OHLC/levels, sentiment overlay, backtest, ranking charts,
+company selection, search, sorting, interactive3D price terrain with orbit/pause, OHLC/levels, sentiment overlay, backtest, ranking charts,
 model comparisons and JSON snapshot export work locally and on the hosted site.
 The hosted site is a saved research report, not a server that executes Python or refreshes prices.
 

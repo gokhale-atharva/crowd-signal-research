@@ -1,32 +1,25 @@
-# Crowd Signal design system
+# Current design system
 
-Revised 2026-11-07 for a richer animated financial observatory. A wide market chart
-anchors an asymmetric workspace, selected-company forecast, watchlist and model evidence.
+See [DESIGN.md](../DESIGN.md) for the current spatial research workspace and
+[PRODUCT.md](../PRODUCT.md) for the confirmed product brief.
 
-| Role | Implementation value |
-| --- | --- |
-| Midnight canvas | #070B16 |
-| Raised surface | #10182A |
-| Electric cobalt | #4265FF |
-| Selective acid lime | #D6F769 |
-| Primary text | #F0F3FA |
-| Supporting text | #A7B4CD |
-| Negative status | #FF9CA9 |
+Revised2026-11-08 following the explicit request for visible Motion animation and real3D.
+The composition now uses a slim navigation rail, compact exchange/mode header,
+perspective company selector, a data-driven Three.js price surface and a lime estimate
+inspector. The long introduction and empty metric strip are no longer visible.
 
-Values are chosen implementation tokens, not transcribed reel hex codes. Bahnschrift /
-Segoe UI sans and Consolas numbers preserve portability. Spacing follows an 8px rhythm.
-Consulted UI/UX Pro Max for data-dense hierarchy, charts, contrast and accessibility.
-Inspected 21st.dev Financial Markets Table and Project Data Table; their React/Tailwind /
-Framer Motion dependencies and account-gated source did not fit this Python report.
-No component source or unverified license was copied.
+Motion14.10.1 drives the scene reveal, staged entrance, company changes and card feedback.
+Three.js0.160.1 supplies material, perspective, lighting, orbit and a geometry-based price
+surface. The regular Plotly OHLC/sentiment/backtest views remain available. Both libraries
+are embedded under their retained MIT licences; the page remains a portable HTML file.
 
-The supplied awesome-opus5-5-videos repository provides prompts and video references.
-Adapted state continuity and staged graph information; exact links are in design_references.md.
-Motion 14.10.1 is vendored under MIT for purposeful entrance and state feedback. Reduced
-motion disables animations. No creator videos were copied. Native controls expose selection
-and focus. Exports download the displayed dataset. Chart and inspector stack on tablets;
-only labelled tables scroll locally on phones. Controls wrap at 375px.
+The3D view is illustrative: exact chart axes are in OHLC. Continuous camera movement has
+an explicit pause, keyboard/button orbit controls, reset, reduced-motion behavior, pixel-ratio
+and frame caps, geometry disposal, and offscreen/hidden-tab suspension. Missing WebGL shows
+an OHLC recovery action. Mobile retains native page scrolling and a horizontally scrollable
+company selector. No decorative effect changes the prices or implies a streaming feed.
 
-Market snapshot uses real prices and a price-only model. Missing social/news stay unavailable.
-Simulated lab is separate with a persistent notice: its prices, posts and news are generated
-fixtures. Neither lab results nor an unevaluated forward forecast establish trading accuracy.
+UI/UX Pro Max's broad query returned an irrelevant enterprise gateway pattern; it was
+rejected. A focused style query verified Data-Dense Dashboard guidance. Impeccable context
+and animation/craft references, Taste Skill motion guidance, the supplied video prompts,
+Skiper UI and Vengeance UI informed the revision. Read design_references.md for provenance.
