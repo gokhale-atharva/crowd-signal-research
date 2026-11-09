@@ -8,13 +8,16 @@ positions; computes price levels; and tests next-session models through time.
 · [Portable HTML](reports/index.html) · [Source decisions](docs/source_decisions.md)
 · [Design references](docs/design_references.md) · [Task brief](docs/task_brief.md)
 
-The software and keyless workflows are implemented. Real public-price runs for both exchanges
-completed through **6 November 2026**. Live social/news collection has **not** been certified:
-no Apify, Exa or LLM keys were supplied, Telegram channels still need verification, and the
-included private Naver actor needs deployment and a capped acceptance run. The report makes
-this visible. Simulated lab is a separate mode: its prices, posts and news are generated fixtures.
+Both exchanges now have inspected **LIHKG and Telegram** captures, plus **299 Exa news
+articles** across all ten companies. The current 10-day social sample contains 25
+company-linked records (one multi-company message can count for multiple tickers).
+Coverage is uneven: HKEX has social matches for five companies, KRX for four. LG Energy
+Solution has news but no usable social match. These small public-channel/forum samples
+are not a representative retail survey. Sentiment uses the labelled multilingual lexicon;
+no LLM key is configured. Prices are saved daily observations through **6 November 2026**.
+The original price-only predictions remain unchanged. Simulated lab is a separate fixture mode.
 
-![Landing page](docs/img/landing-desktop.png)
+![Captured source coverage](docs/img/captured-sources-krx.png)
 
 ## Architecture
 
@@ -79,28 +82,30 @@ crowd-signal run-all --exchange ALL --mode price_only
    An OpenAI-compatible `LLM_API_KEY` is optional; without it the multilingual lexicon runs.
 2. Run `crowd-signal feasibility --query lihkg`; inspect Store metadata and billing.
    Run the capped `probe` commands documented in `docs/source_decisions.md`.
-3. Select relevant permitted public Telegram investor channels in each exchange YAML.
-   Run `crowd-signal deploy-actor` for the supplied private Naver board actor if needed,
-   inspect its build/robots/endpoint behavior, and set its returned actor ID in KRX config.
-4. Run `crowd-signal run-all --exchange ALL --mode live`. The collector requires all
-   configured sources and rejects a ticker/source with no usable timestamped body text.
+3. Review the configured public Telegram channels and source actors for both exchanges.
+   Both use LIHKG + Telegram. The old optional Naver actor is not active or deployed.
+4. Run `crowd-signal run-all --exchange ALL --mode live`. Each exchange needs actual relevant
+   bodies from both platforms; per-company gaps remain visible rather than becoming zero scores.
+   To reuse already inspected probes without paid relaunches, use `crowd-signal import-probes
+   --exchange HKEX --selections data/raw/feasibility/HKEX_capture_inputs.json`, then analyse/train.
 5. Commit source changes, run `crowd-signal predict --exchange HKEX --mode live` and KRX
    before their next open. After the target session closes run `crowd-signal evaluate
    --exchange HKEX` and KRX, then `crowd-signal report`.
 
-Do not treat Step 0 as passed until actual capped runs are inspected. The current source
-adapters are implemented against reviewed schemas; their live suitability remains unverified.
+Source verification records, run IDs, observed costs and coverage are in
+[the capture summary](docs/feasibility/capture_summary.json). Raw captures remain private.
 
 ## Actor IDs, inputs and costs
 
 | Source | Actor | Input / current state |
 | --- | --- | --- |
-| HK LIHKG | `claude_code_reviewer/lihkg-scraper-en` | One alias per search, last 10 days, max20; one bounded thread hydration if output is listing-only. Not run. |
-| HK/KR Telegram | `scrapesage/telegram-scraper` | One configured public channel and alias, dated window, max20, no media. Channels/run verification pending. |
-| KR Naver discussion board | Included `actors/naver_board` | Private Python actor; ticker board, max20 posts, max3 pages, UTC-convertible timestamps. Not deployed. |
+| HK/KR LIHKG | `claude_code_reviewer/lihkg-scraper-en` | Inspected timestamped bodies, bounded thread hydration; titles and irrelevant device/index replies excluded. |
+| HK/KR Telegram | `scrapesage/telegram-scraper` | Inspected public channel messages, dated window, max20, no media. |
+| Optional Naver adapter | Included `actors/naver_board` | Not active or deployed. The user's9November instruction selects LIHKG + Telegram for both exchanges. |
 
-Actual actors used in authenticated runs: **none**. A Store listing is not source verification.
-Store search from the earlier discovery is preserved in `docs/source_decisions.md`.
+Authenticated runs used the first two actors. HK channel: `theartoftrade`; KR channels:
+`h_zonstock` and `meritz_research`. Telegram includes publisher/broker research and reposts;
+it must not be described as independent author positions or a retail-population sample.
 
 Every launch supplies `max_items<=20`, `max_total_charge_usd<=0.10`, and a timeout.
 The collector divides a default **$2 requested event-charge budget per exchange workflow**
@@ -110,8 +115,8 @@ completed runs. Paid actor launches are never automatically retried. Metadata/da
 may retry. Unknown pricing is refused except for an actor owned by the authenticated account,
 which is restricted to 256MB and a short timeout. That owned compute actor is **not** protected
 by an event-charge cap: compute, proxy, storage, build and rental charges can be additional.
-Check remaining free credit before running. No actual cost per100 usable posts can be stated
-without a real run; manifests record run IDs and observed charge metadata for that calculation.
+Check remaining free credit before running. The capture summary records observed run costs;
+zero-row runs and unrelated records are not counted as source acceptance.
 Exa/LLM billing is separate; default Exa usage is at most 40 dated searches for ten assets
 (EN/local ×10/90days), up to12 results each. Pricing is provider-controlled.
 
@@ -209,9 +214,9 @@ is documented but was not independently verified here.
 
 ## Next steps requiring external state
 
-Supply private API keys; verify channels and two actual social sources per exchange; deploy/test
-Naver or select another allowed source if its endpoint/robots disallows collection. Accumulate
-historically available observations. Evaluate the recorded forward forecasts after9November closes.
+Accumulate observations available before future sessions; broaden relevant company coverage
+within reviewed public sources. Evaluate the recorded forward forecasts after9November closes.
+Keys are configured locally and both social platforms returned relevant records per exchange.
 Private source repository: [gokhale-atharva/crowd-signal-research](https://github.com/gokhale-atharva/crowd-signal-research).
 It contains source, reports and original Git history, excluding credentials, raw captures and caches.
 No keys or submission email have been sent.
@@ -231,5 +236,4 @@ training invalidates stale downstream output so it cannot be exported as a compl
 
 Before live work run `crowd-signal doctor --strict` or `crowd-signal doctor --json`. Run-all checks
 all selected exchanges before the first paid job and lists missing keys, actors and channels.
-See [remaining tasks](docs/pending_tasks.md) for credentials, source certification
-and the target-session outcome that cannot be completed with the current external state.
+See [remaining tasks](docs/pending_tasks.md) for remaining coverage gaps and the forward outcome.

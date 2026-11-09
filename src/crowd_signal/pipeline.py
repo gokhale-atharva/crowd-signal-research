@@ -13,6 +13,7 @@ from crowd_signal.agents.report import ReportAgent
 from crowd_signal.agents.sentiment import SentimentAgent
 from crowd_signal.analytics import build_features, discussion_timeline, ticker_signals
 from crowd_signal.config import ProjectConfig, Settings
+from crowd_signal.captures import import_verified_probes
 from crowd_signal.forward import evaluate_forecast, write_forecast
 from crowd_signal.history import retain_first_observations
 from crowd_signal.models import Extraction, NewsItem, Post
@@ -159,6 +160,24 @@ class Pipeline:
             exchange, "live", bars, posts, news, calendar, captured_at, coverage
         )
 
+    def import_probes(self, exchange: str, selections: Path, allow_partial: bool = False) -> Path:
+        configured = self.config.exchange(exchange)
+        as_of = datetime.now(UTC)
+        posts, coverage = import_verified_probes(configured, self.root, read_json(selections), as_of, allow_partial)
+        news = ExaNewsAgent(self.settings).collect(configured, self.root, as_of)
+        bars = MarketData().collect(configured, self.root, as_of)
+        schedule = exchange_schedule(configured, pd.Timestamp(bars.session.min()).date(),
+                                     (as_of + timedelta(days=20)).date())
+        calendar = [{"session": index.date().isoformat(), "open": row.market_open.isoformat(),
+                     "close": row.market_close.isoformat()} for index, row in schedule.iterrows()]
+        captured_at = datetime.now(UTC)
+        destination = self.save_dataset(exchange, "live", bars, posts, news, calendar, captured_at, coverage)
+        run = read_json(destination / "run.json")
+        run["source_acceptance_complete"] = all(any(row["source"] == source and row["usable_posts"] > 0 for row in coverage) for source in configured.proposed_sources)
+        run["capture_method"] = "Imported inspected Apify runs; no paid relaunch"
+        write_json(destination / "run.json", run)
+        return destination
+
     def analyse(self, exchange: str, mode: str | None = None, offline: bool = False) -> Path:
         directory = self.directory(exchange, mode)
         run = read_json(directory / "run.json")
@@ -180,6 +199,7 @@ class Pipeline:
             self.settings,
             self.root / "data/cache/sentiment",
             offline=offline or run["mode"] == "synthetic_fixture",
+            aliases={a.ticker: a.aliases for a in self.config.exchange(exchange).tickers},
         )
         post_scores, news_scores = agent.score(posts), agent.score(news)
         configured = self.config.exchange(exchange)
@@ -308,7 +328,16 @@ class Pipeline:
         scores = [Extraction.model_validate(row) for row in records(pd.read_parquet(directory / "social_scores.parquet"))]
         discussion = discussion_timeline(cleaned, scores, datetime.fromisoformat(run["as_of"]),
                                          self.config.exchange(exchange).timezone)
+        news_records = records(pd.read_parquet(directory / "news.parquet"))
         for signal in signals:
+            signal["news_record_count"] = sum(item["ticker"] == signal["ticker"] for item in news_records)
+            refs = [(post, score) for post, score in zip(cleaned, scores, strict=True)
+                    if post.ticker == signal["ticker"] and not score.is_spam
+                    and datetime.fromisoformat(run["as_of"]) - timedelta(days=10) <= post.timestamp
+                    <= datetime.fromisoformat(run["as_of"])]
+            signal["social_evidence"] = [{"source": post.source, "timestamp": post.timestamp.isoformat(),
+                "url": str(post.url), "sentiment": score.sentiment, "position": score.stated_position}
+                for post, score in sorted(refs, key=lambda pair: pair[0].timestamp, reverse=True)[:12]]
             if signal["mentions"] == 0:
                 signal.update(sentiment=None, direction=None, position=None)
         series = {}

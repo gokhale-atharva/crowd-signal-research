@@ -1,30 +1,22 @@
 # Submission status
 
-Implemented: config-driven HKEX/KRX collection adapters, Exa news, real public market data,
+Implemented: config-driven HKEX/KRX collection, Exa news, public daily market data,
 multilingual extraction/fallback, causal features, levels,14 model/baseline comparisons,
-walk-forward uncertainty, full offline replay, immutable forecasting/evaluation, and portable UI.
+walk-forward uncertainty, offline replay, immutable forecasting/evaluation and a multipage UI.
 
 - Hosted report: https://crowd-signal-research-desk.chandrashekhargokh96.chatgpt.site
-- Private GitHub repository: https://github.com/gokhale-atharva/crowd-signal-research
-- Actual authenticated Apify actor runs: none (API key not supplied).
-- Candidate IDs: `claude_code_reviewer/lihkg-scraper-en`, `scrapesage/telegram-scraper`.
-- Custom private Naver actor: `actors/naver_board`, not deployed; ID assigned by Apify on deployment.
-- Two-source live acceptance per exchange: pending actual capped runs and verified channels.
-- Genuine price-only forward forecasts: target2026-11-09; see `predictions/` for issue records.
-- Genuine forward outcomes: pending target close; do not substitute backtest or fixture outcomes.
+- Private source repository: https://github.com/gokhale-atharva/crowd-signal-research
+- Actual authenticated social actors: `claude_code_reviewer/lihkg-scraper-en` and
+  `scrapesage/telegram-scraper`, used for both exchanges at the user's9November request.
+- Two-platform capture acceptance: passed for each exchange. This is not a claim of two
+  platform matches for every company. HKEX11 / KRX14 company-linked social records.
+- Actual Exa articles: HKEX163 / KRX136, across all ten companies.
+- Source records, input parameters, observed costs and coverage: docs/feasibility/capture_summary.json.
+- Current extraction: labelled multilingual lexicon fallback; optional LLM key is absent.
+- Optional Naver actor source remains included but is not active or deployed.
+- Original genuine price-only forward forecasts: target2026-11-09; preserved in predictions/.
+- Genuine forward outcomes: pending target close. Do not substitute backtests or fixture outcomes.
 
-Tokens are placeholders only; provide actual values privately, never in Git:
-
-- Apify: `[PRIVATE — NOT IN REPOSITORY]`
-- Exa: `[PRIVATE — NOT IN REPOSITORY]`
-- Optional LLM: `[PRIVATE — NOT IN REPOSITORY]`
-
-See README for actual results, reproduction, costs and limitations. No submission email was sent.
-
-Revision2026-11-08: sentiment recovery, a source-status page, retained observations and setup/
-stage guards are implemented. Full suite59 passed. Live sources remain uncertified without
-credentials. See docs/pending_tasks.md for exact blockers.
-
-Revision2026-11-09: the user approved private repository creation and source/report upload.
-The source repository preserves the original pre-open forecast commit history. API keys, raw
-captures and caches are excluded. Outcome evaluation remains pending today’s official closes.
+Apify and Exa keys are configured only in ignored local.env. No token, raw capture, cached body
+or author identifier is delivered in Git. Public reports include derived signals and source links.
+No submission email has been sent. See README and docs/pending_tasks.md for limitations.

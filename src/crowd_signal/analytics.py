@@ -201,7 +201,7 @@ def ticker_signals(
                     }
                     for item, score in sorted(
                         articles, key=lambda pair: pair[0].timestamp, reverse=True
-                    )[:3]
+                    )[:6]
                 ],
                 evidence_mode="synthetic_fixture"
                 if set(history.provenance) == {"synthetic_fixture"}

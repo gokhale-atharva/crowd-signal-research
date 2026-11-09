@@ -1,0 +1,11 @@
+{
+  "channels": [
+    "https://t.me/hongkongstocks"
+  ],
+  "resultsType": "messages",
+  "searchQuery": "騰訊",
+  "oldestMessageDate": "2026-10-30T03:25:09.391803+00:00",
+  "newestMessageDate": "2026-11-09T03:25:09.391803+00:00",
+  "maxMessages": 20,
+  "downloadMedia": false
+}

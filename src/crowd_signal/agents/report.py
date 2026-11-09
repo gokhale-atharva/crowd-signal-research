@@ -94,6 +94,7 @@ class ReportAgent:
         packet = datasets.get(initial, {}).get("live") or datasets.get(initial, {}).get("price_only")
         summary = dict.fromkeys(("sessions", "as_of", "company", "price_text", "ticker", "spark",
                                  "mape", "baseline_mape", "model_width", "baseline_width"))
+        summary["captured"] = any(d.get("live", {}).get("run", {}).get("post_count", 0) for d in datasets.values())
         if packet:
             asset = exchanges[initial]["tickers"][0]
             ticker = asset["ticker"]

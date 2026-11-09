@@ -13,7 +13,7 @@ exchanges:
     actor_ids:
       lihkg: claude_code_reviewer/lihkg-scraper-en
       telegram: scrapesage/telegram-scraper
-    telegram_channels: []
+    telegram_channels: [https://t.me/theartoftrade]
     tickers:
       - ticker: 0700.HK
         asset_name: Tencent
@@ -39,18 +39,18 @@ exchanges:
     market_open: '09:00'
     market_close: '15:30'
     calendar: XKRX
-    proposed_sources: [naver_board, telegram]
+    proposed_sources: [lihkg, telegram]
     actor_ids:
-      naver_board: ''
+      lihkg: claude_code_reviewer/lihkg-scraper-en
       telegram: scrapesage/telegram-scraper
-    telegram_channels: []
+    telegram_channels: [https://t.me/h_zonstock, https://t.me/meritz_research]
     tickers:
       - ticker: 005930.KS
         asset_name: Samsung Electronics
-        aliases: ['005930', '$005930', Samsung Electronics, 삼성전자, 삼성]
+        aliases: ['005930', '$005930', Samsung Electronics, 삼성전자, 삼성, 三星電子, 三星电子, 三星, Samsung]
       - ticker: 000660.KS
         asset_name: SK Hynix
-        aliases: ['000660', '$000660', SK Hynix, SK하이닉스, 하이닉스]
+        aliases: ['000660', '$000660', SK Hynix, SK하이닉스, 하이닉스, SK海力士, 海力士]
       - ticker: 035420.KS
         asset_name: NAVER
         aliases: ['035420', '$035420', NAVER, 네이버]
@@ -59,4 +59,4 @@ exchanges:
         aliases: ['035720', '$035720', Kakao, 카카오]
       - ticker: 373220.KS
         asset_name: LG Energy Solution
-        aliases: ['373220', '$373220', LG Energy Solution, LG에너지솔루션, 엘지에너지솔루션]
+        aliases: ['373220', '$373220', LG Energy Solution, LG에너지솔루션, 엘지에너지솔루션, LG新能源]

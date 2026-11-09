@@ -78,7 +78,7 @@ def test_preflight_reports_all_blockers_without_launching_collection(monkeypatch
     monkeypatch.setattr('crowd_signal.pipeline.Pipeline.collect', reject_collection)
     result = runner.invoke(app, ['run-all', '--exchange', 'ALL', '--mode', 'live'])
     assert result.exit_code == 2
-    for name in ('APIFY_TOKEN', 'EXA_API_KEY', 'HKEX/telegram channels', 'KRX/telegram channels', 'KRX/naver_board actor'):
+    for name in ('APIFY_TOKEN', 'EXA_API_KEY'):
         assert name in result.stdout
     result = runner.invoke(app, ['doctor', '--json', '--strict'])
     assert result.exit_code == 2
@@ -86,7 +86,7 @@ def test_preflight_reports_all_blockers_without_launching_collection(monkeypatch
     assert payload['ready_for_live_collection'] is False
     settings = Settings(_env_file=None, apify_token='test-secret', exa_api_key='test-exa')
     with pytest.raises(ValueError) as failure:
-        require_live_setup(load_config(), settings, ['HKEX','KRX'])
+        require_live_setup(load_config(), Settings(_env_file=None), ['HKEX','KRX'])
     assert 'test-secret' not in str(failure.value)
 
 

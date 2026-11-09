@@ -30,12 +30,14 @@ def normalize_post(
     text = next(
         (
             row[key]
-            for key in ("text", "content", "msg", "message", "postText", "body")
+            for key in (("own_text", "text", "content", "msg", "message", "postText", "body") if source == "lihkg" else ("text", "content", "msg", "message", "postText", "body"))
             if row.get(key)
         ),
         None,
     )
-    if not isinstance(text, str):
+    if source == "lihkg" and "own_text" in row:
+        text = row.get("own_text")
+    if not isinstance(text, str) or not text.strip():
         raise ValueError("No post body; listing titles alone are not accepted")
     text = BeautifulSoup(text, "html.parser").get_text(" ", strip=True)
     timestamp = next(
@@ -56,7 +58,7 @@ def normalize_post(
     )
     if timestamp is None:
         raise ValueError("No source timestamp")
-    url = row.get("url") or row.get("postUrl") or row.get("link")
+    url = row.get("url") or row.get("postUrl") or row.get("link") or row.get("thread_url")
     if not url and source == "lihkg" and row.get("thread_id"):
         url = f"https://lihkg.com/thread/{row['thread_id']}/page/1"
     author = row.get("authorId") or row.get("user_id") or row.get("author") or row.get("user")
@@ -251,6 +253,13 @@ class ApifyCollector:
                                 )
                             )
                     for row in bodies:
+                        # A search hit does not prove that the body discusses this stock.
+                        from crowd_signal.captures import mentions_asset
+                        body = str(row.get("own_text") or "") if source == "lihkg" else " ".join(
+                            str(row.get(k) or "") for k in ("text", "content", "body", "message"))
+                        if not mentions_asset(body, asset.aliases):
+                            rejected += 1
+                            continue
                         try:
                             observed = parse_timestamp(raw_runs[-1]["manifest"]["checked_at"])
                             post = normalize_post(row, asset, source, exchange, observed)
@@ -281,9 +290,8 @@ class ApifyCollector:
                 coverage.append(info)
                 posts.extend(normalized)
                 event("social", **info)
-        missing = [
-            f"{row['ticker']} / {row['source']}" for row in coverage if row["usable_posts"] == 0
-        ]
+        missing = [source for source in exchange.proposed_sources
+                   if not any(row["source"] == source and row["usable_posts"] > 0 for row in coverage)]
         if missing:
             raise ValueError(
                 f"Two-source acceptance failed: no usable posts for {', '.join(missing)}. Raw runs are cached; do not claim complete coverage."

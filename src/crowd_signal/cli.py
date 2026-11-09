@@ -140,6 +140,18 @@ def collect(exchange: str = "HKEX"):
     perform("collect", exchange)
 
 
+@app.command("import-probes")
+def import_probes(
+    selections: Annotated[Path, typer.Option(exists=True, dir_okay=False)],
+    exchange: str = "HKEX", allow_partial: bool = False,
+):
+    """Import inspected Apify captures; partial coverage must be explicitly acknowledged."""
+    try:
+        console.print(pipeline().import_probes(exchange, selections, allow_partial))
+    except (ValueError, FileNotFoundError) as exc:
+        fail(exc)
+
+
 @app.command()
 def analyse(exchange: str = "HKEX", mode: str | None = None):
     """Clean data; extract sentiment/levels; write strictly causal features."""

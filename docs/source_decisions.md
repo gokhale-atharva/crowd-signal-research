@@ -124,3 +124,36 @@ The [Corevalue profile](https://t.me/s/corevalue) describes a Korean research/di
 it is a discovery candidate only, with asset coverage, original opinion versus reposts, recent
 history and actor compatibility still unverified. Neither profile was copied into a live dataset
 or counted toward the required two-source acceptance. Raw post collection remains through Apify.
+
+## Authenticated capture — 9 November 2026
+
+This update supersedes the earlier untested-source checkpoint above. The user explicitly
+requested LIHKG + Telegram for **both** exchanges, changing the original KRX source selection.
+Naver and Daum were not deployed or bypassed. Source metadata alone was not counted.
+
+28 capped Apify runs were inspected. Recorded run usage totals$0.084 at capture time;
+this is observed API usage, not a guarantee of the final account invoice or all platform costs.
+Limits remained20 items /$0.10 requested event charge per launch, timeout120s and no actor AI labels.
+Some searches returned zero records or an actor request-failure message despite SUCCEEDED;
+these are retained as coverage gaps. Raw captures and credentials remain ignored locally.
+
+After relevance/time/deduplication checks, HKEX has11 company-linked records: LIHKG3 and
+Telegram8. KRX has14: LIHKG2 and Telegram12. A multi-company body can count against multiple
+assets. Each retained body explicitly mentions its target company. LIHKG titles alone,
+quote-only replies, consumer-device threads and unrelated index replies are rejected.
+Examples of successful inspected runs include LIHKG aS96MoFfruYMPQOG6 and
+kqub8bTHVoji3kDa6; Telegram qkaOqw2bdjm0GQ4yv, Y733dAe78fk5M3vwJ,
+TJSRvyxZbVkvx8MVB and wKZuGAyLaitqXnZE5. Exact inputs and all run IDs are recorded in
+[the public-safe capture summary](feasibility/capture_summary.json).
+
+HK Telegram uses theartoftrade; KR uses h_zonstock and meritz_research. These public channels
+include publisher/broker research and reposts, so they are not treated as a representative
+retail population. No personal author identity or ownership is inferred from a channel name.
+LIHKG supplies community/forum evidence. Both platforms have relevant records per exchange,
+but individual company/platform gaps remain visible. LG Energy Solution has no usable social
+match in this sample. The displayed rule-based lexicon scores have no calibrated accuracy claim.
+
+Exa authenticated search and contents returned299 deduplicated-per-ticker articles:163 HKEX,
+136 KRX. Publication and retrieval times are separate. Current social/news retrieval is not
+backdated into historical features. New observations cannot prove historical predictive value.
+The original pre-open price-only issue records remain unchanged and await actual target closes.

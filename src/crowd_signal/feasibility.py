@@ -179,6 +179,7 @@ def probe(actor_id: str, input_file: Path, settings: Settings, output: Path) -> 
         "actor_id": actor_id,
         "run_id": run["id"],
         "status": run["status"],
+        "status_message": run.get("statusMessage"),
         "input": run_input,
         "max_items": settings.apify_max_items,
         "max_total_charge_usd": str(settings.apify_max_total_charge_usd),
