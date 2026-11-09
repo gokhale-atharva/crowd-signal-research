@@ -1,4 +1,4 @@
-# Remaining work — 8 November 2026
+# Remaining work — 9 November 2026
 
 ## Completed in this revision
 
@@ -24,12 +24,13 @@
    requires capped runs, relevant timestamped bodies, reviewed public investor Telegram channels
    for both exchanges, and deployment/inspection of the included Naver board actor. A channel
    profile or a Store listing is not enough. No paid calls or actor deployment was claimed.
-2. **GitHub delivery:** connected account gokhale-atharva is available, but the connector cannot
-   create a repository. Automatic approval review rejected browser creation of the proposed
-   private repository crowd-signal-research because its name, visibility and scope require explicit
-   authorization. Approval has been requested. No repository was created or source uploaded.
+2. **GitHub delivery completed:** private repository https://github.com/gokhale-atharva/crowd-signal-research
+   was approved by the user and created on 9 November. Source, reports and original Git history
+   are supplied. Credential-pattern and excluded-path checks passed for the current tree and
+   all345 original history objects before upload. No raw capture, .env or cache path was tracked.
 3. **Forward outcome:** issued predictions target 9 November 2026. Their actual close cannot be
-   evaluated on 8 November. Original prediction files stay immutable. Run evaluate after the
+   evaluated before the target close. At the 9 November morning check, both sessions were still open.
+   KRX closes at12:00 IST and HKEX at13:30 IST. Original prediction files stay immutable. Run evaluate after the
    relevant target close; no synthetic/backtest outcome may substitute for a genuine close.
 
 These dependencies prevent claiming that the complete live assessment is finished.

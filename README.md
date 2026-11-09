@@ -212,9 +212,9 @@ is documented but was not independently verified here.
 Supply private API keys; verify channels and two actual social sources per exchange; deploy/test
 Naver or select another allowed source if its endpoint/robots disallows collection. Accumulate
 historically available observations. Evaluate the recorded forward forecasts after9November closes.
-GitHub CLI authentication is absent on this workstation; the local repository and Sites source
-are retained, but a new GitHub repository cannot be created through the installed
-GitHub connector, which has no repository-creation action. No keys or submission email have been sent.
+Private source repository: [gokhale-atharva/crowd-signal-research](https://github.com/gokhale-atharva/crowd-signal-research).
+It contains source, reports and original Git history, excluding credentials, raw captures and caches.
+No keys or submission email have been sent.
 
 ## Sentiment capture views
 
@@ -231,5 +231,5 @@ training invalidates stale downstream output so it cannot be exported as a compl
 
 Before live work run `crowd-signal doctor --strict` or `crowd-signal doctor --json`. Run-all checks
 all selected exchanges before the first paid job and lists missing keys, actors and channels.
-See [remaining tasks](docs/pending_tasks.md) for credentials, source certification, GitHub approval
+See [remaining tasks](docs/pending_tasks.md) for credentials, source certification
 and the target-session outcome that cannot be completed with the current external state.

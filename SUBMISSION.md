@@ -5,7 +5,7 @@ multilingual extraction/fallback, causal features, levels,14 model/baseline comp
 walk-forward uncertainty, full offline replay, immutable forecasting/evaluation, and portable UI.
 
 - Hosted report: https://crowd-signal-research-desk.chandrashekhargokh96.chatgpt.site
-- GitHub repository: pending authentication; complete local Git repository supplied.
+- Private GitHub repository: https://github.com/gokhale-atharva/crowd-signal-research
 - Actual authenticated Apify actor runs: none (API key not supplied).
 - Candidate IDs: `claude_code_reviewer/lihkg-scraper-en`, `scrapesage/telegram-scraper`.
 - Custom private Naver actor: `actors/naver_board`, not deployed; ID assigned by Apify on deployment.
@@ -23,5 +23,8 @@ See README for actual results, reproduction, costs and limitations. No submissio
 
 Revision2026-11-08: sentiment recovery, a source-status page, retained observations and setup/
 stage guards are implemented. Full suite59 passed. Live sources remain uncertified without
-credentials. GitHub repository creation is awaiting explicit approval after automatic review
-rejected the proposed private repository action. See docs/pending_tasks.md for exact blockers.
+credentials. See docs/pending_tasks.md for exact blockers.
+
+Revision2026-11-09: the user approved private repository creation and source/report upload.
+The source repository preserves the original pre-open forecast commit history. API keys, raw
+captures and caches are excluded. Outcome evaluation remains pending today’s official closes.
