@@ -2,6 +2,7 @@ name: Publish research report
 on:
   push:
     branches: [main]
+    paths-ignore: [.github/workflows/refresh-live.yml]
   workflow_dispatch:
 permissions:
   contents: read
