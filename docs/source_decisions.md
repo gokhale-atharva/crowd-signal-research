@@ -157,3 +157,10 @@ Exa authenticated search and contents returned299 deduplicated-per-ticker articl
 136 KRX. Publication and retrieval times are separate. Current social/news retrieval is not
 backdated into historical features. New observations cannot prove historical predictive value.
 The original pre-open price-only issue records remain unchanged and await actual target closes.
+
+
+## Submission refresh 13 November 2026
+
+The ten-day capture was refreshed and original first-observed9November records retained for causal modelling. All five Korean assets now have relevant social records, including LG Energy Solution. Xiaomi searches returned stale/irrelevant bodies or actor failures, so none were fabricated or counted. The original prompt permits choosing assets with better coverage: TVB0511.HK now occupies that current HKEX slot and has a verified financial LIHKG body. The original Xiaomi pre-open issue and actual outcome remain immutable historical evidence.
+
+Both exchanges still use LIHKG + Telegram at the user's explicit later request. These are two platforms per exchange, not two guaranteed matches per company. Small publisher/broker Telegram samples are disclosed. Full run IDs, inputs, observed costs and current coverage are in feasibility/capture_summary.json. Unsupported, zero-row and irrelevant results do not count.

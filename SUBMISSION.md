@@ -1,22 +1,19 @@
-# Submission status
+# Submission
 
-Implemented: config-driven HKEX/KRX collection, Exa news, public daily market data,
-multilingual extraction/fallback, causal features, levels,14 model/baseline comparisons,
-walk-forward uncertainty, offline replay, immutable forecasting/evaluation and a multipage UI.
+Repository: https://github.com/gokhale-atharva/crowd-signal-research (public)
+Current report: https://gokhale-atharva.github.io/crowd-signal-research/
+Portable report: reports/index.html; self-contained exchange files: reports/hkex.html and reports/krx.html.
 
-- Hosted report: https://crowd-signal-research-desk.chandrashekhargokh96.chatgpt.site
-- Private source repository: https://github.com/gokhale-atharva/crowd-signal-research
-- Actual authenticated social actors: `claude_code_reviewer/lihkg-scraper-en` and
-  `scrapesage/telegram-scraper`, used for both exchanges at the user's9November request.
-- Two-platform capture acceptance: passed for each exchange. This is not a claim of two
-  platform matches for every company. HKEX11 / KRX14 company-linked social records.
-- Actual Exa articles: HKEX163 / KRX136, across all ten companies.
-- Source records, input parameters, observed costs and coverage: docs/feasibility/capture_summary.json.
-- Current extraction: labelled multilingual lexicon fallback; optional LLM key is absent.
-- Optional Naver actor source remains included but is not active or deployed.
-- Original genuine price-only forward forecasts: target2026-11-09; preserved in predictions/.
-- Genuine forward outcomes: pending target close. Do not substitute backtests or fixture outcomes.
+Actual Apify actors: claude_code_reviewer/lihkg-scraper-en and scrapesage/telegram-scraper.
+Apify token: [PROVIDE PRIVATELY — NEVER COMMIT]
+Exa token: [PROVIDE PRIVATELY — NEVER COMMIT]
+Optional LLM: not configured; current scoring is the labelled multilingual lexicon fallback.
 
-Apify and Exa keys are configured only in ignored local.env. No token, raw capture, cached body
-or author identifier is delivered in Git. Public reports include derived signals and source links.
-No submission email has been sent. See README and docs/pending_tasks.md for limitations.
+Current captures: 23 company-linked social records in the ten-day window, 505 retained Exa articles.
+Both platforms returned relevant posts per exchange, and all ten current assets have at least one usable social match.
+HKEX current watchlist replaces Xiaomi with TVB because of current-window coverage. Original Xiaomi issue/results remain unchanged.
+Both current forecasts use causal social/news features. Four available feature sessions and two sentiment-informed test sessions do not establish predictive value.
+Original pre-open9November forecasts now have genuine actual closes in predictions/results.csv. Random walk performed better overall in both exchanges.
+
+Fresh isolated Python3.12 install,66 tests, lint and full offline replay passed. See README for remaining limits and the provider-range disclosure.
+The repository is public; reviewer invitations are unnecessary. No email or token was sent automatically.

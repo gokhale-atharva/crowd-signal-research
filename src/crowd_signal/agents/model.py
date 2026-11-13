@@ -165,10 +165,15 @@ class NextSessionModel:
             for subset in ("price_only", "all")
         ]
         output, folds, fitted = [], [], {}
+        previous_information = None
         for index, session in enumerate(tests):
             train = causal_training_rows(frame, session)
             test = frame[(frame.session == session) & frame.target_log_return.notna()]
-            if index % self.refit_every == 0:
+            information = (int(train.social_available.sum()), int(train.news_available.sum()))
+            # Refit when newly labelled sentiment data becomes available, using only
+            # labels known at this test close. Historical price-only folds retain cadence.
+            if index % self.refit_every == 0 or information != previous_information:
+                previous_information = information
                 folds.append(
                     {
                         "test_start": session,
@@ -247,6 +252,12 @@ class NextSessionModel:
             "significance_note": "Exploratory unadjusted paired block-bootstrap comparisons. Cross-model multiple testing is not corrected.",
             "social_labelled_sessions": int(frame.groupby("session").social_available.max().sum()),
             "news_labelled_sessions": int(frame.groupby("session").news_available.max().sum()),
+            "feature_window_days": 10,
+            "refit_on_new_sentiment_labels": True,
+            "sentiment_informed_test_sessions": len({session for session in tests
+                if any(fold["test_start"] <= session and
+                       (fold["training_social_rows"] > 0 or fold["training_news_rows"] > 0)
+                       for fold in folds)}),
         }
         return ValidationResult(predictions, statistics, self.forecast(frame, predictions), folds)
 

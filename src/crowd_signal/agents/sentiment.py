@@ -209,7 +209,7 @@ class SentimentAgent:
                     }
                 except (httpx.HTTPError, ValueError, KeyError, IndexError):
                     extracted = {}
-            for index, _, text, scope, path in batch:
+            for index, _, _text, scope, path in batch:
                 result = extracted.get(index) or lexicon_extract(scope)
                 if use_llm and index not in extracted:
                     result.scorer = "lexicon-v1 (LLM unavailable)"

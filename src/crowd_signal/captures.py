@@ -73,6 +73,10 @@ def import_verified_probes(
             # Quoted text is another author's evidence, not this author's opinion.
             context = str(row.get("own_text") or "") if source == "lihkg" else " ".join(
                 str(row.get(key) or "") for key in ("text", "content", "body"))
+            if selection.get("finance_only") and not re.search(
+                r"股價|股价|股票|港股|市值|投資|投资|財報|财报|盈利|營收|营收|shares|stock|earnings", context, re.I
+            ):
+                continue
             targets = {a.ticker for a in exchange.tickers if mentions_asset(context, a.aliases)}
             for asset in exchange.tickers:
                 if asset.ticker not in targets:

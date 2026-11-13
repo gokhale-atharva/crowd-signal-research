@@ -1,0 +1,16 @@
+{
+  "HKEX": {
+    "n_assets": 5,
+    "target_session": "2026-11-09",
+    "model_mape_pct": 1.8557702109366616,
+    "random_walk_mape_pct": 1.7366673745758532,
+    "assets_beating_random_walk": 2
+  },
+  "KRX": {
+    "n_assets": 5,
+    "target_session": "2026-11-09",
+    "model_mape_pct": 2.3741501388165838,
+    "random_walk_mape_pct": 1.879204124935243,
+    "assets_beating_random_walk": 2
+  }
+}

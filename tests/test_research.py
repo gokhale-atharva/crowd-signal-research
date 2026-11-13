@@ -239,3 +239,16 @@ def test_incomplete_paid_run_is_not_launched_again(tmp_path, monkeypatch):
             exchange, tmp_path, datetime(2026, 11, 6, 12, tzinfo=UTC)
         )
     launch.assert_not_called()
+
+
+def test_vendor_range_normalization_preserves_model_prices():
+    from crowd_signal.agents.market import normalize_price_envelope, validate_bars
+
+    frame = pd.DataFrame([dict(ticker="0511.HK", session="2026-11-12", open=11., high=10.,
+        low=8., close=9., volume=5., provenance="live")])
+    result = normalize_price_envelope(frame)
+    validate_bars(result)
+    assert frame.high.iloc[0] == 10.
+    assert result.high.iloc[0] == 11. and result.provider_high.iloc[0] == 10.
+    assert result.ohlc_envelope_repaired.iloc[0]
+    assert result.close.equals(frame.close) and result.volume.equals(frame.volume)

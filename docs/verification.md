@@ -61,3 +61,12 @@ Screenshots: sentiment-lab.png, source-status-desktop.png and source-status-mobi
 No Apify/Exa credentials exist locally or in the hosted environment. No social capture or live
 source certification was performed. Prediction files were preserved. See pending_tasks.md for
 external dependencies, including GitHub approval and the future target-session close.
+
+
+## Submission release 13 November 2026
+
+A fresh isolated Python3.12.14 environment installed pyproject.toml successfully. Pip check found no broken requirements. All66 tests passed; Ruff passed for src/tests/scripts/actors. The full336-post, two-exchange keyless replay completed from a separate working directory with no provider keys. New tests cover rolling-window expiry, retained inspected imports and flagged vendor ranges that preserve model closes/volumes.
+
+The original pre-open issues were evaluated against genuine9November closes without changing issue bytes. Updated real models use four causal sentiment/news feature sessions, with only two sentiment-informed held-out sessions; no predictive benefit is claimed. Both exchanges and every current asset have social observations, with uneven platform coverage. TVB replaces Xiaomi in the active watchlist; the original forward universe and results remain preserved.
+
+The repository was made public after full-history credential/excluded-path checks. GitHub Pages deploys the report from committed source because the former hosting service currently rejects host-managed Git authentication. No API keys, raw captures, caches or author identifiers are published.

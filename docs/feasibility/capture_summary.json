@@ -1,12 +1,13 @@
 {
-  "checked_at": "2026-11-09T04:16:45.979340+00:00",
-  "method": "Authenticated capped Apify runs, inspected body text and source timestamps; Exa dated search and contents.",
+  "checked_at": "2026-11-13T04:00:15.493452+00:00",
+  "method": "Authenticated capped Apify captures; retained first-observed history; dated Exa news; genuine closed daily bars.",
   "exchanges": {
     "HKEX": {
-      "as_of": "2026-11-09T04:13:43.467638+00:00",
-      "post_count": 11,
-      "news_count": 163,
-      "bar_count": 1440,
+      "as_of": "2026-11-13T03:57:53.766335+00:00",
+      "bar_count": 1450,
+      "retained_social_records": 11,
+      "current_window_social_records": 7,
+      "news_count": 259,
       "source_acceptance_complete": true,
       "coverage": [
         {
@@ -20,17 +21,23 @@
             "9ZUyH6mLDhrmXyxRT",
             "FUJMBOE1VyLfaUgtN",
             "G0CGJKlfmSElV9NzI",
+            "J2hjAPiokpSvotvpf",
+            "Ly5wpISyRW2OsUbYP",
             "PKL7BKhVxsRES7WG5",
+            "Q3Z4MWwhiJPFFdjiu",
             "ZbSnTj505X2LgHyaB",
             "aS96MoFfruYMPQOG6",
+            "gK5gpo9KrNfircr7V",
             "h8kmTjBmxgeoeOsZV",
-            "wI6ZA5CfI5impod87"
+            "rPLoANHDO3VHkosMm",
+            "wI6ZA5CfI5impod87",
+            "xftbnoSw2M0bmCIJn"
           ],
           "usable_posts": 1,
           "rejected_rows": 0,
           "status": "verified_run",
-          "window_start": "2026-10-30T04:13:39.919231+00:00",
-          "window_end": "2026-11-09T04:13:39.919231+00:00"
+          "window_start": "2026-11-03T03:57:52.171169+00:00",
+          "window_end": "2026-11-13T03:57:52.171169+00:00"
         },
         {
           "source": "lihkg",
@@ -43,17 +50,23 @@
             "9ZUyH6mLDhrmXyxRT",
             "FUJMBOE1VyLfaUgtN",
             "G0CGJKlfmSElV9NzI",
+            "J2hjAPiokpSvotvpf",
+            "Ly5wpISyRW2OsUbYP",
             "PKL7BKhVxsRES7WG5",
+            "Q3Z4MWwhiJPFFdjiu",
             "ZbSnTj505X2LgHyaB",
             "aS96MoFfruYMPQOG6",
+            "gK5gpo9KrNfircr7V",
             "h8kmTjBmxgeoeOsZV",
-            "wI6ZA5CfI5impod87"
+            "rPLoANHDO3VHkosMm",
+            "wI6ZA5CfI5impod87",
+            "xftbnoSw2M0bmCIJn"
           ],
           "usable_posts": 0,
           "rejected_rows": 0,
           "status": "no_usable_posts",
-          "window_start": "2026-10-30T04:13:39.919231+00:00",
-          "window_end": "2026-11-09T04:13:39.919231+00:00"
+          "window_start": "2026-11-03T03:57:52.171169+00:00",
+          "window_end": "2026-11-13T03:57:52.171169+00:00"
         },
         {
           "source": "lihkg",
@@ -66,21 +79,27 @@
             "9ZUyH6mLDhrmXyxRT",
             "FUJMBOE1VyLfaUgtN",
             "G0CGJKlfmSElV9NzI",
+            "J2hjAPiokpSvotvpf",
+            "Ly5wpISyRW2OsUbYP",
             "PKL7BKhVxsRES7WG5",
+            "Q3Z4MWwhiJPFFdjiu",
             "ZbSnTj505X2LgHyaB",
             "aS96MoFfruYMPQOG6",
+            "gK5gpo9KrNfircr7V",
             "h8kmTjBmxgeoeOsZV",
-            "wI6ZA5CfI5impod87"
+            "rPLoANHDO3VHkosMm",
+            "wI6ZA5CfI5impod87",
+            "xftbnoSw2M0bmCIJn"
           ],
           "usable_posts": 0,
           "rejected_rows": 0,
           "status": "no_usable_posts",
-          "window_start": "2026-10-30T04:13:39.919231+00:00",
-          "window_end": "2026-11-09T04:13:39.919231+00:00"
+          "window_start": "2026-11-03T03:57:52.171169+00:00",
+          "window_end": "2026-11-13T03:57:52.171169+00:00"
         },
         {
           "source": "lihkg",
-          "ticker": "1810.HK",
+          "ticker": "0511.HK",
           "actor_id": "claude_code_reviewer/lihkg-scraper-en",
           "run_ids": [
             "07eHGCImAQNCsPW3A",
@@ -89,17 +108,23 @@
             "9ZUyH6mLDhrmXyxRT",
             "FUJMBOE1VyLfaUgtN",
             "G0CGJKlfmSElV9NzI",
+            "J2hjAPiokpSvotvpf",
+            "Ly5wpISyRW2OsUbYP",
             "PKL7BKhVxsRES7WG5",
+            "Q3Z4MWwhiJPFFdjiu",
             "ZbSnTj505X2LgHyaB",
             "aS96MoFfruYMPQOG6",
+            "gK5gpo9KrNfircr7V",
             "h8kmTjBmxgeoeOsZV",
-            "wI6ZA5CfI5impod87"
+            "rPLoANHDO3VHkosMm",
+            "wI6ZA5CfI5impod87",
+            "xftbnoSw2M0bmCIJn"
           ],
-          "usable_posts": 0,
+          "usable_posts": 1,
           "rejected_rows": 0,
-          "status": "no_usable_posts",
-          "window_start": "2026-10-30T04:13:39.919231+00:00",
-          "window_end": "2026-11-09T04:13:39.919231+00:00"
+          "status": "verified_run",
+          "window_start": "2026-11-03T03:57:52.171169+00:00",
+          "window_end": "2026-11-13T03:57:52.171169+00:00"
         },
         {
           "source": "lihkg",
@@ -112,91 +137,130 @@
             "9ZUyH6mLDhrmXyxRT",
             "FUJMBOE1VyLfaUgtN",
             "G0CGJKlfmSElV9NzI",
+            "J2hjAPiokpSvotvpf",
+            "Ly5wpISyRW2OsUbYP",
             "PKL7BKhVxsRES7WG5",
+            "Q3Z4MWwhiJPFFdjiu",
             "ZbSnTj505X2LgHyaB",
             "aS96MoFfruYMPQOG6",
+            "gK5gpo9KrNfircr7V",
             "h8kmTjBmxgeoeOsZV",
-            "wI6ZA5CfI5impod87"
+            "rPLoANHDO3VHkosMm",
+            "wI6ZA5CfI5impod87",
+            "xftbnoSw2M0bmCIJn"
           ],
           "usable_posts": 2,
           "rejected_rows": 0,
           "status": "verified_run",
-          "window_start": "2026-10-30T04:13:39.919231+00:00",
-          "window_end": "2026-11-09T04:13:39.919231+00:00"
+          "window_start": "2026-11-03T03:57:52.171169+00:00",
+          "window_end": "2026-11-13T03:57:52.171169+00:00"
         },
         {
           "source": "telegram",
           "ticker": "0700.HK",
           "actor_id": "scrapesage/telegram-scraper",
           "run_ids": [
+            "Jp7fI3PUJRgijAvUf",
+            "KGAO5th2MevTEHFGw",
+            "aFCl2g67fnmMz3Lvl",
+            "hYtZbvlJifINt1ouk",
             "qkaOqw2bdjm0GQ4yv"
           ],
-          "usable_posts": 3,
+          "usable_posts": 1,
           "rejected_rows": 0,
           "status": "verified_run",
-          "window_start": "2026-10-30T04:13:39.919231+00:00",
-          "window_end": "2026-11-09T04:13:39.919231+00:00"
+          "window_start": "2026-11-03T03:57:52.171169+00:00",
+          "window_end": "2026-11-13T03:57:52.171169+00:00"
         },
         {
           "source": "telegram",
           "ticker": "9988.HK",
           "actor_id": "scrapesage/telegram-scraper",
           "run_ids": [
+            "Jp7fI3PUJRgijAvUf",
+            "KGAO5th2MevTEHFGw",
+            "aFCl2g67fnmMz3Lvl",
+            "hYtZbvlJifINt1ouk",
             "qkaOqw2bdjm0GQ4yv"
           ],
-          "usable_posts": 3,
+          "usable_posts": 1,
           "rejected_rows": 0,
           "status": "verified_run",
-          "window_start": "2026-10-30T04:13:39.919231+00:00",
-          "window_end": "2026-11-09T04:13:39.919231+00:00"
+          "window_start": "2026-11-03T03:57:52.171169+00:00",
+          "window_end": "2026-11-13T03:57:52.171169+00:00"
         },
         {
           "source": "telegram",
           "ticker": "3690.HK",
           "actor_id": "scrapesage/telegram-scraper",
           "run_ids": [
+            "Jp7fI3PUJRgijAvUf",
+            "KGAO5th2MevTEHFGw",
+            "aFCl2g67fnmMz3Lvl",
+            "hYtZbvlJifINt1ouk",
             "qkaOqw2bdjm0GQ4yv"
           ],
           "usable_posts": 1,
           "rejected_rows": 0,
           "status": "verified_run",
-          "window_start": "2026-10-30T04:13:39.919231+00:00",
-          "window_end": "2026-11-09T04:13:39.919231+00:00"
+          "window_start": "2026-11-03T03:57:52.171169+00:00",
+          "window_end": "2026-11-13T03:57:52.171169+00:00"
         },
         {
           "source": "telegram",
-          "ticker": "1810.HK",
+          "ticker": "0511.HK",
           "actor_id": "scrapesage/telegram-scraper",
           "run_ids": [
+            "Jp7fI3PUJRgijAvUf",
+            "KGAO5th2MevTEHFGw",
+            "aFCl2g67fnmMz3Lvl",
+            "hYtZbvlJifINt1ouk",
             "qkaOqw2bdjm0GQ4yv"
           ],
-          "usable_posts": 1,
+          "usable_posts": 0,
           "rejected_rows": 0,
-          "status": "verified_run",
-          "window_start": "2026-10-30T04:13:39.919231+00:00",
-          "window_end": "2026-11-09T04:13:39.919231+00:00"
+          "status": "no_usable_posts",
+          "window_start": "2026-11-03T03:57:52.171169+00:00",
+          "window_end": "2026-11-13T03:57:52.171169+00:00"
         },
         {
           "source": "telegram",
           "ticker": "0005.HK",
           "actor_id": "scrapesage/telegram-scraper",
           "run_ids": [
+            "Jp7fI3PUJRgijAvUf",
+            "KGAO5th2MevTEHFGw",
+            "aFCl2g67fnmMz3Lvl",
+            "hYtZbvlJifINt1ouk",
             "qkaOqw2bdjm0GQ4yv"
           ],
           "usable_posts": 0,
           "rejected_rows": 0,
           "status": "no_usable_posts",
-          "window_start": "2026-10-30T04:13:39.919231+00:00",
-          "window_end": "2026-11-09T04:13:39.919231+00:00"
+          "window_start": "2026-11-03T03:57:52.171169+00:00",
+          "window_end": "2026-11-13T03:57:52.171169+00:00"
         }
       ],
-      "coverage_definition": "A usable body must mention the company; LIHKG consumer-device threads, quote-only replies, unrelated index replies and title-only records are excluded."
+      "methodology": {
+        "split": "expanding-window, all tickers share held-out sessions",
+        "refit_every_sessions": 5,
+        "forecast_model": "ridge_all",
+        "hyperparameters": "fixed before evaluation; no held-out tuning",
+        "zero_return_baseline": "identical to random_walk, not counted twice",
+        "significance_note": "Exploratory unadjusted paired block-bootstrap comparisons. Cross-model multiple testing is not corrected.",
+        "social_labelled_sessions": 4,
+        "news_labelled_sessions": 4,
+        "feature_window_days": 10,
+        "refit_on_new_sentiment_labels": true,
+        "sentiment_informed_test_sessions": 2
+      }
     },
     "KRX": {
-      "as_of": "2026-11-09T04:14:11.415622+00:00",
-      "post_count": 14,
-      "news_count": 136,
-      "bar_count": 1415,
+      "as_of": "2026-11-13T03:40:27.642836+00:00",
+      "bar_count": 1425,
+      "retained_social_records": 19,
+      "current_window_social_records": 16,
+      "news_count": 246,
       "source_acceptance_complete": true,
       "coverage": [
         {
@@ -204,11 +268,14 @@
           "ticker": "005930.KS",
           "actor_id": "claude_code_reviewer/lihkg-scraper-en",
           "run_ids": [
+            "5Y9uSK1JG7X60UWE9",
             "5n1002gThCgQJ12V0",
+            "6oqCz8DebbEuVOzcF",
             "7JPJCfmUaPuzgnI1j",
             "BYwOB40DeaHOylaOU",
             "DLWVubcQXZspOG6rr",
             "OFfGRfxjT1oLx0cj1",
+            "W19nxRVZNd0DeJWmA",
             "kqub8bTHVoji3kDa6",
             "sawQ5JseL5HzQWVPK",
             "tz0uo3s7rr3yBMdWB"
@@ -216,19 +283,22 @@
           "usable_posts": 1,
           "rejected_rows": 0,
           "status": "verified_run",
-          "window_start": "2026-10-30T04:13:53.096055+00:00",
-          "window_end": "2026-11-09T04:13:53.096055+00:00"
+          "window_start": "2026-11-03T03:39:09.960926+00:00",
+          "window_end": "2026-11-13T03:39:09.960926+00:00"
         },
         {
           "source": "lihkg",
           "ticker": "000660.KS",
           "actor_id": "claude_code_reviewer/lihkg-scraper-en",
           "run_ids": [
+            "5Y9uSK1JG7X60UWE9",
             "5n1002gThCgQJ12V0",
+            "6oqCz8DebbEuVOzcF",
             "7JPJCfmUaPuzgnI1j",
             "BYwOB40DeaHOylaOU",
             "DLWVubcQXZspOG6rr",
             "OFfGRfxjT1oLx0cj1",
+            "W19nxRVZNd0DeJWmA",
             "kqub8bTHVoji3kDa6",
             "sawQ5JseL5HzQWVPK",
             "tz0uo3s7rr3yBMdWB"
@@ -236,19 +306,22 @@
           "usable_posts": 1,
           "rejected_rows": 0,
           "status": "verified_run",
-          "window_start": "2026-10-30T04:13:53.096055+00:00",
-          "window_end": "2026-11-09T04:13:53.096055+00:00"
+          "window_start": "2026-11-03T03:39:09.960926+00:00",
+          "window_end": "2026-11-13T03:39:09.960926+00:00"
         },
         {
           "source": "lihkg",
           "ticker": "035420.KS",
           "actor_id": "claude_code_reviewer/lihkg-scraper-en",
           "run_ids": [
+            "5Y9uSK1JG7X60UWE9",
             "5n1002gThCgQJ12V0",
+            "6oqCz8DebbEuVOzcF",
             "7JPJCfmUaPuzgnI1j",
             "BYwOB40DeaHOylaOU",
             "DLWVubcQXZspOG6rr",
             "OFfGRfxjT1oLx0cj1",
+            "W19nxRVZNd0DeJWmA",
             "kqub8bTHVoji3kDa6",
             "sawQ5JseL5HzQWVPK",
             "tz0uo3s7rr3yBMdWB"
@@ -256,19 +329,22 @@
           "usable_posts": 0,
           "rejected_rows": 0,
           "status": "no_usable_posts",
-          "window_start": "2026-10-30T04:13:53.096055+00:00",
-          "window_end": "2026-11-09T04:13:53.096055+00:00"
+          "window_start": "2026-11-03T03:39:09.960926+00:00",
+          "window_end": "2026-11-13T03:39:09.960926+00:00"
         },
         {
           "source": "lihkg",
           "ticker": "035720.KS",
           "actor_id": "claude_code_reviewer/lihkg-scraper-en",
           "run_ids": [
+            "5Y9uSK1JG7X60UWE9",
             "5n1002gThCgQJ12V0",
+            "6oqCz8DebbEuVOzcF",
             "7JPJCfmUaPuzgnI1j",
             "BYwOB40DeaHOylaOU",
             "DLWVubcQXZspOG6rr",
             "OFfGRfxjT1oLx0cj1",
+            "W19nxRVZNd0DeJWmA",
             "kqub8bTHVoji3kDa6",
             "sawQ5JseL5HzQWVPK",
             "tz0uo3s7rr3yBMdWB"
@@ -276,19 +352,22 @@
           "usable_posts": 0,
           "rejected_rows": 0,
           "status": "no_usable_posts",
-          "window_start": "2026-10-30T04:13:53.096055+00:00",
-          "window_end": "2026-11-09T04:13:53.096055+00:00"
+          "window_start": "2026-11-03T03:39:09.960926+00:00",
+          "window_end": "2026-11-13T03:39:09.960926+00:00"
         },
         {
           "source": "lihkg",
           "ticker": "373220.KS",
           "actor_id": "claude_code_reviewer/lihkg-scraper-en",
           "run_ids": [
+            "5Y9uSK1JG7X60UWE9",
             "5n1002gThCgQJ12V0",
+            "6oqCz8DebbEuVOzcF",
             "7JPJCfmUaPuzgnI1j",
             "BYwOB40DeaHOylaOU",
             "DLWVubcQXZspOG6rr",
             "OFfGRfxjT1oLx0cj1",
+            "W19nxRVZNd0DeJWmA",
             "kqub8bTHVoji3kDa6",
             "sawQ5JseL5HzQWVPK",
             "tz0uo3s7rr3yBMdWB"
@@ -296,8 +375,8 @@
           "usable_posts": 0,
           "rejected_rows": 0,
           "status": "no_usable_posts",
-          "window_start": "2026-10-30T04:13:53.096055+00:00",
-          "window_end": "2026-11-09T04:13:53.096055+00:00"
+          "window_start": "2026-11-03T03:39:09.960926+00:00",
+          "window_end": "2026-11-13T03:39:09.960926+00:00"
         },
         {
           "source": "telegram",
@@ -306,14 +385,18 @@
           "run_ids": [
             "TJSRvyxZbVkvx8MVB",
             "Y733dAe78fk5M3vwJ",
+            "kSKZMWnmk85tEsz4A",
             "katVVEeKw0DRH2rfj",
-            "wKZuGAyLaitqXnZE5"
+            "oN7xauUbprT3U8vdf",
+            "w9bFZQpGOSHECI32M",
+            "wKZuGAyLaitqXnZE5",
+            "xd5L0RVQUIlEWUVxm"
           ],
-          "usable_posts": 4,
+          "usable_posts": 5,
           "rejected_rows": 0,
           "status": "verified_run",
-          "window_start": "2026-10-30T04:13:53.096055+00:00",
-          "window_end": "2026-11-09T04:13:53.096055+00:00"
+          "window_start": "2026-11-03T03:39:09.960926+00:00",
+          "window_end": "2026-11-13T03:39:09.960926+00:00"
         },
         {
           "source": "telegram",
@@ -322,14 +405,18 @@
           "run_ids": [
             "TJSRvyxZbVkvx8MVB",
             "Y733dAe78fk5M3vwJ",
+            "kSKZMWnmk85tEsz4A",
             "katVVEeKw0DRH2rfj",
-            "wKZuGAyLaitqXnZE5"
+            "oN7xauUbprT3U8vdf",
+            "w9bFZQpGOSHECI32M",
+            "wKZuGAyLaitqXnZE5",
+            "xd5L0RVQUIlEWUVxm"
           ],
-          "usable_posts": 1,
+          "usable_posts": 3,
           "rejected_rows": 0,
           "status": "verified_run",
-          "window_start": "2026-10-30T04:13:53.096055+00:00",
-          "window_end": "2026-11-09T04:13:53.096055+00:00"
+          "window_start": "2026-11-03T03:39:09.960926+00:00",
+          "window_end": "2026-11-13T03:39:09.960926+00:00"
         },
         {
           "source": "telegram",
@@ -338,14 +425,18 @@
           "run_ids": [
             "TJSRvyxZbVkvx8MVB",
             "Y733dAe78fk5M3vwJ",
+            "kSKZMWnmk85tEsz4A",
             "katVVEeKw0DRH2rfj",
-            "wKZuGAyLaitqXnZE5"
+            "oN7xauUbprT3U8vdf",
+            "w9bFZQpGOSHECI32M",
+            "wKZuGAyLaitqXnZE5",
+            "xd5L0RVQUIlEWUVxm"
           ],
-          "usable_posts": 4,
+          "usable_posts": 3,
           "rejected_rows": 0,
           "status": "verified_run",
-          "window_start": "2026-10-30T04:13:53.096055+00:00",
-          "window_end": "2026-11-09T04:13:53.096055+00:00"
+          "window_start": "2026-11-03T03:39:09.960926+00:00",
+          "window_end": "2026-11-13T03:39:09.960926+00:00"
         },
         {
           "source": "telegram",
@@ -354,14 +445,18 @@
           "run_ids": [
             "TJSRvyxZbVkvx8MVB",
             "Y733dAe78fk5M3vwJ",
+            "kSKZMWnmk85tEsz4A",
             "katVVEeKw0DRH2rfj",
-            "wKZuGAyLaitqXnZE5"
+            "oN7xauUbprT3U8vdf",
+            "w9bFZQpGOSHECI32M",
+            "wKZuGAyLaitqXnZE5",
+            "xd5L0RVQUIlEWUVxm"
           ],
-          "usable_posts": 3,
+          "usable_posts": 2,
           "rejected_rows": 0,
           "status": "verified_run",
-          "window_start": "2026-10-30T04:13:53.096055+00:00",
-          "window_end": "2026-11-09T04:13:53.096055+00:00"
+          "window_start": "2026-11-03T03:39:09.960926+00:00",
+          "window_end": "2026-11-13T03:39:09.960926+00:00"
         },
         {
           "source": "telegram",
@@ -370,17 +465,33 @@
           "run_ids": [
             "TJSRvyxZbVkvx8MVB",
             "Y733dAe78fk5M3vwJ",
+            "kSKZMWnmk85tEsz4A",
             "katVVEeKw0DRH2rfj",
-            "wKZuGAyLaitqXnZE5"
+            "oN7xauUbprT3U8vdf",
+            "w9bFZQpGOSHECI32M",
+            "wKZuGAyLaitqXnZE5",
+            "xd5L0RVQUIlEWUVxm"
           ],
-          "usable_posts": 0,
+          "usable_posts": 1,
           "rejected_rows": 0,
-          "status": "no_usable_posts",
-          "window_start": "2026-10-30T04:13:53.096055+00:00",
-          "window_end": "2026-11-09T04:13:53.096055+00:00"
+          "status": "verified_run",
+          "window_start": "2026-11-03T03:39:09.960926+00:00",
+          "window_end": "2026-11-13T03:39:09.960926+00:00"
         }
       ],
-      "coverage_definition": "A usable body must mention the company; LIHKG consumer-device threads, quote-only replies, unrelated index replies and title-only records are excluded."
+      "methodology": {
+        "split": "expanding-window, all tickers share held-out sessions",
+        "refit_every_sessions": 5,
+        "forecast_model": "ridge_all",
+        "hyperparameters": "fixed before evaluation; no held-out tuning",
+        "zero_return_baseline": "identical to random_walk, not counted twice",
+        "significance_note": "Exploratory unadjusted paired block-bootstrap comparisons. Cross-model multiple testing is not corrected.",
+        "social_labelled_sessions": 4,
+        "news_labelled_sessions": 4,
+        "feature_window_days": 10,
+        "refit_on_new_sentiment_labels": true,
+        "sentiment_informed_test_sessions": 2
+      }
     }
   },
   "runs": [
@@ -589,6 +700,384 @@
         "downloadMedia": false
       },
       "returned_count": 0,
+      "usage_total_usd": 0,
+      "max_items": 20,
+      "max_total_charge_usd": "0.10"
+    },
+    {
+      "checked_at": "2026-11-13T03:34:48.794225+00:00",
+      "actor_id": "scrapesage/telegram-scraper",
+      "run_id": "w9bFZQpGOSHECI32M",
+      "status": "SUCCEEDED",
+      "status_message": "Emitted 3 items.",
+      "input": {
+        "channels": [
+          "https://t.me/meritz_research"
+        ],
+        "resultsType": "messages",
+        "oldestMessageDate": "2026-11-03T03:34:20.877221+00:00",
+        "newestMessageDate": "2026-11-13T03:34:20.877221+00:00",
+        "maxMessages": 20,
+        "downloadMedia": false,
+        "searchQuery": "네이버"
+      },
+      "returned_count": 3,
+      "usage_total_usd": 0,
+      "max_items": 20,
+      "max_total_charge_usd": "0.10"
+    },
+    {
+      "checked_at": "2026-11-13T03:34:48.350615+00:00",
+      "actor_id": "scrapesage/telegram-scraper",
+      "run_id": "oN7xauUbprT3U8vdf",
+      "status": "SUCCEEDED",
+      "status_message": "Emitted 1 item.",
+      "input": {
+        "channels": [
+          "https://t.me/meritz_research"
+        ],
+        "resultsType": "messages",
+        "oldestMessageDate": "2026-11-03T03:34:20.877221+00:00",
+        "newestMessageDate": "2026-11-13T03:34:20.877221+00:00",
+        "maxMessages": 20,
+        "downloadMedia": false,
+        "searchQuery": "LG에너지솔루션"
+      },
+      "returned_count": 1,
+      "usage_total_usd": 0,
+      "max_items": 20,
+      "max_total_charge_usd": "0.10"
+    },
+    {
+      "checked_at": "2026-11-13T03:34:34.657838+00:00",
+      "actor_id": "scrapesage/telegram-scraper",
+      "run_id": "xd5L0RVQUIlEWUVxm",
+      "status": "SUCCEEDED",
+      "status_message": "Emitted 10 items.",
+      "input": {
+        "channels": [
+          "https://t.me/h_zonstock"
+        ],
+        "resultsType": "messages",
+        "oldestMessageDate": "2026-11-03T03:34:20.877221+00:00",
+        "newestMessageDate": "2026-11-13T03:34:20.877221+00:00",
+        "maxMessages": 20,
+        "downloadMedia": false
+      },
+      "returned_count": 10,
+      "usage_total_usd": 0,
+      "max_items": 20,
+      "max_total_charge_usd": "0.10"
+    },
+    {
+      "checked_at": "2026-11-13T03:36:02.577089+00:00",
+      "actor_id": "claude_code_reviewer/lihkg-scraper-en",
+      "run_id": "5Y9uSK1JG7X60UWE9",
+      "status": "SUCCEEDED",
+      "status_message": "Scraped 11 items.",
+      "input": {
+        "mode": "thread",
+        "threadIds": [
+          "4177148"
+        ],
+        "maxReplies": 10,
+        "maxItems": 20,
+        "aiLabels": false
+      },
+      "returned_count": 11,
+      "usage_total_usd": 0,
+      "max_items": 20,
+      "max_total_charge_usd": "0.10"
+    },
+    {
+      "checked_at": "2026-11-13T03:35:51.725474+00:00",
+      "actor_id": "claude_code_reviewer/lihkg-scraper-en",
+      "run_id": "6oqCz8DebbEuVOzcF",
+      "status": "SUCCEEDED",
+      "status_message": "Scraped 11 items.",
+      "input": {
+        "mode": "thread",
+        "threadIds": [
+          "4177206"
+        ],
+        "maxReplies": 10,
+        "maxItems": 20,
+        "aiLabels": false
+      },
+      "returned_count": 11,
+      "usage_total_usd": 0,
+      "max_items": 20,
+      "max_total_charge_usd": "0.10"
+    },
+    {
+      "checked_at": "2026-11-13T03:35:40.991198+00:00",
+      "actor_id": "claude_code_reviewer/lihkg-scraper-en",
+      "run_id": "W19nxRVZNd0DeJWmA",
+      "status": "SUCCEEDED",
+      "status_message": "Scraped 3 items.",
+      "input": {
+        "mode": "search",
+        "keywords": [
+          "韓股"
+        ],
+        "dateFrom": "10d",
+        "order": "desc_create_time",
+        "maxItems": 20,
+        "aiLabels": false
+      },
+      "returned_count": 3,
+      "usage_total_usd": 0.005,
+      "max_items": 20,
+      "max_total_charge_usd": "0.10"
+    },
+    {
+      "checked_at": "2026-11-13T03:35:00.845535+00:00",
+      "actor_id": "scrapesage/telegram-scraper",
+      "run_id": "kSKZMWnmk85tEsz4A",
+      "status": "SUCCEEDED",
+      "status_message": "Emitted 2 items.",
+      "input": {
+        "channels": [
+          "https://t.me/meritz_research"
+        ],
+        "resultsType": "messages",
+        "oldestMessageDate": "2026-11-03T03:34:20.877221+00:00",
+        "newestMessageDate": "2026-11-13T03:34:20.877221+00:00",
+        "maxMessages": 20,
+        "downloadMedia": false,
+        "searchQuery": "카카오"
+      },
+      "returned_count": 2,
+      "usage_total_usd": 0,
+      "max_items": 20,
+      "max_total_charge_usd": "0.10"
+    },
+    {
+      "checked_at": "2026-11-13T03:47:04.660534+00:00",
+      "actor_id": "scrapesage/telegram-scraper",
+      "run_id": "aFCl2g67fnmMz3Lvl",
+      "status": "SUCCEEDED",
+      "status_message": "Emitted 1 item.",
+      "input": {
+        "channels": [
+          "https://t.me/cnbeta_com"
+        ],
+        "resultsType": "messages",
+        "searchQuery": "小米",
+        "oldestMessageDate": "2026-11-03T03:46:50.085591+00:00",
+        "newestMessageDate": "2026-11-13T03:46:50.085591+00:00",
+        "maxMessages": 20,
+        "downloadMedia": false
+      },
+      "returned_count": 1,
+      "usage_total_usd": 0,
+      "max_items": 20,
+      "max_total_charge_usd": "0.10"
+    },
+    {
+      "checked_at": "2026-11-13T03:43:37.923215+00:00",
+      "actor_id": "claude_code_reviewer/lihkg-scraper-en",
+      "run_id": "K6quqEqFGzdN9hEhV",
+      "status": "SUCCEEDED",
+      "status_message": "0 items: 1 request(s) failed after retries (site block, rate limit or server error). This is NOT an empty result - retry later or switch the proxy to residential.",
+      "input": {
+        "mode": "search",
+        "keywords": [
+          "1810"
+        ],
+        "dateFrom": "10d",
+        "order": "desc_create_time",
+        "maxItems": 20,
+        "aiLabels": false
+      },
+      "returned_count": 0,
+      "usage_total_usd": 0.005,
+      "max_items": 20,
+      "max_total_charge_usd": "0.10"
+    },
+    {
+      "checked_at": "2026-11-13T03:45:01.930710+00:00",
+      "actor_id": "scrapesage/telegram-scraper",
+      "run_id": "KGAO5th2MevTEHFGw",
+      "status": "SUCCEEDED",
+      "status_message": "0 items — Telegram returned nothing for these channels. Check the channel handle (without @) and that it is a PUBLIC channel — private channels and those with no public preview cannot be read.",
+      "input": {
+        "channels": [
+          "https://t.me/ym_yaowen"
+        ],
+        "resultsType": "messages",
+        "searchQuery": "小米",
+        "oldestMessageDate": "2026-11-03T03:44:49.013072+00:00",
+        "newestMessageDate": "2026-11-13T03:44:49.013072+00:00",
+        "maxMessages": 20,
+        "downloadMedia": false
+      },
+      "returned_count": 0,
+      "usage_total_usd": 0,
+      "max_items": 20,
+      "max_total_charge_usd": "0.10"
+    },
+    {
+      "checked_at": "2026-11-13T03:38:19.660513+00:00",
+      "actor_id": "scrapesage/telegram-scraper",
+      "run_id": "hYtZbvlJifINt1ouk",
+      "status": "SUCCEEDED",
+      "status_message": "Emitted 1 item.",
+      "input": {
+        "channels": [
+          "https://t.me/theartoftrade"
+        ],
+        "resultsType": "messages",
+        "searchQuery": "小米",
+        "oldestMessageDate": "2026-11-03T03:38:08.602456+00:00",
+        "newestMessageDate": "2026-11-13T03:38:08.602456+00:00",
+        "maxMessages": 20,
+        "downloadMedia": false
+      },
+      "returned_count": 1,
+      "usage_total_usd": 0,
+      "max_items": 20,
+      "max_total_charge_usd": "0.10"
+    },
+    {
+      "checked_at": "2026-11-13T03:35:25.815028+00:00",
+      "actor_id": "claude_code_reviewer/lihkg-scraper-en",
+      "run_id": "Ly5wpISyRW2OsUbYP",
+      "status": "SUCCEEDED",
+      "status_message": "Scraped 1 item.",
+      "input": {
+        "mode": "thread",
+        "threadIds": [
+          "4178376"
+        ],
+        "maxReplies": 10,
+        "maxItems": 20,
+        "aiLabels": false
+      },
+      "returned_count": 1,
+      "usage_total_usd": 0,
+      "max_items": 20,
+      "max_total_charge_usd": "0.10"
+    },
+    {
+      "checked_at": "2026-11-13T03:35:16.027288+00:00",
+      "actor_id": "claude_code_reviewer/lihkg-scraper-en",
+      "run_id": "J2hjAPiokpSvotvpf",
+      "status": "SUCCEEDED",
+      "status_message": "Scraped 7 items.",
+      "input": {
+        "mode": "thread",
+        "threadIds": [
+          "4179443"
+        ],
+        "maxReplies": 10,
+        "maxItems": 20,
+        "aiLabels": false
+      },
+      "returned_count": 7,
+      "usage_total_usd": 0.005,
+      "max_items": 20,
+      "max_total_charge_usd": "0.10"
+    },
+    {
+      "checked_at": "2026-11-13T03:35:03.981824+00:00",
+      "actor_id": "claude_code_reviewer/lihkg-scraper-en",
+      "run_id": "xftbnoSw2M0bmCIJn",
+      "status": "SUCCEEDED",
+      "status_message": "Scraped 3 items.",
+      "input": {
+        "mode": "search",
+        "keywords": [
+          "騰訊"
+        ],
+        "dateFrom": "10d",
+        "order": "desc_create_time",
+        "maxItems": 20,
+        "aiLabels": false
+      },
+      "returned_count": 3,
+      "usage_total_usd": 0.005,
+      "max_items": 20,
+      "max_total_charge_usd": "0.10"
+    },
+    {
+      "checked_at": "2026-11-13T03:35:36.312323+00:00",
+      "actor_id": "claude_code_reviewer/lihkg-scraper-en",
+      "run_id": "gK5gpo9KrNfircr7V",
+      "status": "SUCCEEDED",
+      "status_message": "Scraped 8 items.",
+      "input": {
+        "mode": "thread",
+        "threadIds": [
+          "4177228"
+        ],
+        "maxReplies": 10,
+        "maxItems": 20,
+        "aiLabels": false
+      },
+      "returned_count": 8,
+      "usage_total_usd": 0,
+      "max_items": 20,
+      "max_total_charge_usd": "0.10"
+    },
+    {
+      "checked_at": "2026-11-13T03:35:26.767532+00:00",
+      "actor_id": "claude_code_reviewer/lihkg-scraper-en",
+      "run_id": "rPLoANHDO3VHkosMm",
+      "status": "SUCCEEDED",
+      "status_message": "Scraped 2 items.",
+      "input": {
+        "mode": "thread",
+        "threadIds": [
+          "4177844"
+        ],
+        "maxReplies": 10,
+        "maxItems": 20,
+        "aiLabels": false
+      },
+      "returned_count": 2,
+      "usage_total_usd": 0,
+      "max_items": 20,
+      "max_total_charge_usd": "0.10"
+    },
+    {
+      "checked_at": "2026-11-13T03:35:16.457618+00:00",
+      "actor_id": "claude_code_reviewer/lihkg-scraper-en",
+      "run_id": "Q3Z4MWwhiJPFFdjiu",
+      "status": "SUCCEEDED",
+      "status_message": "Scraped 3 items.",
+      "input": {
+        "mode": "search",
+        "keywords": [
+          "匯豐"
+        ],
+        "dateFrom": "10d",
+        "order": "desc_create_time",
+        "maxItems": 20,
+        "aiLabels": false
+      },
+      "returned_count": 3,
+      "usage_total_usd": 0.005,
+      "max_items": 20,
+      "max_total_charge_usd": "0.10"
+    },
+    {
+      "checked_at": "2026-11-13T03:34:33.955076+00:00",
+      "actor_id": "scrapesage/telegram-scraper",
+      "run_id": "Jp7fI3PUJRgijAvUf",
+      "status": "SUCCEEDED",
+      "status_message": "Emitted 10 items.",
+      "input": {
+        "channels": [
+          "https://t.me/theartoftrade"
+        ],
+        "resultsType": "messages",
+        "oldestMessageDate": "2026-11-03T03:34:20.877221+00:00",
+        "newestMessageDate": "2026-11-13T03:34:20.877221+00:00",
+        "maxMessages": 20,
+        "downloadMedia": false
+      },
+      "returned_count": 10,
       "usage_total_usd": 0,
       "max_items": 20,
       "max_total_charge_usd": "0.10"
@@ -955,13 +1444,12 @@
       "max_total_charge_usd": "0.10"
     }
   ],
-  "observed_apify_run_usage_total_usd": 0.084,
+  "observed_apify_run_usage_total_usd": 0.109,
   "limitations": [
-    "25 company-linked records are not25 necessarily distinct messages. Multi-company bodies can match several tickers.",
-    "Some listed actor searches returned SUCCEEDED with zero relevant records or a request-failure status message; these do not verify a source.",
-    "Telegram includes publisher/broker commentary and reposts. Samples are not representative retail sentiment.",
-    "Lexicon-v1 scoring, not LLM extraction, is active; explicit holdings must not be inferred from an optimistic tone.",
-    "All captured social/news retrieval times are preserved. They were unavailable for older session features, so this capture does not establish predictive sentiment value.",
-    "Original November9 price-only issue files are unchanged; outcomes are pending the official closes."
+    "Current-window gaps are not neutral scores. The current HKEX watchlist substitutes TVB for Xiaomi because Xiaomi had no qualifying current-window post. Original Xiaomi issue/results remain preserved.",
+    "Telegram includes publisher/broker research and reposts, not a representative retail survey.",
+    "Four causally available sentiment/news feature sessions and two sentiment-informed held-out sessions are insufficient to establish predictive value.",
+    "Original pre-open issues were price-only; genuine outcomes are now recorded without modifying the issue files.",
+    "Some successful actor statuses have zero or irrelevant output; these do not verify an asset/source match."
   ]
 }

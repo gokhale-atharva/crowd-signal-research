@@ -88,6 +88,7 @@ class MarketData:
             frame = pd.DataFrame(rows)
             if frame.empty or frame.session.iloc[-1] != last_closed.isoformat():
                 raise ValueError(f"Stale market bars for {asset.ticker}: expected {last_closed}")
+            frame = normalize_price_envelope(frame)
             frames.append(frame)
         bars = pd.concat(frames, ignore_index=True)
         validate_bars(bars)
@@ -113,3 +114,21 @@ def validate_bars(bars: pd.DataFrame) -> None:
         bars.low > bars[["open", "close", "high"]].min(axis=1)
     ).any():
         raise ValueError("Invalid OHLC range")
+
+
+def normalize_price_envelope(frame: pd.DataFrame) -> pd.DataFrame:
+    """Retain provider values and flag a minimal range containing its open/close.
+
+    Some vendor bars report opens outside their high/low range.
+    Close and volume, the model inputs, are never changed. The derived envelope
+    is explicitly distinguished from the preserved provider high/low.
+    """
+    result = frame.copy()
+    values = result[["open", "high", "low", "close"]]
+    if values.isna().any().any() or (values <= 0).any().any():
+        return result  # Validation must reject invalid observed prices.
+    result["provider_high"], result["provider_low"] = result.high, result.low
+    result["high"] = values.max(axis=1)
+    result["low"] = values.min(axis=1)
+    result["ohlc_envelope_repaired"] = (result.high != result.provider_high) | (result.low != result.provider_low)
+    return result

@@ -1,239 +1,130 @@
 # Crowd Signal
 
-A Python research pipeline for five Hong Kong and five Korean stocks, with a multi-page research site and an animated 3D landing page. It collects social data through Apify, news through Exa,
-and public daily OHLCV through yfinance; extracts multilingual sentiment and explicit author
-positions; computes price levels; and tests next-session models through time.
+A reproducible Python pipeline for social sentiment, news, price levels and next-session equity estimates across Hong Kong and South Korea.
 
-[Hosted research workspace](https://crowd-signal-research-desk.chandrashekhargokh96.chatgpt.site)
-· [Portable HTML](reports/index.html) · [Source decisions](docs/source_decisions.md)
-· [Design references](docs/design_references.md) · [Task brief](docs/task_brief.md)
+[Open the research report](https://gokhale-atharva.github.io/crowd-signal-research/) · [Public source repository](https://github.com/gokhale-atharva/crowd-signal-research) · [Portable report](reports/index.html) · [Source evidence](docs/feasibility/capture_summary.json)
 
-Both exchanges now have inspected **LIHKG and Telegram** captures, plus **299 Exa news
-articles** across all ten companies. The current 10-day social sample contains 25
-company-linked records (one multi-company message can count for multiple tickers).
-Coverage is uneven: HKEX has social matches for five companies, KRX for four. LG Energy
-Solution has news but no usable social match. These small public-channel/forum samples
-are not a representative retail survey. Sentiment uses the labelled multilingual lexicon;
-no LLM key is configured. Prices are saved daily observations through **6 November 2026**.
-The original price-only predictions remain unchanged. Simulated lab is a separate fixture mode.
+## Submission snapshot 13 November 2026
 
-![Captured source coverage](docs/img/captured-sources-krx.png)
+Both exchanges have inspected LIHKG and Telegram captures. The current ten-day window has **23 company-linked social records across all ten selected companies**. The retained news snapshot contains **505 Exa articles**. One message can match several tickers. Telegram includes publisher/broker research and reposts; these small samples are not representative retail sentiment.
+
+Daily prices end **12 November 2026**, the latest completed session at capture. Sentiment/news observations first collected on9 November are retained with their original availability times. Both updated pooled Ridge forecasts now use the all-feature model. There are only **four sentiment/news feature sessions and two sentiment-informed held-out sessions**; predictive value is not established.
+
+**The genuine forward check is complete.** The original pre-open issues targeted9 November. Their actual closes and errors are in [predictions/results.csv](predictions/results.csv). Original issue files and pre-open commit history are unchanged. Those original predictions were price-only, and the random walk had lower overall error in both exchanges.
+
+![Forward test and model evidence](docs/img/submission-validation.png)
 
 ## Architecture
 
 ```mermaid
 flowchart LR
  YAML[Exchange YAML] --> CLI[Typer CLI]
- CLI --> Collect[Apify social / Exa news / yfinance]
- Collect --> Raw[Ignored raw captures + run manifests]
- Raw --> Clean[Typed records / UTC / dedupe / availability]
- Clean --> Extract[Cached schema-constrained LLM or lexicon]
- Extract --> Signals[Positions / momentum / price levels]
- Signals --> Features[Point-in-time session features]
- Features --> Validate[Expanding-window models / baselines / uncertainty]
- Validate --> HTML[Portable Plotly + Motion observatory]
- Validate --> Forecast[Immutable pre-open git record]
- Forecast --> Evaluate[After-close append-only results]
- Bundle[Offline replay bundle] --> Clean
+ CLI --> Capture[Apify social / Exa news / daily market bars]
+ Capture --> Cache[Ignored raw responses and run manifests]
+ Cache --> Normalize[UTC / relevance / dedupe / first observations]
+ Normalize --> Extract[Schema constrained LLM or labelled lexicon]
+ Extract --> Signals[Sentiment / explicit positions / price levels]
+ Signals --> Features[Causal ten day rolling features]
+ Features --> Models[Expanding window models / baselines / uncertainty]
+ Models --> Report[Portable multipage HTML / Motion / Three.js]
+ Models --> Issue[Immutable pre open issue]
+ Issue --> Outcome[Append only genuine close evaluation]
+ Replay[Marked offline sample bundle] --> Normalize
 ```
-
-Small agents live in `src/crowd_signal/agents`; the same orchestrator handles both exchanges.
-Configuration is `src/crowd_signal/config/exchanges.yaml`. Public raw captures, author handles,
-API keys, processed caches and virtual environments are ignored by Git.
 
 ## Quick start
 
-Python 3.11+; tested on Windows / Python 3.13.5. In a fresh environment:
+Python 3.11–3.14. Tested in a fresh isolated Windows/Python 3.12 environment, including a full keyless replay and66 passing tests. From a fresh clone:
 
 ```sh
 python -m venv .venv
-# Activate: Windows .venv\Scripts\activate; macOS/Linux source .venv/bin/activate
+# Activate Windows: .venv\Scripts\activate
+# Activate macOS/Linux: source .venv/bin/activate
 python -m pip install -e ".[dev]"
 crowd-signal replay
 ```
 
-Replay reads committed `data/sample/bundle.json`, 2,800 synthetic bars, 336 synthetic social
-posts and 305 synthetic news records, then executes cleaning, sentiment, levels, feature
-construction, all model variants, uncertainty and reports **without network or keys**.
-It takes roughly a minute depending on hardware. The small `posts.json` fixture remains a
-separate parser smoke input. Generated fixture data is never issued as a real forecast.
+Open reports/index.html. The entire folder should be retained for multipage navigation. reports/hkex.html and reports/krx.html are self-contained exports. No CDN is required.
 
-Open `reports/index.html` by double-click, or use the hosted link. The landing page has a
-Motion entrance and an interactive Three.js stack with separate/reassemble, reset, keyboard
-rotation and pause controls. Its primary workspace link opens a new tab.
+Replay uses explicitly synthetic bars/posts/news to demonstrate the complete software pipeline without network access or API keys. Synthetic results are never represented as real trading performance. The included Makefile provides setup, replay, live, test and report targets.
 
-Research has its own pages: `markets.html`, ten `company-*.html` pages, `community.html`,
-`validation.html` and `methodology.html`. Company cards and table entries open company pages.
-Page links preserve the exchange and evidence mode. The landing and legacy `hkex.html` /
-`krx.html` exports embed their runtimes; the other pages share files in `reports/assets`.
-Keep the exported folder together for offline navigation. Nothing depends on a CDN.
+## Live collection in five steps
 
-The hosted site is a saved research report, not a server that executes Python or refreshes prices.
+1. Copy.env.example to ignored.env. Set APIFY_TOKEN and EXA_API_KEY privately. LLM_API_KEY is optional.
+2. Inspect actor metadata, permissions, pricing and current provider credit. Run crowd-signal doctor --strict.
+3. Review the exchange YAML, public Telegram channels and the capped source inputs in docs/inputs. A source only counts after actual timestamped relevant bodies are inspected.
+4. Run crowd-signal run-all --exchange ALL --mode live. Completed raw responses are cached; incomplete paid runs are not blindly relaunched.
+5. Inspect coverage and causal availability, then run crowd-signal report. Commit the exported reports to publish through GitHub Pages. Use predict only after refreshing the latest closed session and before the target open; use evaluate after a genuine target close.
 
-A real keyless workflow downloads current public prices and runs both exchanges:
+Inspected probes can be reused without another paid Apify launch:
 
 ```sh
-crowd-signal run-all --exchange ALL --mode price_only
-```
-
-## Live setup in five steps
-
-1. Copy `.env.example` to ignored `.env`; fill `APIFY_TOKEN` and `EXA_API_KEY`.
-   An OpenAI-compatible `LLM_API_KEY` is optional; without it the multilingual lexicon runs.
-2. Run `crowd-signal feasibility --query lihkg`; inspect Store metadata and billing.
-   Run the capped `probe` commands documented in `docs/source_decisions.md`.
-3. Review the configured public Telegram channels and source actors for both exchanges.
-   Both use LIHKG + Telegram. The old optional Naver actor is not active or deployed.
-4. Run `crowd-signal run-all --exchange ALL --mode live`. Each exchange needs actual relevant
-   bodies from both platforms; per-company gaps remain visible rather than becoming zero scores.
-   To reuse already inspected probes without paid relaunches, use `crowd-signal import-probes
-   --exchange HKEX --selections data/raw/feasibility/HKEX_capture_inputs.json`, then analyse/train.
-5. Commit source changes, run `crowd-signal predict --exchange HKEX --mode live` and KRX
-   before their next open. After the target session closes run `crowd-signal evaluate
-   --exchange HKEX` and KRX, then `crowd-signal report`.
-
-Source verification records, run IDs, observed costs and coverage are in
-[the capture summary](docs/feasibility/capture_summary.json). Raw captures remain private.
-
-## Actor IDs, inputs and costs
-
-| Source | Actor | Input / current state |
-| --- | --- | --- |
-| HK/KR LIHKG | `claude_code_reviewer/lihkg-scraper-en` | Inspected timestamped bodies, bounded thread hydration; titles and irrelevant device/index replies excluded. |
-| HK/KR Telegram | `scrapesage/telegram-scraper` | Inspected public channel messages, dated window, max20, no media. |
-| Optional Naver adapter | Included `actors/naver_board` | Not active or deployed. The user's9November instruction selects LIHKG + Telegram for both exchanges. |
-
-Authenticated runs used the first two actors. HK channel: `theartoftrade`; KR channels:
-`h_zonstock` and `meritz_research`. Telegram includes publisher/broker research and reposts;
-it must not be described as independent author positions or a retail-population sample.
-
-Every launch supplies `max_items<=20`, `max_total_charge_usd<=0.10`, and a timeout.
-The collector divides a default **$2 requested event-charge budget per exchange workflow**
-across alias searches and potential hydration; it refuses caps below $0.01. Two exchanges
-reserve at most $4 in event-charge caps before separate feasibility tests. Caches skip
-completed runs. Paid actor launches are never automatically retried. Metadata/dataset reads
-may retry. Unknown pricing is refused except for an actor owned by the authenticated account,
-which is restricted to 256MB and a short timeout. That owned compute actor is **not** protected
-by an event-charge cap: compute, proxy, storage, build and rental charges can be additional.
-Check remaining free credit before running. The capture summary records observed run costs;
-zero-row runs and unrelated records are not counted as source acceptance.
-Exa/LLM billing is separate; default Exa usage is at most 40 dated searches for ten assets
-(EN/local ×10/90days), up to12 results each. Pricing is provider-controlled.
-
-## Methodology
-
-- All publications normalize to UTC and preserve source timezone. Actual XHKG/XKRX calendars
-  supply holidays and session times. Session assignment tests include after-close/weekend cases.
-- Exact normalized hashes and near-duplicate similarity remove repeated content; short/link-only,
-  repeated-token and obvious promotional spam is excluded. Author identifiers are hashed.
-- Structured LLM batches validate a strict schema and exact IDs, cache by provider/model/content,
-  and fall back to a clearly labelled English/Chinese/Korean lexicon on failure. Explicit long/
-  short statements are counted per known author using their latest position; opinion alone does
-  not imply ownership. Unknown-author position posts are counted separately.
-- Sentiment weights are `(1+log1p(likes+reposts+0.1*views))*sqrt(1+log1p(followers))`, multiplied
-  by an exponential three-day half-life. Log scaling dampens viral outliers; decay emphasizes
-  recent views. Missing metrics remain null in storage and contribute zero only to the formula.
-  These are heuristic choices, not estimated causal effects.
-- Signals cover ten days; Exa also retrieves90days of dated history. **Publication time is not
-  proof of historical availability.** Features use max(publication, observed/retrieved time).
-  Today’s retrieved articles and engagement are never backdated. Thus a fresh live collection
-  cannot honestly create90days of historical news features. Accumulate daily snapshots or replay
-  contemporaneous captures to build that history.
-- Features include lagged returns,10-session volatility, RSI14, volume z-score, available social/
-  news sentiment, volume, momentum and bull/bear ratio. Current OHLCV is consumed after official
-  close, then forecasts are issued before the following open. Labels are next-session log returns.
-- Ridge (alpha10, standardized) and small sklearn gradient boosting use fixed settings, pooled
-  ticker effects and per-ticker variants. There are14 comparisons including all ablations and
-  random-walk/mean-return baselines. Expanding windows share held-out dates across tickers;
-  last45 labelled sessions are evaluated, refitting every5. No random split or held-out tuning.
-- Forecast model is predetermined pooled Ridge: price-only if historical sentiment is absent,
-  otherwise all features. The leaderboard does not select the winner. Empirical95% held-out
-  log-residual bands are illustrative and are not guaranteed calibrated intervals.
-- MAE/RMSE/MAPE, exact-sign directional accuracy, and error-win rate against random walk (ties
-  count half) have paired circular five-session block-bootstrap intervals. Tickers stay together.
-  Paired centered-bootstrap p-values are exploratory, unadjusted for multiple model comparisons.
-  A random walk predicts zero change, so exact-sign accuracy is the fraction of unchanged closes.
-- Levels combine confirmed swing clusters on up to252 sessions, classic last-bar pivots, round
-  numbers and explicit crowd levels. Nearest two supports below and resistances above are shown.
-  Strength is a heuristic score, **not a probability**; hover a level to inspect methods.
-
-## Results and honest limitations
-
-Real public prices through 2026-11-06;225 held-out predictions /45 sessions per exchange.
-Price metrics aggregate five assets; MAE/RMSE are in local currency and scale differs by ticker.
-
-| Exchange / fixed model | MAE | RMSE | MAPE | Direction | Random-walk MAPE |
-| --- | ---: | ---: | ---: | ---: | ---: |
-| HKEX / Ridge price | 2.567 HKD | 4.394 HKD | 1.861% |49.3% |1.862% |
-| KRX / Ridge price |17,285.537 KRW |37,577.451 KRW |2.721% |48.4% |2.561% |
-
-HK Ridge minus random-walk MAE95% CI is **[-0.070,0.069] HKD** (p≈0.945), consistent with no
-improvement. KRX Ridge is worse: differenceCI **[263.454,3453.209] KRW**, exploratory p≈0.042.
-That is not evidence of useful predictive power. Social/news ablations coincide in real mode
-because those histories have not been collected. **Whether sentiment adds value is untested.**
-The lab’s independently generated fixture returns test software behavior, not market efficacy.
-Ten days of social observations is far too short for confident inference. Longer contemporaneous
-captures, more dates/tickers, corporate-action handling, robust normalized metrics, transaction
-costs, stability checks and corrected statistical comparisons would be needed for stronger claims.
-
-The genuine forward target is **Monday9 November2026**, with results pending until its actual
-close. Prediction issuance files live under `predictions/`; hashes bind inputs and source commit.
-They cannot be overwritten. Evaluation appends idempotently to `predictions/results.csv` and
-never changes the original record. No future outcome is invented.
-
-## How to reproduce
-
-```sh
-crowd-signal doctor
-crowd-signal replay
-python -m pytest
-python -m ruff check src tests scripts actors
-crowd-signal run-all --exchange ALL --mode price_only
+crowd-signal import-probes --exchange HKEX --selections data/raw/feasibility/submission_2026-11-13/HKEX_capture_inputs.json
+crowd-signal analyse --exchange HKEX --mode live
+crowd-signal train --exchange HKEX --mode live
 crowd-signal report
 ```
 
-Live collection and price-only runs export hashed normalized replay bundles under
-`data/raw/<capture-date>/replay/<exchange>_<mode>/bundle.json`. Copy a bundle privately, then
-`crowd-signal replay --sample PATH/bundle.json`. Replay does not access the network or call an
-LLM; it uses the deterministic lexicon and checks hashes. Input integrity is not provider
-attestation. Raw files remain ignored and are never uploaded into the report.
+The local selection manifest and live raw caches stay private; they are not prerequisites for the committed keyless replay. Partial imports require --allow-partial and remain labelled.
 
-`requirements-dev.lock` records installed project/dev dependency versions for Windows/Python3.13.5;
-it is a tested version snapshot, not a hash-verified universal lock. Use pyproject for other
-platforms. This workstation’s environment reuses host packages; clean-environment installation
-is documented but was not independently verified here.
+## Universe and source decisions
 
-## Project structure
+Current HKEX: Tencent0700.HK, Alibaba9988.HK, Meituan3690.HK, TVB0511.HK and HSBC0005.HK. Current KRX: Samsung005930.KS, SK Hynix000660.KS, NAVER035420.KS, Kakao035720.KS and LG Energy Solution373220.KS.
 
-`src/crowd_signal`: CLI, typed contracts, storage, session alignment, orchestrator and agents.
-`actors/naver_board`: bounded private Apify actor source and input schema.
-`data/sample`: explicitly synthetic portable replay inputs.
-`tests`: contracts, source billing guards, causal features, model folds, parsing, dedupe and forecasts.
-`reports`: committed HTML exports. `docs/img`: reviewed screenshots.
-`docs`: original brief, research/source decisions, design tokens and third-party notices.
+TVB replaces Xiaomi in the current watchlist because Xiaomi had no relevant social match in the refreshed ten-day window. The original prompt expressly permits editing the suggested set when data is thin. TVB has an inspected financial LIHKG post. The original Xiaomi prediction and actual result remain preserved in the9 November forward test. This watchlist change is not used to rewrite or improve that original test.
 
-## Next steps requiring external state
+Both exchanges use LIHKG + Telegram at the user's later explicit request. That changes the original prompt's KRX-specific source selection; it is recorded in docs/source_decisions.md. Both platforms have relevant records per exchange, but not every company has a match on both platforms.
 
-Accumulate observations available before future sessions; broaden relevant company coverage
-within reviewed public sources. Evaluate the recorded forward forecasts after9November closes.
-Keys are configured locally and both social platforms returned relevant records per exchange.
-Private source repository: [gokhale-atharva/crowd-signal-research](https://github.com/gokhale-atharva/crowd-signal-research).
-It contains source, reports and original Git history, excluding credentials, raw captures and caches.
-No keys or submission email have been sent.
+| Source | Actor actually used | Contract |
+|---|---|---|
+| LIHKG | claude_code_reviewer/lihkg-scraper-en | One bounded keyword or thread, body text and source timestamp; titles/quotes alone and irrelevant device/index replies excluded |
+| Telegram | scrapesage/telegram-scraper | One reviewed public channel per launch; dated relevant messages; no media |
+| Exa news | Exa search and contents API | English/local queries, news category,10/90day publication filters, retrieval time retained |
 
-## Sentiment capture views
+Primary Telegram channels: theartoftrade, h_zonstock and meritz_research. Supplementary inspected searches with zero/irrelevant results are not counted as source coverage. Optional actors/naver_board code is included but not active or deployed.
 
-The Sentiment tab keeps saved prices visible when no social observations exist. Use its
-**Try simulated sentiment** button for a working, clearly labelled example. **Data sources**
-shows which captures exist and how to connect the local pipeline. The website does not accept
-provider keys or launch collection. A missing score is null, while an observed neutral score is zero.
+Every probe is limited to20 items, at most$0.10 requested event charge and a short timeout. Observed Apify run usage across inspected manifests is **$0.109**; this is not a final invoice or a cap on all compute/proxy charges. The general collector reserves at most$2 requested event charges per exchange. Exa and LLM costs are separate. No plan upgrade or recurring billing was enabled.
 
-A newly retrieved set of recent posts can be displayed retrospectively by publication day using
-captured engagement. That chart is labelled and is never fed backwards into historical model
-features. Repeat live collections preserve first-seen text, engagement and availability times;
-those retained observations allow causal history to accumulate. Incomplete collection/analysis/
-training invalidates stale downstream output so it cannot be exported as a completed report.
+## Methodology
 
-Before live work run `crowd-signal doctor --strict` or `crowd-signal doctor --json`. Run-all checks
-all selected exchanges before the first paid job and lists missing keys, actors and channels.
-See [remaining tasks](docs/pending_tasks.md) for remaining coverage gaps and the forward outcome.
+- All timestamps become UTC while the original timezone is preserved. Exchange calendars supply holidays, close cutoffs and after-close assignment. Retrieval/engagement times are never backdated.
+- Ten-day rolling social/news features use only bodies published within the window and observed before each feature close. Retained first versions prevent later edits or engagement counts from rewriting history. Old publication dates alone do not establish past availability.
+- Exact/near deduplication, obvious-spam checks and language-script hints are conservative heuristics. Null engagement/follower fields stay null when unavailable.
+- Sentiment weights are (1+log1p(likes+reposts+0.1*views))*sqrt(1+log1p(followers)), with a three-day exponential half-life. Log weights reduce the influence of viral posts; decay favors recent observations.
+- Schema-constrained configurable LLM extraction is implemented. Current scores use the permitted multilingual lexicon fallback, labelled lexicon-v1. It is not a calibrated sentiment model. Explicit positions require first-person statements and identifiable authors; optimism is not ownership. No explicit position authors were found in the current sample.
+- Support/resistance combines confirmed swing clusters, pivots, round numbers and stated crowd levels. The nearest two levels per side include heuristic strength and method labels.
+- Model target is next-session log return, converted back to price. Features include lagged returns, volatility, RSI, volume and causally available sentiment/news signals. Fixed pooled/per-ticker Ridge and gradient-boosting variants are compared with random walk and mean return:14 comparisons.
+- Validation uses expanding windows, shared test dates across tickers and45 held-out sessions. Models refit every five sessions and when newly labelled sentiment information becomes available. No random split, leaderboard model selection or held-out hyperparameter tuning is used.
+- MAE/RMSE/MAPE, directional accuracy, win rate, five-session block-bootstrap intervals and paired comparisons are reported. Cross-model multiple testing is not corrected. Forecast bands are empirical residual bands, not guaranteed calibrated intervals.
+- Four TVB vendor bars report opens outside their high/low ranges. Their displayed/level ranges use the minimal envelope containing reported open/high/low/close. Original provider high/low are preserved, repairs are flagged, and model closes and volumes are unchanged. Raw responses remain unmodified. The source page discloses this normalization.
+
+## Results and limits
+
+Updated all-feature Ridge held-out MAPE: HKEX1.825% versus random walk1.715%; KRX2.766% versus2.576%. Most held-out sessions predate available sentiment history. Only two held-out sessions involve training on observed sentiment/news. This does not demonstrate useful predictive power.
+
+| Original9 November forward issue | Assets | Model MAPE | Random-walk MAPE | Assets beating random walk |
+|---|---:|---:|---:|---:|
+| HKEX, original watchlist |5|1.856%|1.737%|2|
+| KRX |5|2.374%|1.879%|2|
+
+One target session is a descriptive check, not statistical evidence. The issue files were committed7 November before9 November opened, and actual closes were recorded13 November. The new13 November estimates were generated after that day's open, so they are labelled research estimates and are not claimed as pre-open issued forecasts. No past result or issue was fabricated or overwritten.
+
+Longer contemporaneous collection, more independent dates, corporate-action audits, transaction costs and stability analysis are needed before stronger claims. This software is research, not a trading system.
+
+## Reproduce and verify
+
+```sh
+python -m pytest
+python -m ruff check src tests scripts actors
+crowd-signal replay
+```
+
+The clean reviewer environment passed66 tests, lint and the full336-post offline replay. Tests include availability cutoffs, future-data perturbation, rolling-window expiry, source acceptance/relevance, retained imports, model folds, immutable evaluation and page links. Dependency warnings are documented, not treated as completed live source tests. requirements-dev.lock is the earlier workstation snapshot, not a cross-platform hash lock; pyproject.toml was freshly installed and verified on Python 3.12.
+
+## Project structure and delivery
+
+src/crowd_signal contains typed agents and orchestration. data/sample contains labelled simulated inputs. tests contains contracts and causal regression checks. predictions contains original issues and append-only results. reports contains the complete portable site. docs contains source evidence, design references, results and screenshots. .github/workflows/pages.yml publishes only the saved report; it never receives provider API keys.
+
+Keys, raw captures, live normalized caches and virtual environments stay excluded from Git. The repository is public at the user's13 November request. SUBMISSION.md and SUBMISSION_EMAIL.md supply the handoff details with token placeholders only. No email or API key has been sent.
+
+The earlier chatgpt.site URL remains an older snapshot because its host-managed Git authentication is currently rejected. The linked GitHub Pages report is the current submission deployment. Both hosts serve saved reports; neither streams data or runs collection from the browser.

@@ -222,7 +222,7 @@ def build_features(
     """Features at close t; labels use close t+1 and are explicitly kept separate.
 
     No present-day engagement or retro-retrieved article is backdated to publication.
-    A daily social observation needs both its publication and snapshot before close t.
+    A rolling ten-day social observation needs publication and snapshot before close t.
     OHLCV at t is consumed after the official close; predictions are issued afterwards.
     """
     closes = {str(row["session"]): pd.Timestamp(row["close"]).to_pydatetime() for row in schedule}
@@ -267,20 +267,14 @@ def build_features(
         daily = []
         for session in frame.session:
             cutoff = closes[str(session)]
-            prior_cutoff = (
-                closes[sessions[sessions.index(str(session)) - 1]]
-                if sessions.index(str(session))
-                else cutoff - timedelta(days=1)
-            )
+            window_start = cutoff - timedelta(days=10)
             selected = [
-                (post, score)
-                for post, score in social
-                if prior_cutoff <= available_at(post) < cutoff and post.timestamp < cutoff
+                (post, score) for post, score in social
+                if window_start <= post.timestamp < cutoff and available_at(post) < cutoff
             ]
             selected_news = [
-                (item, score)
-                for item, score in articles
-                if prior_cutoff <= available_at(item) < cutoff and item.timestamp < cutoff
+                (item, score) for item, score in articles
+                if window_start <= item.timestamp < cutoff and available_at(item) < cutoff
             ]
             values = [score.sentiment for _, score in selected]
             weights = [engagement_weight(post, cutoff) for post, _ in selected]

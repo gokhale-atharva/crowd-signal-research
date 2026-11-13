@@ -12,8 +12,8 @@ from crowd_signal.agents.news import ExaNewsAgent
 from crowd_signal.agents.report import ReportAgent
 from crowd_signal.agents.sentiment import SentimentAgent
 from crowd_signal.analytics import build_features, discussion_timeline, ticker_signals
-from crowd_signal.config import ProjectConfig, Settings
 from crowd_signal.captures import import_verified_probes
+from crowd_signal.config import ProjectConfig, Settings
 from crowd_signal.forward import evaluate_forecast, write_forecast
 from crowd_signal.history import retain_first_observations
 from crowd_signal.models import Extraction, NewsItem, Post
@@ -82,6 +82,8 @@ class Pipeline:
                 "bar_count": len(bars),
                 "post_count": len(posts),
                 "news_count": len(news),
+                "ohlc_envelope_repairs": int(bars["ohlc_envelope_repaired"].sum()) if "ohlc_envelope_repaired" in bars else 0,
+                "ohlc_range_note": "Flagged ranges use a minimal envelope containing provider open/high/low/close. Original high/low retained; closes and volumes unchanged.",
             },
         )
         if capture and mode != "synthetic_fixture":
@@ -171,6 +173,15 @@ class Pipeline:
         calendar = [{"session": index.date().isoformat(), "open": row.market_open.isoformat(),
                      "close": row.market_close.isoformat()} for index, row in schedule.iterrows()]
         captured_at = datetime.now(UTC)
+        previous = self.directory(exchange, "live")
+        if (previous / "run.json").exists():
+            old_posts = [Post.model_validate(row) for row in records(pd.read_parquet(previous / "posts.parquet"))]
+            old_news = [NewsItem.model_validate(row) for row in records(pd.read_parquet(previous / "news.parquet"))]
+            posts = retain_first_observations(old_posts, posts, captured_at)
+            news = retain_first_observations(old_news, news, captured_at)
+        universe = {asset.ticker for asset in configured.tickers}
+        posts = [post for post in posts if post.ticker in universe]
+        news = [item for item in news if item.ticker in universe]
         destination = self.save_dataset(exchange, "live", bars, posts, news, calendar, captured_at, coverage)
         run = read_json(destination / "run.json")
         run["source_acceptance_complete"] = all(any(row["source"] == source and row["usable_posts"] > 0 for row in coverage) for source in configured.proposed_sources)
@@ -372,7 +383,7 @@ class Pipeline:
         if mode != "synthetic_fixture":
             for path in sorted((self.root / "predictions").glob(f"{exchange}_*.json")):
                 record = read_json(path)
-                if record.get("evidence_mode") != mode:
+                if record.get("evidence_mode") == "synthetic_fixture":
                     continue
                 for prediction in record["predictions"]:
                     actual = next(
@@ -389,6 +400,9 @@ class Pipeline:
                         {
                             **prediction,
                             "actual_close": actual["actual_close"] if actual else None,
+                            "absolute_error": actual["absolute_error"] if actual else None,
+                            "random_walk_absolute_error": actual["random_walk_absolute_error"] if actual else None,
+                            "evidence_mode": record.get("evidence_mode"),
                             "source_commit": record.get("source_commit"),
                         }
                     )

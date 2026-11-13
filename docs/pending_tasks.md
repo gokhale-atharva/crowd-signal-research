@@ -1,38 +1,13 @@
-# Status — 9 November 2026
+# Delivery status 13 November 2026
 
-## Completed
+Completed: public repository, refreshed closed prices through12November, two verified social platforms per exchange, current social matches for all ten selected assets, Exa news, causal sentiment-aware forecasts, evaluated original forward issues,66 passing tests, clean lint, clean Python3.12 installation, full keyless replay and updated portable report.
 
-- Both exchanges use the user's requested LIHKG + Telegram combination. Actual capped,
-  authenticated runs returned relevant company bodies from both platforms in each exchange.
-- HKEX:11 company-linked social records,163 Exa articles. KRX:14 records,136 Exa articles.
-  News covers all ten companies. Social coverage is5/5 HKEX and4/5 KRX companies, with
-  uneven platform coverage. These are small samples, not population measurements.
-- Public-channel messages, source timestamps and stable URLs were inspected. Title-only
-  listings, quote-only replies, device reviews and unrelated index replies are excluded.
-  The source page shows counts for every company/platform; missing scores remain null.
-- Company-specific sentiment scopes and caches prevent a multi-company message from sharing
-  another company's score. Current scoring is the labelled lexicon fallback, not an LLM.
-- The community page opens captured evidence, including old price-only bookmarks. Rankings,
-  source citations and dated news are populated. The separate simulated mode remains labelled.
-- Keys are saved only in ignored local.env. Tests explicitly disable.env loading. Reports
-  contain aggregate signals and source URLs, excluding raw bodies and author identifiers.
-- The approved private GitHub repository contains source, reports and original forecast history:
-  https://github.com/gokhale-atharva/crowd-signal-research
--63 tests passed, including source acceptance, company relevance, credential isolation, point-in-time
-  features, offline replay and report pages. Desktop and390px phone browser checks passed.
+The active HKEX universe uses TVB instead of Xiaomi, as allowed by the original prompt for thin discussion coverage. Original Xiaomi forward records remain untouched. The optional analyst-note feature is not required and is not implemented.
 
-## Remaining limits
+Scientific limits remain: only four sentiment/news feature sessions and two sentiment-informed held-out sessions; no proven predictive benefit; public Telegram includes research/news reposts rather than a representative investor population. Original forward issues are price-only and underperformed random walk overall.
 
-1. **Coverage:** no relevant LG Energy Solution social post was returned in tested channels or
-   LIHKG searches. Some other companies have evidence from only one platform. Exa news is
-   available for all ten. Do not fill missing samples with generated or unrelated posts.
-2. **Historical sentiment:** current retrieval cannot be backdated. Social/news captured today
-   were unavailable at older model cutoffs; the historical ablation cannot establish sentiment's
-   predictive value. Accumulate first-seen observations before future sessions.
-3. **Forward outcome:** original price-only predictions target9November2026. At this morning
-   check, KRX closes at12:00IST and HKEX at13:30IST. Evaluate only after each target close
-   and availability of genuine daily bars. Original issue records remain immutable.
-4. **Hosting:** the site is a saved report, without automatic collection. Refresh locally and
-   republish when a new capture is desired. No subscription or billing upgrade was enabled.
+Four TVB vendor OHLC range inconsistencies are disclosed and flagged. Original high/low are retained and model close/volume values are unchanged. Provider raw data and keys stay private.
 
-See feasibility/capture_summary.json for actual run IDs, observed usage and per-company coverage.
+Manual submission step: review SUBMISSION_EMAIL.md and supply provider tokens privately if required by the assessor. No email has been sent.
+
+Hosting: GitHub Pages is the current delivery target. The previous chatgpt.site remains on its older snapshot because its Git authentication request is rejected by the hosting service. No billing upgrade was used.

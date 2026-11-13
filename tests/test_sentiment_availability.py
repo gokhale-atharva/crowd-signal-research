@@ -1,6 +1,6 @@
+import json
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
-import json
 
 import pandas as pd
 import pytest
@@ -49,7 +49,7 @@ def test_retrospective_chart_does_not_backdate_model_features():
     assert any(r['sentiment'] is None for r in rows)
     frame = build_features(bars, schedule, [captured], [], [score], [])
     assert frame.loc[frame.session <= session, 'social_available'].sum() == 0
-    assert frame.social_available.sum() == 1
+    assert frame.loc[frame.session > session, 'social_available'].eq(1).all()
 
 
 def test_repeat_captures_preserve_earliest_text_and_engagement():
@@ -84,16 +84,15 @@ def test_preflight_reports_all_blockers_without_launching_collection(monkeypatch
     assert result.exit_code == 2
     payload = json.loads(result.stdout)
     assert payload['ready_for_live_collection'] is False
-    settings = Settings(_env_file=None, apify_token='test-secret', exa_api_key='test-exa')
     with pytest.raises(ValueError) as failure:
         require_live_setup(load_config(), Settings(_env_file=None), ['HKEX','KRX'])
     assert 'test-secret' not in str(failure.value)
 
 
 def test_incomplete_stages_cannot_reuse_stale_forecasts(tmp_path, settings, monkeypatch):
+    import crowd_signal.pipeline as module
     from crowd_signal.pipeline import Pipeline
     from crowd_signal.storage import read_json, write_json
-    import crowd_signal.pipeline as module
     pipeline = Pipeline(load_config(), settings, root=tmp_path)
     directory = pipeline.directory('HKEX', 'price_only')
     write_json(directory / 'run.json', {'stages':{'collection':True,'analysis':True,'training':True}})
@@ -117,10 +116,11 @@ def test_incomplete_stages_cannot_reuse_stale_forecasts(tmp_path, settings, monk
     assert 'No live posts, prices, sentiment scores or forecasts' in report.read_text(encoding='utf-8')
 
 
-def test_collection_accumulates_first_seen_observations(tmp_path, monkeypatch):
+@pytest.mark.parametrize("capture", ["collect", "import_probes"])
+def test_collection_accumulates_first_seen_observations(tmp_path, monkeypatch, capture):
+    import crowd_signal.pipeline as module
     from crowd_signal.pipeline import Pipeline
     from crowd_signal.storage import records
-    import crowd_signal.pipeline as module
     now = datetime.now(UTC)
     first = post(now - timedelta(days=3), now - timedelta(days=2), likes=2)
     updated = first.model_copy(update={'observed_at':now - timedelta(hours=1),'likes':700})
@@ -128,6 +128,7 @@ def test_collection_accumulates_first_seen_observations(tmp_path, monkeypatch):
     responses = iter([([first],[]),([updated,added],[])])
     monkeypatch.setattr(module.ApifyCollector, 'validate_sources', lambda *a:None)
     monkeypatch.setattr(module.ApifyCollector, 'collect', lambda *a:next(responses))
+    monkeypatch.setattr(module, 'import_verified_probes', lambda *a:next(responses))
     monkeypatch.setattr(module.ExaNewsAgent, 'collect', lambda *a:[])
     bars = pd.read_csv(ROOT / 'data/sample/bars.csv', dtype={'ticker':str,'session':str})
     bars = bars[bars.ticker.isin([a.ticker for a in load_config().exchange('HKEX').tickers])].copy()
@@ -140,9 +141,28 @@ def test_collection_accumulates_first_seen_observations(tmp_path, monkeypatch):
     monkeypatch.setattr(module, 'export_bundle', lambda *a:tmp_path / 'bundle.json')
     settings = Settings(_env_file=None,apify_token='unit-test',exa_api_key='unit-test')
     pipeline = Pipeline(load_config(),settings,root=tmp_path)
-    pipeline.collect('HKEX')
-    destination = pipeline.collect('HKEX')
+    selection = tmp_path / 'selections.json'
+    selection.write_text('[]')
+    def run_capture():
+        return pipeline.collect('HKEX') if capture == 'collect' else pipeline.import_probes('HKEX', selection)
+    run_capture()
+    destination = run_capture()
     saved = [Post.model_validate(row) for row in records(pd.read_parquet(destination / 'posts.parquet'))]
     assert len(saved) == 2
     original = next(p for p in saved if str(p.url) == str(first.url))
     assert original.likes == 2 and original.observed_at == first.observed_at
+
+
+def test_causal_rolling_window_expires_old_posts():
+    bars = pd.read_csv(ROOT / 'data/sample/bars.csv', dtype={'ticker': str, 'session': str})
+    bars = bars[bars.ticker == '0700.HK'].tail(100)
+    schedule = json.loads((ROOT / 'data/sample/sessions.json').read_text())['HKEX']
+    end = datetime.fromisoformat(next(s['close'] for s in schedule if s['session'] == bars.session.max()))
+    captured = post(end - timedelta(days=15), end - timedelta(days=14))
+    frame = build_features(bars, schedule, [captured], [], [lexicon_extract(captured.text)], [])
+    available = frame[frame.social_available == 1]
+    assert not available.empty
+    for cutoff in pd.to_datetime(available.feature_cutoff, utc=True):
+        assert captured.observed_at < cutoff
+        assert timedelta(0) <= cutoff - captured.timestamp <= timedelta(days=10)
+    assert frame.iloc[-1].social_available == 0

@@ -24,9 +24,9 @@ exchanges:
       - ticker: 3690.HK
         asset_name: Meituan
         aliases: ['3690', '$3690', Meituan, 美團, 美团]
-      - ticker: 1810.HK
-        asset_name: Xiaomi
-        aliases: ['1810', '$1810', Xiaomi, 小米, 小米集團]
+      - ticker: 0511.HK
+        asset_name: TVB
+        aliases: ['0511', '$0511', TVB, Television Broadcasts, 無綫集團, 電視廣播]
       - ticker: 0005.HK
         asset_name: HSBC
         aliases: ['0005', '$0005', HSBC, 匯豐, 汇丰, 匯控]
