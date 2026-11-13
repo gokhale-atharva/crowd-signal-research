@@ -54,3 +54,16 @@ and validated `frontend-motion-craft`, with verified source references, and upda
 global AGENTS.md to reuse the workflow. These are persistent local files, not model training.
 The exact 'squeeze motion skills' repository could not be uniquely verified and was not installed.
 The current user brief and environment tool rules take precedence over upstream skill defaults.
+
+## Focused explorer revision — 2026-11-13
+
+Revisited the public Skiper UI, Vengeance UI and Animmaster Lib catalogues, and Motion's
+official animate documentation. Adapted selection continuity, press feedback and focused
+scene composition with original JavaScript/CSS using the existing MIT Motion runtime.
+No paid component source or new React/GSAP dependency was introduced. The earlier licence
+and source findings above remain the basis for reference use. Impeccable polish/craft-floor,
+Taste and UI/UX Pro Max reduced-motion/excessive-motion guidance informed the refinement.
+The exact Squeeze repository remains unverified; press springs are implemented directly.
+
+Reset/Pause removal is the user's explicit override. All decorative auto-orbit/bobbing
+has been removed, so animations finish and scenes render only for entry or interaction.

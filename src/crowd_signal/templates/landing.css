@@ -47,3 +47,26 @@ body.motion-paused *,body.motion-paused *:before,body.motion-paused *:after{anim
 @media(prefers-reduced-motion:reduce){.path-card:hover,.layer-label a:hover{transform:none}.layer-label a,.layer-switcher button:after{transition:none}.title-line{clip-path:none!important;transform:none!important}}
 @media(min-width:801px) and (max-height:800px){.landing-hero{padding-top:24px;padding-bottom:24px}.hero-visual{height:calc(100svh - 145px);min-height:470px}.layer-price{top:18%}.layer-crowd{top:43%}.layer-model{top:61%}}
 @media(min-width:601px) and (max-width:1100px){h1{font-size:clamp(54px,6.2vw,67px)}}
+/* Focused explorer revision: a single selector, finite motion, quieter research chrome. */
+.scene-topline{align-items:center;left:0;right:0;border-bottom:1px solid #2a3346;padding-bottom:13px}
+.scene-hint{font:11px 'Segoe UI',sans-serif;letter-spacing:0;color:#a5b4ce}
+#landing-scene{inset:32px -35px 132px}
+.hero-visual{background:radial-gradient(ellipse at 50% 45%,#2349b622,transparent 64%)}
+.scene-ring{bottom:144px;opacity:.4}
+.separate-control{left:auto;right:0;bottom:159px;min-height:40px;border-radius:24px;background:#101724;border:1px solid #53617a;font-size:11px;padding:10px 16px}
+.layer-console{border:0;border-radius:0;background:transparent;box-shadow:none}
+.layer-switcher{position:relative;display:grid;grid-template-columns:repeat(3,1fr);border:1px solid #3b4860;border-radius:28px;padding:4px;background:#101722;isolation:isolate;overflow:hidden}
+.layer-switcher button{position:relative;z-index:1;min-height:44px;border:0;border-radius:24px;color:#b9c8df;background:transparent!important;font-size:12px;transition:color .18s}
+.layer-switcher button:after{display:none}.layer-switcher button[aria-pressed=true]{color:#152016}
+.layer-number{font-size:10px;opacity:.65;margin-right:7px}
+.layer-selection{position:absolute;left:4px;top:4px;bottom:4px;width:calc((100% - 8px)/3);border-radius:24px;background:#d6f769;z-index:0;pointer-events:none}
+.layer-readout{padding:17px 4px 0;min-height:83px;align-items:center;gap:20px}
+.layer-readout strong{font-size:20px;font-weight:550;letter-spacing:-.4px}.layer-readout p{font-size:12px;line-height:1.5;color:#a6b4ca;margin-top:4px}
+.layer-readout>a{background:#19252b;border:1px solid #455b4c;border-radius:5px;padding:12px 15px;font-size:12px;min-height:44px}
+.landing-nav nav a{position:relative;padding:13px 0}.landing-nav nav a:after{content:'';position:absolute;bottom:5px;height:1px;left:0;right:0;background:#d6f769;transform:scaleX(0);transform-origin:left;transition:transform .22s}.landing-nav nav a:hover:after,.landing-nav nav a:focus-visible:after{transform:scaleX(1)}
+.path-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:16px}
+.path-card{border-radius:12px;padding:28px;background:#111722}.path-card:first-child{grid-row:span 2;display:flex;flex-direction:column;justify-content:space-between;min-height:480px;background:radial-gradient(ellipse at 90% 10%,#224bd434,transparent 70%),#111722}
+.path-card:first-child .price-preview{min-height:155px;align-items:center}.path-card:first-child .price-preview svg{height:110px}.path-card:first-child h3{font-size:33px;letter-spacing:-1px}
+.path-card:not(:first-child){display:grid;grid-template-columns:1fr auto;column-gap:20px;min-height:230px}.path-card:not(:first-child) .path-top{grid-column:1/-1}.path-card:not(:first-child) .crowd-preview,.path-card:not(:first-child) .model-preview{display:none}.path-card:not(:first-child) h3,.path-card:not(:first-child) p{grid-column:1/-1}.path-card:not(:first-child) .path-link{grid-column:1/-1;margin-top:18px}
+@media(max-width:800px){#landing-scene{inset:30px -20px 137px}.scene-topline{left:0;right:0}.path-card:first-child{min-height:440px}.path-card{padding:22px}}
+@media(max-width:600px){.hero-visual{height:490px;min-height:490px}.scene-topline{font-size:9px}.scene-hint{font-size:10px}.separate-control{bottom:154px;padding:9px 13px}.layer-readout{grid-template-columns:1fr auto;gap:12px;min-height:90px;padding-top:14px}.layer-readout strong{font-size:18px}.layer-readout p{font-size:11px}.layer-readout>a{font-size:10px;padding:10px}.layer-switcher button{font-size:11px}.layer-number{font-size:9px}.path-grid{grid-template-columns:1fr}.path-card:first-child{grid-row:auto;min-height:350px}.path-card:not(:first-child){min-height:200px}.path-card:first-child h3{font-size:29px}}
