@@ -1,0 +1,45 @@
+name: Refresh live research capture
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    env:
+      APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+      EXA_API_KEY: ${{ secrets.EXA_API_KEY }}
+      LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Require private source credentials
+        shell: bash
+        run: |
+          if [[ -z "$APIFY_TOKEN" || -z "$EXA_API_KEY" ]]; then
+            echo 'Add APIFY_TOKEN and EXA_API_KEY as repository Actions secrets before refreshing.' >&2
+            exit 1
+          fi
+      - name: Install project
+        run: python -m pip install -e .
+      - name: Check source readiness
+        run: crowd-signal doctor --strict
+      - name: Capture, analyse and rebuild the report
+        run: crowd-signal run-all --exchange ALL --mode live
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: reports
+      - name: Deploy updated report
+        id: deployment
+        uses: actions/deploy-pages@v4

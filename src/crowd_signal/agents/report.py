@@ -95,6 +95,27 @@ class ReportAgent:
         summary = dict.fromkeys(("sessions", "as_of", "company", "price_text", "ticker", "spark",
                                  "mape", "baseline_mape", "model_width", "baseline_width"))
         summary["captured"] = any(d.get("live", {}).get("run", {}).get("post_count", 0) for d in datasets.values())
+        recent_posts = {}
+        for exchange_key, exchange_data in datasets.items():
+            for row in exchange_data.get("live", {}).get("signals", []):
+                company = next(
+                    (item["asset_name"] for item in exchanges[exchange_key]["tickers"]
+                     if item["ticker"] == row["ticker"]), row["ticker"]
+                )
+                for evidence in row.get("social_evidence", []):
+                    url = evidence.get("url")
+                    if url and url not in recent_posts:
+                        recent_posts[url] = {
+                            "source": evidence.get("source", "source"),
+                            "timestamp": evidence.get("timestamp", ""),
+                            "url": url,
+                            "company": company,
+                            "exchange": exchange_key,
+                            "ticker": row["ticker"],
+                        }
+        summary["recent_posts"] = sorted(
+            recent_posts.values(), key=lambda row: row["timestamp"], reverse=True
+        )[:6]
         if packet:
             asset = exchanges[initial]["tickers"][0]
             ticker = asset["ticker"]
