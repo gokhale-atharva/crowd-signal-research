@@ -119,7 +119,7 @@ python -m ruff check src tests scripts actors
 crowd-signal replay
 ```
 
-The clean reviewer environment passed66 tests, lint and the full336-post offline replay. Tests include availability cutoffs, future-data perturbation, rolling-window expiry, source acceptance/relevance, retained imports, model folds, immutable evaluation and page links. Dependency warnings are documented, not treated as completed live source tests. requirements-dev.lock is the earlier workstation snapshot, not a cross-platform hash lock; pyproject.toml was freshly installed and verified on Python 3.12.
+The clean reviewer environment passed67 tests, lint and the full336-post offline replay. Tests include availability cutoffs, future-data perturbation, rolling-window expiry, source acceptance/relevance, retained imports, model folds, immutable evaluation and page links. Dependency warnings are documented, not treated as completed live source tests. requirements-dev.lock is the earlier workstation snapshot, not a cross-platform hash lock; pyproject.toml was freshly installed and verified on Python 3.12.
 
 ## Project structure and delivery
 
@@ -128,3 +128,6 @@ src/crowd_signal contains typed agents and orchestration. data/sample contains l
 Keys, raw captures, live normalized caches and virtual environments stay excluded from Git. The repository is public at the user's13 November request. SUBMISSION.md and SUBMISSION_EMAIL.md supply the handoff details with token placeholders only. No email or API key has been sent.
 
 The earlier chatgpt.site URL remains an older snapshot because its host-managed Git authentication is currently rejected. The linked GitHub Pages report is the current submission deployment. Both hosts serve saved reports; neither streams data or runs collection from the browser.
+
+
+The freshly verified dependency versions are recorded in requirements-reviewer.lock. Original prediction JSON is unchanged in Git. Windows worktrees may use CRLF while Git stores LF; docs/prediction_integrity.json records both byte hashes and confirms identical normalized issue content.

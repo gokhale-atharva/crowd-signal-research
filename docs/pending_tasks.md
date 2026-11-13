@@ -1,6 +1,6 @@
 # Delivery status 13 November 2026
 
-Completed: public repository, refreshed closed prices through12November, two verified social platforms per exchange, current social matches for all ten selected assets, Exa news, causal sentiment-aware forecasts, evaluated original forward issues,66 passing tests, clean lint, clean Python3.12 installation, full keyless replay and updated portable report.
+Completed: public repository, refreshed closed prices through12November, two verified social platforms per exchange, current social matches for all ten selected assets, Exa news, causal sentiment-aware forecasts, evaluated original forward issues,66 passing tests, clean lint, clean Python 3.12 installation, full keyless replay and updated portable report.
 
 The active HKEX universe uses TVB instead of Xiaomi, as allowed by the original prompt for thin discussion coverage. Original Xiaomi forward records remain untouched. The optional analyst-note feature is not required and is not implemented.
 

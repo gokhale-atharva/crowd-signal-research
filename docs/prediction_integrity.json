@@ -1,0 +1,12 @@
+{
+  "HKEX_2026-11-09.json": {
+    "committed_lf_sha256": "b59da835ac98be1e9f5ff94160c8c416be01ed8084daf19d8ea5593206ecd085",
+    "evaluated_worktree_sha256": "9212cf7a078bba0c8696c3619d587e9efb11a52f1ffbd52c46c700cf6066157b",
+    "note": "Git stores LF; this Windows worktree uses CRLF. JSON content is identical. Original issue Git objects are unchanged."
+  },
+  "KRX_2026-11-09.json": {
+    "committed_lf_sha256": "3c3b3fa0c808d4811bc42282de920840f3e977d8b4343f6cf6db7c483653fb14",
+    "evaluated_worktree_sha256": "16b3855685e0b3e9fb46852ee671dc07d12719bfd6a94ae71f3fca962b9c48dc",
+    "note": "Git stores LF; this Windows worktree uses CRLF. JSON content is identical. Original issue Git objects are unchanged."
+  }
+}

@@ -13,7 +13,7 @@ from crowd_signal.agents.report import ReportAgent
 from crowd_signal.agents.sentiment import SentimentAgent
 from crowd_signal.analytics import build_features, discussion_timeline, ticker_signals
 from crowd_signal.captures import import_verified_probes
-from crowd_signal.config import ProjectConfig, Settings
+from crowd_signal.config import AssetConfig, ProjectConfig, Settings
 from crowd_signal.forward import evaluate_forecast, write_forecast
 from crowd_signal.history import retain_first_observations
 from crowd_signal.models import Extraction, NewsItem, Post
@@ -296,24 +296,23 @@ class Pipeline:
         paths = sorted((self.root / "predictions").glob(f"{exchange.upper()}_*.json"))
         if not paths:
             raise ValueError("No immutable predictions found")
-        bars = MarketData().collect(configured, self.root)
-        schedule = exchange_schedule(
-            configured,
-            pd.Timestamp(bars.session.min()).date(),
-            (datetime.now(UTC) + timedelta(days=20)).date(),
-        )
-        calendar = [
-            {
-                "session": index.date().isoformat(),
-                "open": row.market_open.isoformat(),
-                "close": row.market_close.isoformat(),
-            }
-            for index, row in schedule.iterrows()
-        ]
-        return sum(
-            evaluate_forecast(path, bars, calendar, self.root / "predictions/results.csv")
-            for path in paths
-        )
+        evaluated = 0
+        current_assets = {asset.ticker: asset for asset in configured.tickers}
+        for path in paths:
+            # A current watchlist rotation must not make an old issue unevaluable.
+            issued = read_json(path)
+            universe = list(dict.fromkeys(row["ticker"] for row in issued["predictions"]))
+            assets = [current_assets.get(ticker) or AssetConfig(
+                ticker=ticker, asset_name=ticker, aliases=[ticker, ticker.split(".")[0]]
+            ) for ticker in universe]
+            evaluation_config = configured.model_copy(update={"tickers": assets})
+            bars = MarketData().collect(evaluation_config, self.root)
+            schedule = exchange_schedule(configured, pd.Timestamp(bars.session.min()).date(),
+                                         (datetime.now(UTC) + timedelta(days=20)).date())
+            calendar = [{"session": index.date().isoformat(), "open": row.market_open.isoformat(),
+                         "close": row.market_close.isoformat()} for index, row in schedule.iterrows()]
+            evaluated += evaluate_forecast(path, bars, calendar, self.root / "predictions/results.csv")
+        return evaluated
 
     def report(self, output: Path) -> Path:
         datasets = {exchange: {} for exchange in self.config.exchanges}

@@ -17,7 +17,7 @@ Actors used: claude_code_reviewer/lihkg-scraper-en and scrapesage/telegram-scrap
 Apify token: [insert privately when sending; do not save in the repository]
 Exa token: [insert privately when sending; do not save in the repository]
 
-Reproduction, validation results and limitations are documented in README.md. All66 tests and lint passed in a fresh isolated Python3.12 installation, and the full offline replay completed.
+Reproduction, validation results and limitations are documented in README.md. All67 tests and lint passed in a fresh isolated Python 3.12 installation, and the full offline replay completed.
 
 Regards,
 [Your name]

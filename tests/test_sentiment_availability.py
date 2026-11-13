@@ -166,3 +166,24 @@ def test_causal_rolling_window_expires_old_posts():
         assert captured.observed_at < cutoff
         assert timedelta(0) <= cutoff - captured.timestamp <= timedelta(days=10)
     assert frame.iloc[-1].social_available == 0
+
+
+def test_historical_evaluation_uses_issued_watchlist(tmp_path, monkeypatch, settings):
+    import crowd_signal.pipeline as module
+    from crowd_signal.pipeline import Pipeline
+    from crowd_signal.storage import write_json
+
+    write_json(tmp_path / 'predictions/HKEX_2026-11-09.json',
+               {'predictions': [{'ticker': '1810.HK'}]})
+    seen = []
+    def collect(_self, exchange, _root):
+        seen.extend(asset.ticker for asset in exchange.tickers)
+        return pd.DataFrame({'session': ['2026-11-06']})
+    monkeypatch.setattr(module.MarketData, 'collect', collect)
+    calendar = pd.DataFrame({'market_open': [pd.Timestamp('2026-11-09T01:30:00Z')],
+                             'market_close': [pd.Timestamp('2026-11-09T08:00:00Z')]},
+                            index=pd.DatetimeIndex(['2026-11-09']))
+    monkeypatch.setattr(module, 'exchange_schedule', lambda *args: calendar)
+    monkeypatch.setattr(module, 'evaluate_forecast', lambda *args: 1)
+    assert Pipeline(load_config(), settings, root=tmp_path).evaluate('HKEX') == 1
+    assert seen == ['1810.HK']  # Original issue survives the active watchlist rotation.
