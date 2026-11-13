@@ -85,7 +85,7 @@ class ReportAgent:
             page(f"{key.lower()}.html", "markets", pages["markets"][0], pages["markets"][1], key, standalone=True)
             for asset in exchange["tickers"]:
                 filename = company_filename(asset["ticker"])
-                companies.append(dict(name=asset["asset_name"], ticker=asset["ticker"], file=filename))
+                companies.append(dict(name=asset["asset_name"], ticker=asset["ticker"], file=filename, exchange=key))
                 page(filename, "company", asset["asset_name"],
                      f"{asset['ticker']} · {exchange['name']} · Price, next-session estimate and source evidence.",
                      key, asset["ticker"])

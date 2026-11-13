@@ -131,3 +131,6 @@ The earlier chatgpt.site URL remains an older snapshot because its host-managed 
 
 
 The freshly verified dependency versions are recorded in requirements-reviewer.lock. Original prediction JSON is unchanged in Git. Windows worktrees may use CRLF while Git stores LF; docs/prediction_integrity.json records both byte hashes and confirms identical normalized issue content.
+
+
+Landing interaction update: the research stack now assembles on entry and supports Price/Crowd/Models focus, direct plate selection and keyboard arrows. Preview paths draw on discovery/hover, controls have press-and-spring feedback, and the company directory filters by exchange. Pause and reduced-motion handling remain available. These animations do not represent live market activity.

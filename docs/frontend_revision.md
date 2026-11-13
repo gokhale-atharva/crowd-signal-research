@@ -38,3 +38,10 @@ within its own region. No browser JavaScript errors were observed. Screenshots i
 
 No live scraping or statistical results were added. This remains a milestone 1
 research preview, with deliberately unavailable market values.
+
+
+## Landing motion refinement 13 November 2026
+
+Added an interruptible 3D assembly/focus sequence, direct plate selection, Up/Down focus alongside Left/Right rotation, a destination readout, saved-price path drawing and finite model/source preview reveals, press/spring feedback and an actual exchange filter. Analytical data and research pages are unchanged. Motion remains the installed MIT runtime; no unverified Squeeze package or paid component was installed.
+
+Reviewed at1440x900,768x900 and390x844 using the permitted browser. Keyboard selection, pause, reset, separation, filter counts and destination changes worked; no application console errors were observed. The reduced-motion guards were reviewed; the operating-system preference was not changed for this check. One renderer is retained with capped ambient frame rate and background/offscreen suspension. Portfolio links and self-contained exports remain valid.
